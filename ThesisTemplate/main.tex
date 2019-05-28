@@ -2,14 +2,19 @@
 
 
 %\documentclass[sigconf]{acmart} 
-\documentclass[sigconf,format=acmsmall, screen=true, review=false]{acmart} 
+\documentclass[sigconf, format=acmsmall, screen=true, review=false]{acmart} 
 \usepackage{amsmath}
 \usepackage{amsfonts}
 \usepackage{amssymb}
 \usepackage{hyperref}
 \usepackage{pdfpages} % http://mirror.unl.edu/ctan/macros/latex/contrib/pdfpages/pdfpages.pdf
 \usepackage{booktabs} 
-
+\usepackage{url}
+% By default the URLs are put in typewriter type in the body and the
+% bibliography of the document when using the \url command.  If you are
+% using many long URLs you may want to uncomment the next line so they
+% are typeset a little smaller.
+%\renewcommand{\UrlFont}{\small\tt}
 
 \usepackage[utf8]{inputenc}
 \usepackage{graphicx}
@@ -22,16 +27,12 @@
 \usepackage{subcaption}
 
 
-% when writing in Dutch
-%\usepackage[dutch]{babel}
-%\selectlanguage{dutch}
-
-
 % linenumbering  See https://texblog.org/2012/02/08/adding-line-numbers-to-documents/
-\usepackage{lineno}
-\linenumbers
+% \usepackage{lineno}
+% \linenumbers
 
-\newcommand{\shorttitle}{} % Put your short title here
+\newcommand{\shorttitle}{Job Recommender for Welfare Beneficiaries} % Put your short title here
+
 \begin{document}
 
 
@@ -65,28 +66,27 @@
 
 \pagebreak
 
-
+%Set two column format for document
+\twocolumn
 % Here you input all your sections in seperate files
-
 \input{introduction}
-\input{related_work}
+% \input{related_work}
 \input{methodology}
-\input{evaluation}
-\input{conclusions}
+% \input{evaluation}
+% \input{conclusions}
 
 % your refs
 
 \bibliographystyle{plain}
-\bibliography{MyThesis}
+\bibliography{references}
 
 \appendix
 
 %\input{appendix}
 
 
-\section{Slides}
-
+%\section{Slides}
 % Example
-\includepdf[nup=2x3 , pages=-]{sargent-lecture_slides.pdf}
+%\includepdf[nup=2x3 , pages=-]{sargent-lecture_slides.pdf}
  
 \end{document}
