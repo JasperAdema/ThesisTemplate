@@ -1,0 +1,64 @@
+\section{Experimental Setup}
+\label{sec:setup}
+%introduction
+This section describes the particularities of the conducted research regarding the data (\ref{ssec:data}) and the hyperparameter tuning of the applied models (\ref{ssec:ht}). 
+The tooling used for this research project is Python and its relevant packages.
+
+\subsection{Data}
+\label{ssec:data}
+Aggarwal (2016) describes that in general a recommender system uses as input user, item and label data \cite{aggarwal2016recommender}.
+User information is needed to recommend to someone, item information allows to recommend something to someone, and the labels (ratings) give information about to what extent  something is liked or not by someone.
+The \textit{users} are welfare beneficiaries living in the city of Amsterdam, the \textit{items} are the job vacancies and the \textit{labels} are the outcomes of the job matching process.
+The data for this research is provided by the municipality of Amsterdam and the Dutch social security agency (UWV).
+
+\textit{Data sources.}
+The user data is stored in a customer management system database called RAAK which is operated by the municipality.
+Due to the abundance of user attributes in combination with resource constraints a preselection is required. 
+Based on previous research done by the municipality and in collaboration with the domain experts the attributes to be extracted from this database is determined. 
+The job vacancy data is retrieved from a database maintained by the Werkgeversservicepunt greater Amsterdam (WSP).
+The UWV hosts a database named GIP in which the employer feedback regarding a job candidate is registered.
+Therefore the labels can be derived from a dataset pulled out this GIP database.
+
+\textit{Timespan.}
+According to domain experts of the municipality of Utrecht the dynamics of the labor market makes it necessary to review job candidate criteria every six months.
+The economic crisis and its aftermath for example resulted in an oversupply on the labor market causing the hiring criteria of employers to rise making it harder for welfare beneficiaries to find a job.
+In the current economic upturn and undersupply of labor, the employer hiring criteria are decreasing month after month. 
+When the labor market dynamics are taken into account the most suitable time span would be six months.
+However, taking a six month time span would result in a dataset that is too small to learn patterns from.
+Another aspect influencing the time span is the data quality. 
+The procedures how user (welfare beneficiary) and job vacancy information is gathered and stored are in flux and the further back the data goes the more irregularities start to come to surface in the data. 
+Therefore a time span of five years was chosen, which strikes a balance between the maximum of available data, its quality, and the labor market dynamics.
+
+\textit{Creating one dataset.}
+In total 19 datafiles are provided for this research, 17 coming from the RAAK database and the other two coming from the WSP and GIP database.
+The GIP data contains the date on which the job matching occurred. 
+Because the representation of a user can change over time, the data is merged together based on the match date. 
+The resulting dataset consists of 12,482 observations.
+However, not all job matching outcomes are documented properly and when the unlabeled (or weak labeled) observations are filtered out 8,265 records remain.
+
+\textit{Data composition.} 
+The datasets contains dominantly categorical data, with just a few numerical and free text columns.
+
+\textit{Transformations.}
+A number of user attributes carry sensitive personal information and these attributes are removed from the dataset or masked in accordance with the K-anonymity \cite{sweeney2002k} and the privacy by design \cite{d2015privacy} principles.
+The masking of the data involves the transformation of numerical data into binary representation by first putting it in bins and then one-hot encoding it. 
+All categorical data is also one-hot encoded for two reasons. 
+Firstly, to deal with any missing values, and secondly to make the data digestible for all proposed machine learning algorithms. 
+For all fields containing free text the punctuation and stopwords are removed, and the remaining words are stemmed, this handling is also known as natural language processing (NLP).
+
+\subsection{Hyperparameter Tuning}
+\label{ssec:ht}
+With an iterative process (or hyperparameter search) the best hyperparameters for the machine learning models are determined. 
+For the implementation of the machine learning models the Python library Scikit-learn was used.
+Only the most important choices will be highlighted here, a full listing of all hyperparameters that deviate from the default settings in Scikit-learn can be found in appendix \ref{ssec:ushp}.
+
+For the Nearest Neighbors the number of neighbors is set to two what equals to k=1, this is because the first neighbor is the own observation and the distance to that is always zero.
+The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the accuracy and MCC scores in a graph (appendix \ref{ssec:fonn}).
+The best hyperparameters for RandomForest are found with the use of Scikit-learn’s randomized search with cross validation for hyperparameters module \cite{sklearn, bergstra2012random}.
+For Logistic Regression the hyperparameters are tailored towards the binary classification problem. 
+None of the default hyperparameters are altered for Linear Support Vector Classification. 
+
+The search for the best hyperparameters for the Neural Network is more comprehensive and there is no standard setting for a particular problem. 
+The number of settings for a Neural Network is unbound, and while there are many strategies devised for finding the best hyperparameters for neural networks \cite{larochelle2009exploring} it remains a trial and error process.
+The strategy deployed for this research is to start off with a setting with one hidden layer and first determine the best activation function and solver amongst the other settings.
+Hereafter, the optimum number of layers and nodes in a layer are explored iteratively.

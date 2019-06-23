@@ -1,0 +1,105 @@
+\section{Methodology}
+\label{sec:meth}
+
+%Introduction
+In this section the methods used during the research are elaborated. First the setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by content-based learning methods (\ref{ssec:cblup}). Hereafter practical solutions to improve the recommendation results are described (\ref{ssec:psirr}). In the last part the evaluation methods are covered (\ref{ssec:eval}). 
+
+\subsection{The Job Recommendation Setting}
+\label{ssec:jrs}
+The research setting governs for an important part which methods can be applied. 
+The available dataset is a mixture of numerical, categorical, and unstructured (free text) data. 
+Labels are available, however these are incomplete with many missing.
+Furthermore, a class imbalance of the labels is observed, with the positive labels being overrepresented with quite a margin. 
+Finally, the dataset exhibits sparsity, with just one or a few job matches per user. 
+
+\subsection{Clustering}
+\label{ssec:clus}
+Clustering is an unsupervised machine learning technique to place a set of objects into groups (clusters) that are similar to each other \cite{hartigan1979algorithm}.
+The dataset contains only one or a couple of job matches per user, a method to mitigate this sparsity is to cluster the users. 
+If a cluster of similar users is greater than one there are automatically multiple job matches linked to it. 
+Similarly the jobs can be clustered, with the difference that now multiple users are connected to a cluster of jobs. 
+Three approaches to clustering are explored: 1) the clustering of user/job features, 2) the clustering of job descriptions, and 3) the clustering of job titles. 
+
+\textit{Clustering of user/job features.}
+The dataset contains a mixture of data types and most clustering algorithms can handle only one data type and therefore two methods to cluster the user/job features are tested.
+The first method is to use the K-prototypes algorithm \cite{huang1997clustering} for clustering which can handle both numerical and categorical data. 
+The second method is to bin all numerical data and to treat it as categorical data and apply the K-modes clustering algorithm \cite{huang1997clustering, huang1998extensions} which can only deal with categorical data. 
+
+\textit{Clustering of job descriptions.}
+The job descriptions are unstructured data (free text) and are first processed with a natural language processing technique called term frequency–inverse document frequency (TFIDF) \cite{ramos2003using}. 
+This technique returns a vector space of numerical data (the TFIDF scores) on which the K-means clustering algorithm \cite{hartigan1979algorithm} can be applied. 
+
+\textit{Clustering of job titles.}
+The final clustering method involves extracting the n-grams of the characters in the job title and putting them into a vector space.
+This vector space of n-gram frequencies is then clustered using hierarchical clustering \cite{rokach2005clustering}. 
+The advantage of hierarchical clustering is that the number of clusters do not need to be specified. 
+
+\subsection{Content-Based Learning of User Profiles}
+\label{ssec:cblup}
+The labels in the dataset can be leveraged for supervised machine learning algorithms. 
+A content-based model can be constructed to predict the user matchability with jobs. 
+For the learning of the profiles the user and jobs features are concatenated into a single vector per available label. 
+The learning of these profiles is closely related to the regression and classification problem, and therefore the same methods can be applied. 
+
+There is a myriad of regression and classification algorithms which all can be used for recommendation, and to narrow these down the following six basic models were selected for this research: 1) Nearest Neighbors, 2) K-Nearest Neighbors Classification, 3) RandomForest Classification, 4) Logistic Regression, 5) Linear Support Vector Classification, and 6) Multi-Layer Perceptron Classifier (better known as a Neural Network).
+All mentioned methods can return a predicted label based on a probability estimate.
+The motivation for selecting each of these models is explained in brief.
+
+\textit{Nearest Neighbors.}
+Other state-of-the-art algorithms commonly deliver a better performance than Nearest Neighbors \cite{koren2008factorization, takacs2007major}, however it is the least complex of all proposed classification algorithms and straightforward to implement while nevertheless providing good results.
+Ning et al. (2015) summarize the advantages of Nearest Neighbors as follows: a) simplicity, b) justifiability, c) efficiency, and d) stability \cite{ning2015comprehensive}.
+Because of these characteristics the outcomes of Nearest Neighbors classification will serve as a baseline to which the other proposed algorithms will be compared.
+\textit{K-Nearest Neighbors} \cite{altman1992introduction} is an extension of the Nearest Neighbors algorithm. 
+In fact Nearest Neighbors is the equivalent of K-Nearest Neighbors (KNN) with a k=1. 
+Thus the difference between the two is that with KNN the desired number of neighbors can be specified.
+The arguments for selecting this neighborhood method are the same as for Nearest Neighbors.
+
+\textit{RandomForest} \cite{breiman2001random} is an ensemble learning method that can be used to build a rule-based classifier, when classification rules are extracted from the model.
+The advantage of the RandomForest classification algorithm it that is robust to the inclusion of irrelevant features.
+
+\textit{Logistic Regression} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
+The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression is applied.
+
+According to Burges (1998) \textit{Support Vector Machines} (SVM) are an often applied method in case of binary labels \cite{burges1998tutorial}.
+An SVM is comparable with Logistic Regression, the main difference is that the loss is quantified as a hinge-loss rather than a logit function. 
+For this research a member of the SVM family called Linear Support Vector Classification is tested.
+
+While Logistic Regression and SVMs excel in learning linear patterns in the data, a \textit{Neural Network} \cite{bishop1995neural} outperforms these when it comes to learning arbitrarily complex non-linear models.
+If there are non-linear relations between features present in the dataset the Neural Network can learn those.
+However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
+
+\subsubsection{Recommending jobs to users}
+The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
+The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
+The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
+The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.
+Hereafter the probabilities in each row are ranked descending, and from that the \textit{n}-top ranks (jobs) are returned. 
+
+\subsection{Practical Solutions to Improve Recommendation Results}
+\label{ssec:psirr}
+In this part two strategies and their associated methods to improve recommendation results are described.
+
+The first approach emphasizes on reducing the effects of the unequal distribution of positive and negative labels, this is also known as \textit{class imbalance}. 
+The methods to mitigate class imbalance that are tried out are undersampling and oversampling. 
+In case of undersampling observations of the overrepresented class will be randomly deleted until the classes are balanced. 
+With oversampling artificial observations are created for the underrepresented class until the classes are balanced. 
+For the oversampling a variation of the synthetic minority over-sampling technique (SMOTE) \cite{chawla2002smote} suitable for both numerical and categorical data is applied. 
+
+Focus of the second strategy is noise reduction by removing the features that contribute the least to the prediction of the labels.
+Using only the important features reduces overfitting, improves accuracy and reduces training time. 
+The three methods to determine feature importance that are tested are: 1) Chi-square test for feature selection, 2) Backwards Feature Elimination, and 3) Recursive Feature Elimination \cite{guyon2002gene}. 
+The Chi-square test is mostly applied for categorical data only, while the other methods can deal with mixed data types.
+
+\subsection{Evaluation Methods}
+\label{ssec:eval}
+In this part the methods to evaluate the training results of the proposed models are outlined.
+The evaluation methods can be divided into two types: 1) the evaluation of the classification models, and 2) the evaluation of the rankings.
+
+For the evaluation of the classification models accuracy and the Matthews correlation coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
+The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.
+In case of imbalanced datasets the MCC is able to indicate correctly if the prediction evaluation is preceding well or not, while metrics as accuracy and F-measure are not \cite{boughorbel2017optimal}.
+
+The evaluation of the rankings can be done in various ways, although for this research a two step method is used. 
+The first step is to calculate the average rank of the labeled observations in the user $\times$ jobs matrix.
+If the calculated average rank deviates from the mean total rank (or the midpoint of all ranks) towards the lower end it can be assumed that the predictions are better than random selection. 
+Because the true correctness of a ranking is hard to capture in metrics the second step proposes a user study, in which the sets of \textit{n}-top rankings are evaluated by domain experts. 
