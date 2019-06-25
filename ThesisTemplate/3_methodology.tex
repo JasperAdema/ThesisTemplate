@@ -10,10 +10,15 @@ The research setting governs for an important part which methods can be applied.
 The available dataset is a mixture of numerical, categorical, and unstructured (free text) data. 
 Labels are available, however these are incomplete with many missing.
 Furthermore, a class imbalance of the labels is observed, with the positive labels being overrepresented with quite a margin. 
-Finally, the dataset exhibits sparsity, with just one or a few job matches per user. 
+Finally, the dataset exhibits sparsity, with just one or a few job matches per user.
+
+\mynote[author=Harrie]{Deze sectie zou ik uitbreiden, wat geven de labels aan?, waarom zijn positieve labels overrepresented? geef aan dat dat onvermijdbaar is.
+Zeg iets meer over de features: ze beschrijven de user en de job, de user word beschreven in persoonlijke info als leeftijd, opleiding, maar ook biografische info als persoonlijkheidstesten etc.
+Hier moet je niet specifiek het over jouw data te hebben, maar algemeen houden: de dingen die voor (bijna) alle job-recommendation settings gelden.}
 
 \subsection{Clustering}
 \label{ssec:clus}
+\mynote[author=Harrie]{Je hebt in related work al uitgelegd wat clustering is, dat hoef je hier niet te herhalen. Begin met de uitleg waarom het nodig is.}
 Clustering is an unsupervised machine learning technique to place a set of objects into groups (clusters) that are similar to each other \cite{hartigan1979algorithm}.
 The dataset contains only one or a couple of job matches per user, a method to mitigate this sparsity is to cluster the users. 
 If a cluster of similar users is greater than one there are automatically multiple job matches linked to it. 
@@ -26,6 +31,7 @@ The first method is to use the K-prototypes algorithm \cite{huang1997clustering}
 The second method is to bin all numerical data and to treat it as categorical data and apply the K-modes clustering algorithm \cite{huang1997clustering, huang1998extensions} which can only deal with categorical data. 
 
 \textit{Clustering of job descriptions.}
+\mynote[author=Harrie]{Ik ben gewend om TF-IDF te noteren.}
 The job descriptions are unstructured data (free text) and are first processed with a natural language processing technique called term frequency–inverse document frequency (TFIDF) \cite{ramos2003using}. 
 This technique returns a vector space of numerical data (the TFIDF scores) on which the K-means clustering algorithm \cite{hartigan1979algorithm} can be applied. 
 
@@ -68,6 +74,7 @@ While Logistic Regression and SVMs excel in learning linear patterns in the data
 If there are non-linear relations between features present in the dataset the Neural Network can learn those.
 However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
 
+\mynote[author=Harrie]{Deze subsubsection ziet er raar uit.}
 \subsubsection{Recommending jobs to users}
 The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
 The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
@@ -92,8 +99,16 @@ The Chi-square test is mostly applied for categorical data only, while the other
 
 \subsection{Evaluation Methods}
 \label{ssec:eval}
+\mynote[author=Harrie]{Deze sectie hoort in de experimental setup.}
+
 In this part the methods to evaluate the training results of the proposed models are outlined.
-The evaluation methods can be divided into two types: 1) the evaluation of the classification models, and 2) the evaluation of the rankings.
+The evaluation methods can be divided into three types: 1) the evaluation of the clustering, 2) the evaluation of the classification models, and 3) the evaluation of the rankings.
+
+Clustering is an unsupervised algorithm and therefore validation against withheld examples is not possible.
+However, the clustering results can be evaluated by adding them as features or labels to the dataset.
+In case of adding them as features it can be tested if the prediction results improve when the clusters are added.
+Multiple setups can be used for this, like for example using the user features in combination with the job clusters to predict the labels.
+Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
 
 For the evaluation of the classification models accuracy and the Matthews correlation coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
 The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.

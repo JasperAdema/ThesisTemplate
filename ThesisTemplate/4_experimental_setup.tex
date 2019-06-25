@@ -25,8 +25,10 @@ The economic crisis and its aftermath for example resulted in an oversupply on t
 In the current economic upturn and undersupply of labor, the employer hiring criteria are decreasing month after month. 
 When the labor market dynamics are taken into account the most suitable time span would be six months.
 However, taking a six month time span would result in a dataset that is too small to learn patterns from.
-Another aspect influencing the time span is the data quality. 
-The procedures how user (welfare beneficiary) and job vacancy information is gathered and stored are in flux and the further back the data goes the more irregularities start to come to surface in the data. 
+Another aspect influencing the time span is the data quality.
+The procedures how user (welfare beneficiary) and job vacancy information is gathered and stored are in flux and the further back the data goes the more irregularities start to come to surface in the data.
+\mynote[author=Harrie]{Deze zin loopt niet lekker, misschien: The procedures by which user (welfare beneficiary) and job vacancy information is gathered and stored change over time.
+As a result, there are many irregularities between recent data and data from several years ago.}
 Therefore a time span of five years was chosen, which strikes a balance between the maximum of available data, its quality, and the labor market dynamics.
 
 \textit{Creating one dataset.}
@@ -46,11 +48,17 @@ All categorical data is also one-hot encoded for two reasons.
 Firstly, to deal with any missing values, and secondly to make the data digestible for all proposed machine learning algorithms. 
 For all fields containing free text the punctuation and stopwords are removed, and the remaining words are stemmed, this handling is also known as natural language processing (NLP).
 
+\mynote[author=Harrie]{Eindig met een korte samenvatting van deze sectie, welke data heb je uiteindelijk, hoeveel users/items, hoeveel matches, hoeveel features etc.}
+
 \subsection{Hyperparameter Tuning}
 \label{ssec:ht}
 With an iterative process (or hyperparameter search) the best hyperparameters for the machine learning models are determined. 
 For the implementation of the machine learning models the Python library Scikit-learn was used.
 Only the most important choices will be highlighted here, a full listing of all hyperparameters that deviate from the default settings in Scikit-learn can be found in appendix \ref{ssec:ushp}.
+
+For clustering the optimal number of clusters is determined by plotting the values of the cost function against the k’s, a method that is also called an elbow plot.
+In general the point where the curve starts to decrease and flatten out is the optimum number of k. 
+However, determining this point can be rather subjective and deciding on the number of k is often combined with domain knowledge.
 
 For the Nearest Neighbors the number of neighbors is set to two what equals to k=1, this is because the first neighbor is the own observation and the distance to that is always zero.
 The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the accuracy and MCC scores in a graph (appendix \ref{ssec:fonn}).
@@ -62,3 +70,6 @@ The search for the best hyperparameters for the Neural Network is more comprehen
 The number of settings for a Neural Network is unbound, and while there are many strategies devised for finding the best hyperparameters for neural networks \cite{larochelle2009exploring} it remains a trial and error process.
 The strategy deployed for this research is to start off with a setting with one hidden layer and first determine the best activation function and solver amongst the other settings.
 Hereafter, the optimum number of layers and nodes in a layer are explored iteratively.
+
+
+\mynote[author=Harrie]{Dit is een goede plek voor de evaluation sectie.}

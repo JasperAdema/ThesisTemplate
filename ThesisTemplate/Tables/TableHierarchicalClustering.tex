@@ -1,0 +1,14 @@
+\begin{tabular}{lllll}
+\toprule
+\textbf{Scenario}   & \textbf{Features (\textit{X})}    & \textbf{Labels (\textit{y})}  & \textbf{Accuracy} & \textbf{MCC}        \\
+\midrule
+baseline            & users + jobs                      & labels                        & 0.81              & 0.44            \\
+baseline            & jobs                              & labels                        & 0.84              & 0.53            \\
+\midrule
+1                   & users + jobs + job clusters       & labels                        & 0.81              & 0.41            \\ %6.2
+2                   & users + job clusters              & labels                        & 0.74              & 0.10            \\ %6.3
+3                   & jobs + job clusters               & labels                        & 0.83              & 0.48            \\ %6.14
+4                   & users                             & job clusters                  & 0.25              & 0.04            \\ %6.4
+5                   & users + jobs                      & job clusters                  & 0.71              & 0.66            \\ %6.6
+\bottomrule
+\end{tabular}

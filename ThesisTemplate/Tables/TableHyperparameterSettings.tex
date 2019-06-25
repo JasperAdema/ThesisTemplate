@@ -1,39 +1,36 @@
-\begin{table}[H]
-  \centering
-    \begin{tabular}{lll}
-        \toprule
-        \textbf{Algorithm}                  & \textbf{Scikit-learn}     & \textbf{Hyperparameters}  \\
-        \midrule
-        Nearest Neighbors                   & NearestNeighbors()        & n\_neighbors = 2          \\
-                                            &                           & algorithm = “brute”       \\
-        \midrule
-        K-Nearest Neighbors                 & KNeighborsClassifier()    & n\_neighbors = 8          \\
-        \midrule
-        RandomForest                        & RandomForest()            & n\_estimators = 231       \\
-                                            &                           & min\_samples\_split = 2   \\
-                                            &                           & min\_samples\_leaf = 1    \\
-                                            &                           & max\_features = “sqrt”    \\
-                                            &                           & max\_depth = None         \\
-                                            &                           & bootstrap = False         \\
-                                            &                           & random\_state = 7         \\
-        \midrule
-        Logistic Regression                 & LogisticRegression()      & random\_state = 0         \\
-                                            &                           & solver = “sag”            \\
-                                            &                           & multi\_class = “ovr”      \\
-                                            &                           & max\_iter = 10000         \\
-        \midrule
-        Linear Support Vector Classification& LinearSVC()               & random\_state = 7         \\
-        \midrule
-        Neural Network                      & MLPClassifier()           & activation = ‘relu’       \\
-                                            &                           & hidden\_layers\_sizes = dataset length    \\
-                                            &                           & learning\_rate = “constant”   \\
-                                            &                           & max\_iter = 10000         \\
-                                            &                           & n\_iter\_no\_change = 10  \\
-                                            &                           & random\_state = 7         \\
-                                            &                           & solver = “adam”           \\
-                                            &                           & early\_stopping = “False” \\
-        \bottomrule
-    \end{tabular}
-    \caption{Used Hyperparameters}
-    \label{tab:Hyperparameters}
-\end{table}
+\begin{tabular}{lll}
+    \toprule
+    \textbf{Algorithm}                  & \textbf{Scikit-learn}     & \textbf{Hyperparameters}  \\
+    \midrule
+    Nearest Neighbors                   & NearestNeighbors()        & n\_neighbors = 2          \\
+                                        &                           & algorithm = “brute”       \\
+    \midrule
+    K-Nearest Neighbors                 & KNeighborsClassifier()    & n\_neighbors = 8          \\
+    \midrule
+    RandomForest                        & RandomForest()            & n\_estimators = 231       \\
+                                        &                           & min\_samples\_split = 2   \\
+                                        &                           & min\_samples\_leaf = 1    \\
+                                        &                           & max\_features = “sqrt”    \\
+                                        &                           & max\_depth = None         \\
+                                        &                           & bootstrap = False         \\
+                                        &                           & random\_state = 7         \\
+    \midrule
+    Logistic Regression                 & LogisticRegression()      & random\_state = 0         \\
+                                        &                           & solver = “sag”            \\
+                                        &                           & multi\_class = “ovr”      \\
+                                        &                           & max\_iter = 10000         \\
+    \midrule
+    Linear Support Vector Classification& LinearSVC()               & random\_state = 7         \\
+    \midrule
+    Neural Network                      & MLPClassifier()           & activation = ‘relu’       \\
+                                        &                           & hidden\_layers\_sizes = dataset length    \\
+                                        &                           & learning\_rate = “constant”   \\
+                                        &                           & max\_iter = 10000         \\
+                                        &                           & n\_iter\_no\_change = 10  \\
+                                        &                           & random\_state = 7         \\
+                                        &                           & solver = “adam”           \\
+                                        &                           & early\_stopping = “False” \\
+    \bottomrule
+\end{tabular}
+
+
