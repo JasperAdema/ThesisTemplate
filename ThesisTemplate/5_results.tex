@@ -22,7 +22,7 @@ Therefore, the clustering method cannot be applied for the recommender system.
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{ThesisTemplate/Images/Clustering.png}
-    \caption{\label{fig:eb} Elbow plots}
+    \caption{\label{fig:eb} Elbow plots users and jobs clustering}
 \end{figure}
 
 % \begin{table}[h]
@@ -56,6 +56,10 @@ Therefore, it can be argued that when extra layers are added the performance is 
 \caption{\label{tab:res} Training Results Models}
 \end{table}
 
+The MCC score is low and therefore also the precision, recall and F-measure were analyzed.
+Overall the performance of all models is good on predicting the positive labels and bad when it comes to predict the negative labels.
+Due to the class imbalance the classifiers display a tendency to overpredict the positive labels, and therefore it is hard to determine how well the positive labels are learned. 
+
 \begin{table}[h]
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNcm.tex}
@@ -63,9 +67,12 @@ Therefore, it can be argued that when extra layers are added the performance is 
 \caption{\label{tab:cmnn} Confusion Matrix Neural Network}
 \end{table}
 
-The MCC score is low and therefore also the precision, recall and F-measure were analyzed.
-Overall the performance of all models is good on predicting the positive labels and bad when it comes to predict the negative labels.
-Due to the class imbalance the classifiers display a tendency to overpredict the positive labels, and therefore it is hard to determine how well the positive labels are learned. 
+\begin{table}[h]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableNNcr.tex}
+\end{footnotesize}
+\caption{\label{tab:crnn} Classification Report Neural Network}
+\end{table}
 
 \subsection{Ranking Results}
 Another method to evaluate the classification of the positive labels is by ranking them and then retrieving the average rank.
