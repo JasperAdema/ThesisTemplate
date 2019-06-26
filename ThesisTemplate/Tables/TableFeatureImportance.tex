@@ -1,15 +1,16 @@
 \begin{tabular}{l|ll|ll|ll|ll|ll}
 & \multicolumn{2}{c|}{\textbf{Baseline}} & \multicolumn{2}{c|}{\textbf{Chi-Square Test}}  & \multicolumn{2}{c|}{\textbf{BFE}} & \multicolumn{2}{c|}{\textbf{RFE}}    & \multicolumn{2}{c}{\textbf{RFECV}} \\
 \toprule
-\textit{\# Features}& \multicolumn{2}{c|}{\textit{438}} & \multicolumn{2}{c|}{\textit{180}}  & \multicolumn{2}{c|}{\textit{116}} & \multicolumn{2}{c|}{\textit{219}}    & \multicolumn{2}{c}{\textit{?}} \\
+\textit{\# Features}& \multicolumn{2}{c|}{\textit{438}} & \multicolumn{2}{c|}{\textit{180}}  & \multicolumn{2}{c|}{\textit{116}} & \multicolumn{2}{c|}{\textit{219}}    & \multicolumn{2}{c}{\textit{115}} \\
 \midrule
-\textbf{Algorithm}                        & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC \\
+\textbf{Algorithm}      & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC   & Accuracy  & MCC \\
 \midrule                       
-Nearest Neighbors       & 0.76      & 0.29  & 0.78      & 0.33  & 0.81      & 0.46  & 0.79      & 0.37  &&\\
-K-Nearest Neighbors     & 0.80      & 0.35  & 0.80      & 0.34  & 0.81      & 0.41  & 0.81      & 0.40  &&\\
-RandomForest            & 0.82      & 0.40  & 0.81      & 0.37  & 0.84      & 0.50  & 0.83      & 0.45  &&\\
-Logistic Regression     & 0.80      & 0.35  & 0.80      & 0.37  & 0.81      & 0.36  & 0.80      & 0.36  &&\\
-Linear SVC              & 0.80      & 0.35  & 0.81      & 0.37  & 0.80      & 0.35  & 0.80      & 0.36  &&\\
-Neural Network          & 0.81      & 0.44  & 0.80      & 0.38  & 0.81      & 0.43  & 0.80      & 0.42  &&\\
+Nearest Neighbors       & 0.76      & 0.29  & 0.78      & 0.33  & 0.81      & 0.46  & 0.79      & 0.37  & 0.81      & 0.46 \\
+K-Nearest Neighbors     & 0.80      & 0.35  & 0.80      & 0.34  & 0.81      & 0.41  & 0.81      & 0.40  & 0.81      & 0.38 \\
+RandomForest            & 0.82      & 0.40  & 0.81      & 0.37  & 0.84      & 0.50  & 0.83      & 0.45  & 0.83      & 0.50 \\
+Logistic Regression     & 0.80      & 0.35  & 0.80      & 0.37  & 0.81      & 0.36  & 0.80      & 0.36  & 0.81      & 0.38 \\
+Linear SVC              & 0.80      & 0.35  & 0.81      & 0.37  & 0.80      & 0.35  & 0.80      & 0.36  & 0.80      & 0.36 \\
+Neural Network          & 0.81      & 0.44  & 0.80      & 0.38  & 0.81      & 0.43  & 0.80      & 0.42  & 0.83      & 0.46 \\
 \bottomrule
 \end{tabular}
+\tiny{BFE: Backwards Feature Elimination, RFE: Recursive Feature Elimination, RFECV: Recursive Feature Elimination with Cross-Validation}

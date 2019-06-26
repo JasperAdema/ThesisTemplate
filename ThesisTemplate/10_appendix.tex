@@ -9,30 +9,38 @@
 \caption{\label{tab:Hyperparameters} Used Hyperparameters}
 \end{table}
 
-\subsection{Finding the optimum number of neighbors}
+\subsection{K-Nearest Neighbors: Finding the Optimum Number of Neighbors}
 \label{ssec:fonn}
 \begin{figure}[h]
     \centering
     \includegraphics[width=.7\linewidth]{ThesisTemplate/Images/KNN_n_neighbors.png}
-    \caption{Finding the optimum number of neighbors}
+    \caption{K-Nearest Neighbors: Finding the Optimum Number of Neighbors}
 \end{figure}
 
-\subsection{K-Modes Clustering Scenarios}
+\subsection{Neural Network: Results K-Modes Clustering}
 \label{ssec:cluscen}
 \begin{table}[H]
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableClusterScenarios.tex}
 \end{footnotesize}
-\caption{\label{tab:clusc} K-Modes Clustering Scenarios \& Results}
+\caption{\label{tab:clusc} Neural Network: K-Modes Clustering Scenarios \& Results}
 \end{table}
 
-\subsection{Hierarchical Clustering Scenarios}
+\subsection{K-Means: Finding the Optimum Number of Clusters}
+\label{ssec:Kmeans}
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=.4\linewidth]{ThesisTemplate/Images/K-means.png}
+    \caption{K-Means: Elbow Plot NLP Clustering}
+\end{figure}
+
+\subsection{Neural Network: Hierarchical Clustering Scenarios}
 \label{ssec:hieclu}
 \begin{table}[H]
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableHierarchicalClustering.tex}
 \end{footnotesize}
-\caption{\label{tab:hieclu} Hierarchical Clustering Scenarios \& Results}
+\caption{\label{tab:hieclu} Neural Network: Hierarchical Clustering Scenarios \& Results}
 \end{table}
 
 \subsection{Confusion Matrices}
@@ -51,4 +59,40 @@
 \input{ThesisTemplate/Tables/TableFeatureImportance.tex}
 \end{footnotesize}
 \caption{\label{tab:fi} Results Feature Importance Methods}
+\end{table}
+
+\subsection{Results Undersampling and Oversampling}
+\label{ssec:ruo}
+\begin{table}[H]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableClassImbalance.tex}
+\end{footnotesize}
+\caption{\label{tab:ruo} Results Undersampling and Oversampling}
+\end{table}
+
+\subsection{Neural Network: Results Feature Importance Analysis}
+\label{ssec:nnfi}
+\begin{table}[H]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableNNFeatureImportance.tex}
+\end{footnotesize}
+\caption{\label{tab:nnfi} Neural Network: Results Feature Importance Analysis}
+\end{table}
+
+\subsection{Neural Network: Results Class Rebalancing}
+\label{ssec:nnci}
+\begin{table}[H]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableNNClassImbalance.tex}
+\end{footnotesize}
+\caption{\label{tab:nnci} Neural Network: Results Class Rebalancing}
+\end{table}
+
+\subsection{Neural Network: Scores per Feature Class}
+\label{ssec:nnfeat}
+\begin{table}[H]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableNNFeatures.tex}
+\end{footnotesize}
+\caption{\label{tab:nnfeat} Neural Network: Scores per Feature Class}
 \end{table}
