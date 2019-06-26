@@ -2,7 +2,7 @@
 \label{sec:meth}
 
 %Introduction
-In this section the methods used during the research are elaborated. First the setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by content-based learning methods (\ref{ssec:cblup}). Hereafter practical solutions to improve the recommendation results are described (\ref{ssec:psirr}). In the last part the evaluation methods are covered (\ref{ssec:eval}). 
+In this section the methods used during the research are elaborated. First the setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
 
 \subsection{The Job Recommendation Setting}
 \label{ssec:jrs}
@@ -75,7 +75,7 @@ If there are non-linear relations between features present in the dataset the Ne
 However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
 
 \mynote[author=Harrie]{Deze subsubsection ziet er raar uit.}
-\subsubsection{Recommending jobs to users}
+\textit{Recommending Jobs to Users}
 The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
 The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
@@ -94,27 +94,5 @@ For the oversampling a variation of the synthetic minority over-sampling techniq
 
 Focus of the second strategy is noise reduction by removing the features that contribute the least to the prediction of the labels.
 Using only the important features reduces overfitting, improves accuracy and reduces training time. 
-The three methods to determine feature importance that are tested are: 1) Chi-square test for feature selection, 2) Backwards Feature Elimination, and 3) Recursive Feature Elimination \cite{guyon2002gene}. 
+The three methods to determine feature importance that are tested are: 1) Chi-square test for feature selection, 2) Backwards Feature Elimination (BFE), and 3) Recursive Feature Elimination with Cross Validation (RFECV) \cite{guyon2002gene}. 
 The Chi-square test is mostly applied for categorical data only, while the other methods can deal with mixed data types.
-
-\subsection{Evaluation Methods}
-\label{ssec:eval}
-\mynote[author=Harrie]{Deze sectie hoort in de experimental setup.}
-
-In this part the methods to evaluate the training results of the proposed models are outlined.
-The evaluation methods can be divided into three types: 1) the evaluation of the clustering, 2) the evaluation of the classification models, and 3) the evaluation of the rankings.
-
-Clustering is an unsupervised algorithm and therefore validation against withheld examples is not possible.
-However, the clustering results can be evaluated by adding them as features or labels to the dataset.
-In case of adding them as features it can be tested if the prediction results improve when the clusters are added.
-Multiple setups can be used for this, like for example using the user features in combination with the job clusters to predict the labels.
-Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
-
-For the evaluation of the classification models accuracy and the Matthews correlation coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
-The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.
-In case of imbalanced datasets the MCC is able to indicate correctly if the prediction evaluation is preceding well or not, while metrics as accuracy and F-measure are not \cite{boughorbel2017optimal}.
-
-The evaluation of the rankings can be done in various ways, although for this research a two step method is used. 
-The first step is to calculate the average rank of the labeled observations in the user $\times$ jobs matrix.
-If the calculated average rank deviates from the mean total rank (or the midpoint of all ranks) towards the lower end it can be assumed that the predictions are better than random selection. 
-Because the true correctness of a ranking is hard to capture in metrics the second step proposes a user study, in which the sets of \textit{n}-top rankings are evaluated by domain experts. 

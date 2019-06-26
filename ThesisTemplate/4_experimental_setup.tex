@@ -1,7 +1,7 @@
 \section{Experimental Setup}
 \label{sec:setup}
 %introduction
-This section describes the particularities of the conducted research regarding the data (\ref{ssec:data}) and the hyperparameter tuning of the applied models (\ref{ssec:ht}). 
+This section describes the particularities of the conducted research regarding the data (\ref{ssec:data}), the hyperparameter tuning of the applied models (\ref{ssec:ht}), and the evaluation procedure (\ref{ssec:eval}). 
 The tooling used for this research project is Python and its relevant packages.
 
 \subsection{Data}
@@ -59,6 +59,7 @@ Only the most important choices will be highlighted here, a full listing of all 
 For clustering the optimal number of clusters is determined by plotting the values of the cost function against the k’s, a method that is also called an elbow plot.
 In general the point where the curve starts to decrease and flatten out is the optimum number of k. 
 However, determining this point can be rather subjective and deciding on the number of k is often combined with domain knowledge.
+For the hierarchical clustering of the n-grams of job title characters the ideal n-gram length is determined iteratively. 
 
 For the Nearest Neighbors the number of neighbors is set to two what equals to k=1, this is because the first neighbor is the own observation and the distance to that is always zero.
 The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the accuracy and MCC scores in a graph (appendix \ref{ssec:fonn}).
@@ -71,5 +72,32 @@ The number of settings for a Neural Network is unbound, and while there are many
 The strategy deployed for this research is to start off with a setting with one hidden layer and first determine the best activation function and solver amongst the other settings.
 Hereafter, the optimum number of layers and nodes in a layer are explored iteratively.
 
+\subsection{Evaluation Methods}
+\label{ssec:eval}
+In this part the methods to evaluate the training results of the proposed models are outlined.
+The evaluation methods can be divided into three types: 1) the evaluation of the clustering, 2) the evaluation of the classification models, and 3) the evaluation of the rankings.
 
-\mynote[author=Harrie]{Dit is een goede plek voor de evaluation sectie.}
+Clustering is an unsupervised algorithm and therefore validation against withheld examples is not possible.
+However, the clustering results can be evaluated by adding them as features or labels to the dataset.
+In case of adding them as features it can be tested if the prediction results improve when the clusters are added.
+Multiple setups can be used for this, like for example using the user features in combination with the job clusters to predict the labels.
+Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
+
+For training and validation of all classification models a split of 80/20 based on saved indices is applied. 
+The saved indices where created the help of group shuffle with taking into account that the same users are not allowed to be present in both the training and validation set.
+The train/validation split is shown in table \ref{tab:tvs}.
+For the evaluation of the classification models accuracy and the Matthews correlation coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
+The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.
+In case of imbalanced datasets the MCC is able to indicate correctly if the prediction evaluation is preceding well or not, while metrics as accuracy and F-measure are not \cite{boughorbel2017optimal}.
+
+\begin{table}[h]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableTrainValSplit.tex}
+\end{footnotesize}
+\caption{\label{tab:tvs} \footnotesize{Train/Validation Split}}
+\end{table}
+
+The evaluation of the rankings can be done in various ways, although for this research a two step method is used. 
+The first step is to calculate the average rank of the labeled observations in the user $\times$ jobs matrix.
+If the calculated average rank deviates from the mean total rank (or the midpoint of all ranks) towards the lower end it can be assumed that the predictions are better than random selection. 
+Because the true correctness of a ranking is hard to capture in metrics the second step proposes a user study, in which the sets of \textit{n}-top rankings are evaluated by domain experts. 
