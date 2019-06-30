@@ -34,25 +34,19 @@ The goal of this type of job recommender system is, by taking into account the s
 Such a system would operate at the intersection of recommender systems, information retrieval, machine learning and statistical optimization. 
 The research presented in this paper will focus on the job recommendation problem and its related machine learning challenges for the group of welfare beneficiaries in the city of Amsterdam. 
 
-\mynote[author=Harrie]{Geef de research questions wat opmaak om ze uit de tekst te laten springen, bijvoorbeeld door itemize te gebruiken. (Zowel de hoofdvraag als de subquestions.)}
-%RQ
-The paper aims to answer the following questions:
-\textbf{Research Question} To what extent can a recommender system based on content-based filtering match job openings to welfare beneficiaries in a similar (or better) way as the customer managers of the municipality of Amsterdam?
-\textbf{Sub Questions}
-1) Which features concerning welfare beneficiaries and job offerings are important for a job recommender system?, 2) Can the  recommendations of the system be validated by the customer managers?, and 3) Does the implementation of different pre-processing, feature selection methods, and a hybrid recommender system have a significant effect on the prediction accuracy?
 
-\mynote[author=Harrie]{
-Deze zou ik inkorten en het niet specifiek over Amsterdam hebben:
-To what extent can a recommender system based on content-based filtering match job openings to welfare beneficiaries in a similar (or better) way as the customer managers of the municipality of Amsterdam?
- ->
-Can a content-based recommender system based on match job openings to welfare beneficiaries comparable to human customer managers?
-}
-\mynote[author=Harrie]{
-Ook deze zou ik inkorten:
-Does the implementationof different pre-processing, feature selection methods, and a hybrid recommender system have a significant effect on theprediction accuracy?
- ->
-Does pre-processing, feature selection, and model choice have a significant effect on recommender performance?
-}
+The paper aims to answer the following Research Question:
+\begin{enumerate}
+    \item \em Can a content-based recommender system based on matching job openings to welfare beneficiaries be comparable to human customer managers? \label{rq:mrq}
+\end{enumerate}{}
+
+The subquestions we answer are:
+\begin{enumerate}\addtocounter{enumi}{1}
+    \item Can clustering deal with label sparsity in job matching data? \label{rq:cold}
+    \item Are there significant differences between models in predictive performance? \label{rq:model}
+    \item Does a model trained for prediction of job matches translate to a good ranking-based recommender? \label{rq:ranking}
+    \item Does feature selection and addressing class imbalance have a significant effect on the predictive performance? \label{rq:strategies}
+\end{enumerate}
 
 %uitlijning van wat er gaat komen
 The paper is structured as follows. First, related previous studies are discussed (section \ref{sec:rel}). Next, the methodology and machine learning models are elaborated (section \ref{sec:meth}). This is followed by a description of the experimental setup (section \ref{sec:setup}). Hereafter the results are presented (section \ref{sec:rslts}). Then the outcomes and limitations of the research are discussed (section \ref{sec:disc}). After that the conclusions are drawn based on the findings (section \ref{sec:concl}). Finally, the future extensions of the research are explored (section \ref{sec:fut}).

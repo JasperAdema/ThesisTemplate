@@ -1,33 +1,13 @@
-\begin{tabular}{llrr}
+\begin{tabular}{lrrrrrr}
     \toprule
-    \textbf{Algorithm}                  &                           &                           &                           \\
+    \textbf{Algorithm}  & \textbf{Accuracy} & \textbf{MCC}  & \textbf{TP}   & \textbf{TN}   & \textbf{FP} &\textbf{FN}\\
     \midrule
-    Nearest Neighbors                   &                           & Positive Labels           & Negative Labels            \\
-                                        & Positive Labels           & 5,482                     & 1,008                      \\
-                                        & Negative Labels           & 982                       & 793                        \\
-    \midrule
-    K-Nearest Neighbors                 &                           & Positive Labels           & Negative Labels            \\
-                                        & Positive Labels           & 1,184                     & 56                         \\
-                                        & Negative Labels           & 259                       & 112                        \\
-    \midrule
-    RandomForest                        &                           & Positive Labels           & Negative Labels            \\
-                                        & Positive Labels           & 1,203                     & 37                         \\
-                                        & Negative Labels           & 256                       & 115                        \\
-    \midrule
-    Logistic Regression                 &                           & Positive Labels           & Negative Labels            \\
-                                        & Positive Labels           & 1,155                     & 85                         \\
-                                        & Negative Labels           & 241                       & 130                        \\
-    \midrule
-    Linear Support Vector Classification&                           & Positive Labels           & Negative Labels           \\
-                                        & Positive Labels           & 1,158                     & 82                        \\
-                                        & Negative Labels           & 249                       & 122                       \\
-    \midrule
-    Neural Network                      &                           & Positive Labels           & Negative Labels           \\
-                                        & Positive Labels           & 1,129                     & 111                       \\
-                                        & Negative Labels           & 190                       & 181                       \\
-    \midrule
-    \textit{Legend}                     &                           & Positive Labels           & Negative Labels            \\
-                                        & Positive Labels           & \textit{True positives}   & \textit{False negatives}   \\
-                                        & Negative Labels           & \textit{False positives}  & \textit{True Negatives}    \\
+    Nearest Neighbors   & 0.76  & 0.29  & 5,482  & 793  & 982  & 1,008  \\
+    K-Nearest Neighbors & 0.80  & 0.35  & 1,184  & 112  & 259  & 56  \\
+    RandomForest        & 0.82  & 0.40  & 1,203  & 115  & 256  & 37  \\
+    Logistic Regression & 0.80  & 0.35  & 1,155  & 130  & 241  & 85  \\
+    Linear SVC          & 0.80  & 0.33  & 1,158  & 122  & 249  & 82  \\
+    Neural Network      & 0.81  & 0.44  & 1,129  & 181  & 190  & 111  \\
     \bottomrule
+    \multicolumn{7}{l}{\tiny{TP: True Positives, TN: True Negatives, FP: False Positives, FN: False Negatives}}
 \end{tabular}

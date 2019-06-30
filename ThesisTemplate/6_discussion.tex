@@ -1,10 +1,88 @@
 \section{Discussion}
 \label{sec:disc}
 
-\todo{take-aways / messages}
-% Temporal dependency (labor market dynamics)
-% Sparsity of data / 1-to-1 relations
-% Cold start problem
-% Class imbalance
-% Representability data
-% Preselection bias
+% user features do not carry predictive power
+%Ranking confirms that positive labels are not learned accurately
+
+%introduction 
+In this section the answering of the main research question (\ref{ssec:jrswb}) will be discussed, as well as the learnings (\ref{ssec:learnings}).
+
+\subsection{A Job Recommender System for Welfare Beneficiaries}
+\label{ssec:jrswb}
+
+%Main Research Question
+In this part we discuss the findings and answer the main Research Question~\ref{rq:mrq}: 
+\begin{itemize}
+	\item[] \em Can a content-based recommender system based on matching job openings to welfare beneficiaries be comparable to human customer managers?
+\end{itemize}
+
+%Discussion for answering the main research question
+%How representative is the data?
+\noindent The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
+The results presented in section \ref{sec:rslts} showed a challenge in recommending jobs with the available data.
+This can in part be explained by the number of observations and the quality of them.
+The provided dataset containing 8,265 observations was collected over a time period of five years in which ?????? persons in the municipality of Amsterdam received welfare benefits. %????? exacte aantal uitzoeken en aanvullen
+Considering these figures the real number of occurred job matches is most likely to be in order of multitudes higher.
+Therefore it can be questioned how representative the data is, because it is thought that it only represents  a small subset of the true number job matches that took place in that period.  
+The small number of documented job matches can be attributed to a combination of factors.
+First, not all welfare beneficiaries are obligated to apply for jobs.
+Second, not all welfare beneficiaries have applied for jobs listed by the WSP.
+Third and the most important factor is the lack of registration discipline by the customer managers.
+According to domain experts there is a tendency to only register the most promising job matches.
+This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected because it is assumed that people should apply for multiple jobs when they receive welfare benefits for a long period. 
+Furthermore, when a job match gets documented in more than half of the cases (54\%) no feedback is received on the outcome.
+Adding all these factors together it can be argued that the data is not representative for the total population of welfare beneficiaries within the city of Amsterdam. 
+
+%cold-start problem and clustering
+The cold start problem is an issue particular associated with Job Recommender Systems (JRS). In our case this problem is amplified by the preselection bias with 78\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
+When analyzing the cold start problem it was found that it is plausible to segment the welfare beneficiaries in two general categories.
+The first category consists of people who can easily find a job. 
+It is expected that this group receives welfare benefits for a short time period and that they apply only once or just a couple of times for a job with mostly positive outcomes. 
+The second category contains people for whom it is challenging to find a job. 
+This group is expected to receive welfare benefits over a long period of time and therefore apply for a lot of jobs with predominantly negative results.
+However, attempts to cluster the users in two or more clusters did not deliver promising results.
+This could be likely explained by two reasons: 1) there are less or far more than two groups of users, or 2) only people from the first category are represented in the provided data. 
+The second reason is interesting because it could explain that due to the preselection bias only people from the first category have made it into the dataset, and since this group commonly matches positively with job openings this causes the class imbalance.
+If there are two groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in predicting job matches for one group of users. 
+
+%Why do the user features have no predictive power?
+Another interesting finding presented in section~\ref{ssec:ir} is that job matches can be more accurately predicted when all user features are left out.  
+A plausible explanation is that this is caused by how the user features are documented.
+Before the data enters the JRS there are a couple of transfer/interpretation moments. 
+The first is the verbal transfer from the welfare beneficiary to the customer manager.
+The second takes place when the customer manager enters the information into the system.
+The third is the extraction of the data from the system for the researcher of the JRS.
+And finally the researcher applies feature engineering and other transformations before inputting the data into a machine learning model.
+With every transfer errors and irregularities can arise, especially since at the transfer moments often assumptions need to be made that can possibly introduce bias.
+It is thought that the first two transfer moments are most determining for the quality of the data, but they also introduce most of the bias and noise. The most probable cause is that there are various registration approaches between the different customer manager teams and also between the individual customers managers within the same team. 
+Furthermore, over the years there have been changes appended in the documentation procedures, causing that fields in the system that had to be filled in a certain period were not filled  in another period.
+Last and probably the most important factor is that a lot of the registered information is by nature highly subjective with many possible interpretations resulting in the main source of bias in the data. 
+On the other hand it can also be imagined that the researcher of the JRS did introduce bias and error.
+The preselection of features based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
+Moreover, during the feature engineering process also bias and error can have been entered into the data.
+The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors.
+
+%Temporal dependency 
+Finally the data is assumed to exhibit a time dependency.
+Hiring criteria change over time, and according to domain experts these should be updated at least every six months. 
+During and in the aftermath of the financial crisis job hiring criteria became increasingly strict, but when the economy recovered and the labor market became tighter the hiring criteria started to lower. 
+The thought is that this cycle affects welfare beneficiaries more than other job seekers because they are often at the lower end of the labor market.
+This time-bound labor market dynamics can explain why the same types of jobs can have very different hiring criteria depending on the time they were posted.
+This makes it harder for the machine learning models to identify and generalize patterns.
+The solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get to low.  
+
+%Summary/Conclusion
+The disappointing results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
+However, it appears more likely that it can be attributed to the many challenges that reside in the data.
+Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
+
+%Answer to the Main Research Question
+In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found that for our study based on the available data its is unlikely that the outcomes of a content-based recommender system can match job openings with welfare beneficiaries in a comparable way as human customer managers. 
+%Learnings
+\subsection{Learnings}
+\label{ssec:learnings}
+
+%Quote
+\textit{“…some machine learning projects succeed and some fail. What makes the difference?  Easily the most important factor is the features used.”} (Pedro Domingos, 2012) \nocite{domingos2012few}
+
+

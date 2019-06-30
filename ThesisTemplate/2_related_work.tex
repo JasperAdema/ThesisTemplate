@@ -1,20 +1,10 @@
 \section{Related Work}
 \label{sec:rel}
 
-% \todo{Write intro for section}
-% \todo{Recommendation Systems}
-%Types of recommender systems
-%content based
-%Collaborative 
-%hybrid
-% \todo{Job recommender systems}
-% \todo{clustering and cold-start problem}
-% \todo{content based models}
-\todo{Social domain / welfare beneficiaries and work}
-% \todo{Privacy, k-anonymity}
+%Introduction
+This section provides an overview of the previous research done on recommender systems in general (\ref{sec:rs}), job recommender systems (\ref{sec:jrs}), clustering and the cold-start problem (\ref{sec:ccs}), content-based models (\ref{sec:cbm}), and privacy by design (\ref{sec:pbd}).
 
-This section provides an overview of the previous research done on recommender systems in general (\ref{sec:rs}), job recommender systems (\ref{sec:jrs}), clustering and the cold-start problem (\ref{sec:ccs}), content-based models (\ref{sec:cbm}), privacy by design (\ref{sec:pbd}), and improving the job opportunities for welfare beneficiaries (??).%(\ref{}).
-
+%Recommender Systems
 \subsection{Recommender Systems}
 \label{sec:rs}
 A recommender system is a system that recommends items to users based on its transactional value \cite{aggarwal2016recommender}. With regard to this research, items are defined as job vacancies, the users as the welfare beneficiaries, and the transactional value as a fitting match between a welfare beneficiary and a job opening.
@@ -36,17 +26,18 @@ Ricci et al. model the degree of utility of the user \textit{u} for item \textit
 Therefore the basic task of a recommender system is to predict the value of \textit{R} over pairs of users and items and to return the ones with the best utility scores.
 \mynote[author=Harrie]{(Kleinigheid) Introduceer alleen notatie: $R(u, i)$, als je het later ook vaak gaat gebruiken of in formules gebruikt. Hier voegt het niet zo veel toe en kun je het in alleen Engels uitleggen. }
 
+%Job Recommender Systems
 \subsection{Job Recommender Systems}
 \label{sec:jrs}
 Traditional recommender systems can recommend the same item (such a book, music or a movie) to thousands of different users. 
 The job recommendation problem is radically different because most job openings seek one or only a few employees to match with \cite{kenthapadi2017personalized}.
 
-Most job recommender systems that operate today are proprietary, examples of companies who have developed a proprietary job recommender system (JRS) are LinkedIn and Indeed.
-\mynote[author=Harrie]{Bij afkorting gebruik je hoofdletters voor de duidelijkheid, bijv.: Appelachtige Bananen Citroen (ABC) en niet appelachtige bananen citroen (ABC).}
+Most job recommender systems that operate today are proprietary, examples of companies who have developed a proprietary Job Recommender System (JRS) are LinkedIn and Indeed.
 According to studies conducted by Otaibi et al. and Zheng et al. the most commonly used  systems for Job recommendation are Collaborative Filtering, Content-Based, or a combination of both (Hybrid Recommender Systems) \cite{T.Al-Otaibi2012ASystems} \cite{Zheng2012JobSurvey}.
 A study by Hong et al. (2013) investigates the implementation of four online JRSs and shows that all use a content-based recommender as its basis \cite{hong2013job}.
 Kenthapadi et al. (2017) describe that LinkedIn has developed a hybrid JRS that uses content-based filtering as its basis \cite{kenthapadi2017personalized}.
 
+%Clustering and Cold-Start Problem
 \subsection{Clustering and Cold-Start Problem}
 \label{sec:ccs}
 According to Aggarwal et al. (2016) clustering is most often applied within recommender systems to solve the training complexity and the cold-start problem \cite{aggarwal2016recommender}.
@@ -65,9 +56,10 @@ Another less regular applied clustering algorithm within recommender systems due
 Whereas with the aforementioned K-means and K-modes clustering algorithms it is necessary to specify the desired number of clusters, the advantage of hierarchical clustering is that this is not required \cite{rokach2005clustering}.
 However, the required computation time makes hierarchical clustering less suitable for medium and larger datasets. 
 
+%Content-Based Models
 \subsection{Content-Based Models}
 \label{sec:cbm}
-Pazzani and Billsus (2007) describe content-based recommender systems (CBRS) as systems that recommend an item to a user depending on the description of the item and a profile of the user’s preferences \cite{pazzani2007content}.
+Pazzani and Billsus (2007) describe Content-Based Recommender Systems (CBRS) as systems that recommend an item to a user depending on the description of the item and a profile of the user’s preferences \cite{pazzani2007content}.
 The core of a CBRS is the learning of user profiles to predict user interests in items by leveraging user feedback \cite{aggarwal2016content}.
 In that sense the learning objective is not that dissimilar to that of classification or regression modeling.
 Models applied to learn user profiles are commonly categorized into five types: 1) Nearest Neighbor Classification, 2) Bayes Classifiers, 3) Rule-Based Classifiers, 4) Regression-based models, and 5) other models \cite{aggarwal2016content, pazzani2007content}.
@@ -75,6 +67,7 @@ Of these models Nearest Neighbor Classification is the simplest classification t
 Examples of other often applied CBRS models  are Rule-Based Classifiers: RandomForest  \cite{zhang2016three, breiman2001random}, Regression-based models: Logistic Regression \cite{aggarwal2016content, hosmer2013applied}, and for the other models: Support Vector Machines \cite{aggarwal2016content, burges1998tutorial}.
 According to Zhang et al. (2019) the current state-of-the-art within CBRSs is the increasing application of Deep Learning techniques \cite{zhang2019deep}.
 
+%Privacy by Design
 \subsection{Privacy by Design}
 \label{sec:pbd}
 In the EU data Protection Directive, personal data is being defined as ‘any information relating to an identified or identifiable natural person ('Data Subject'); an identifiable person is one who can be identified, directly or indirectly, in particular by reference to an identification number or to one or more factors specific to his physical, physiological, mental, economic, cultural or social identity” \cite{european_data_protection}. 

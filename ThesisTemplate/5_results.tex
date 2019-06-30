@@ -2,11 +2,17 @@
 \label{sec:rslts}
 
 %introduction
+In this section the outcomes of the clustering (\ref{ssec:clures}), the Content-Based learning models (\ref{ssec:rcblm}), the ranking (\ref{ssec:rr}) and the practical solutions to improve results (\ref{ssec:ir}) are presented and discussed.
 
 \subsection{Clustering Results}
 \label{ssec:clures}
-\mynote[author=Harrie]{Je verhaal is moeilijk te volgen omdat de resultaten die je bespreekt in de appendix staat, zet de belangrijke resultaten in de text. (Hyperparameters horen wel in de appendix.)}
-In this part the results of the clustering of both the user and job features is described.
+
+First we look at our results to answer Research Question~\ref{rq:cold}:
+\begin{itemize}
+	\item[] \em Can clustering deal with label sparsity in job matching data?
+\end{itemize}
+
+\noindent In this part the results of the clustering of both the user and job features are described.
 The first attempt is to cluster the user or job data using the K-prototypes algorithm which can deal with both numerical and categorical data.
 To improve the clustering results the numerical data is converted to \textit{z}-scores.
 When this algorithm is applied the clustering time after time breaks down around cluster size 50. If after this point the number of clusters is increased the algorithm fails to initiate the cluster centroids.
@@ -18,7 +24,7 @@ However, the elbow plots do not show a determinative point where they flatten ou
 Thus to validate the clustering results the cluster sizes 25 till 300 with an interval of 25 were tested on 12 scenarios for both Logistic Regression and Neural Network.
 In total 288 tests were conducted (12 different cluster size $\times$ 12 scenarios $\times$ 2 algorithms). 
 The table of the best results can be found in appendix \ref{ssec:cluscen}.
-The results do not show any improvement over the baseline, and therefore it can be concluded that the clustering cannot be applied for the recommender system.
+The results do not show any improvement over the baseline, and therefore it can be concluded that clustering is not effective for the recommender system.
 
 \begin{figure}[H]
     \centering
@@ -26,15 +32,16 @@ The results do not show any improvement over the baseline, and therefore it can 
     \caption{\label{fig:eb} \footnotesize{Elbow Plots Users and Jobs Clustering}}
 \end{figure}
 
-As second method it is attempted to spread the Term Frequency-Inverse Document Frequency scores (TF-IDF) of the job descriptions over meaningful clusters.
-Plotting the scores in an Elbow plot (appendix \ref{ssec:Kmeans}) does not show a point where the line flats out.
+As second clustering method it is attempted to spread the Term Frequency-Inverse Document Frequency scores (TF-IDF) of the top 1000 words in the job descriptions over meaningful clusters.
+Plotting the scores in an Elbow plot (appendix \ref{ssec:Kmeans}) does not show a point where the line flattens out.
 Visual inspection comparing the clusters with the related job title displayed randomness.
-The job descriptions contain a great diversity of words, while the observations (8,265) is relatively low.
-It can be argued that this technique can yield better results if the number of observations is higher. 
-Therefore, for this research it was decided to not further pursue this approach.
+The results could be explained by the fact that the top 1000 words of the job descriptions contain a great diversity of words, while the observations (8,265) are relatively low.
+It is plausible that this technique can yield better results when the number of observations is higher.
+Therefore, for this research it was decided to look at other approaches for clustering.
 
-The third clustering approach is to cluster the n-grams of the job title characters. 
-The job titles are distributed over 286 clusters, and although through a visual inspection comparing the assigned clusters with the associated job titles the clustering seems to deliver good results, when looking at the metrics the performance is worse than the K-modes clustering.
+The third clustering approach is to cluster the n-grams of the job title characters.
+The job titles are distributed over 286 clusters. 
+Through a visual inspection comparing the assigned clusters with the associated job titles this clustering seems to deliver promising results, however when assessing the accuracy and MCC scores the performance is worse than the K-modes clustering.
 The hierarchical clustering results can be found in appendix \ref{ssec:hieclu}.
 
 The job data contains a number of recurring job titles that are exactly the same, and based on the hierarchical clustering results it can be assumed that even though the job title is the same the underlying features deviate. 
@@ -42,17 +49,17 @@ To verify this assumption the cosine similarities of a job vector versus all oth
 None of the returned similarities give an exact match, so highly similar job vectors can have very different associated job titles.
 Therefore it can be reasoned that although job titles sometimes are the exact same or very similar the underlying features are different.
 
-
-% \begin{table}[h]
-% \begin{footnotesize}
-% \input{ThesisTemplate/Tables/TableClusteringResults.tex}
-% \end{footnotesize}
-% \caption{\label{tab:clures} Best Results Clustering}
-% \end{table}
+In conclusion to answer Research Question~\ref{rq:cold}: it was found that the tested clustering approaches are not applicable in our case, but may be effective in cases where there is more data available.
 
 \subsection{Results Content-Based Learning Models}
-\mynote[author=Harrie]{Een confusion matrix zou hier heel goed werken, of anders iets van (percentage) false/true positives/negatives, omdate de MCC toch moeilijk te interpreteren is.}
-When assessing the accuracy results it must be taken into account that the dataset exhibits a class imbalance of 79\% being positive labels and 21\% being negative labels.
+\label{ssec:rcblm}
+
+In this part we look at our results to answer Research Question~\ref{rq:model}:
+\begin{itemize}
+	\item[] \em Are there significant differences between models in predictive performance?
+\end{itemize}
+
+\noindent When assessing the accuracy results it must be taken into account that the dataset exhibits a class imbalance of 79\% being positive labels and 21\% being negative labels.
 The consequence of this imbalance is that if the classifier predicts all labels to be positive it achieves 0.79 accuracy.
 This fallaciously suggests that the classification results are decent.
 Here is where the utility of the Matthews correlation coefficient (MCC) comes into play, as the MCC in such case will be 0.00 because no labels are classified as negative.
@@ -64,7 +71,7 @@ The higher performance of MCC suggests better balanced predictions of both the p
 The best scores for the Neural Network were achieved with a setup of one hidden layer.
 When more hidden layers are added the performance decays gradually.
 The more hidden layers the more complex patterns the Neural Network can learn, on the other hand this also increases the chance of overspecialization (overfitting) on the train data.
-Therefore, it can be argued that when extra layers are added the performance is worsened due to overfitting.
+Therefore, it is a likely explanation that when extra layers are added the performance is worsened due to overfitting.
 
 \begin{table}[h]
 \begin{footnotesize}
@@ -73,28 +80,37 @@ Therefore, it can be argued that when extra layers are added the performance is 
 \caption{\label{tab:res} \footnotesize{Training Results Models}}
 \end{table}
 
-For the Neural Network the MCC score is low and therefore also the confusion matrix (table \ref{tab:cmnn}) and the classification report (table \ref{tab:crnn}) are analyzed.
+For the Neural Network the MCC score is low and therefore also the confusion matrix (table \ref{tab:cmnn}) is analyzed.
 Overall it can be seen that the model is good in classifying the positive labels and less well when it comes to classifying the negative labels.
-Less than half (49\%) of the true negative labels are classified correctly, while 91\% of true positive labels are correct. 
-Based on the metrics it can be argued that due to the class imbalance the Neural Network displays a tendency to classify all observations as positive labels, and therefore it is hard to determine how well the positive labels are learned.
+Less than half (49\%) of the true negative labels are classified correctly, while 91\% of true positive labels are correct.
+Based on the metrics it is plausible that due to the class imbalance the Neural Network displays a tendency to classify all observations as positive labels, and therefore it is hard to determine how well the positive labels are learned.
 This behavior is even more evident with the other classification models.
 
 \begin{table}[h]
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNcm.tex}
 \end{footnotesize}
-\caption{\label{tab:cmnn} \footnotesize{Confusion Matrix Neural Network}}
+\caption{\label{tab:cmnn} \footnotesize{Classification Results Neural Network}}
 \end{table}
 
-\begin{table}[h]
-\begin{footnotesize}
-\input{ThesisTemplate/Tables/TableNNcr.tex}
-\end{footnotesize}
-\caption{\label{tab:crnn} \footnotesize{Classification Report Neural Network}}
-\end{table}
+% \begin{table}[h]
+% \begin{footnotesize}
+% \input{ThesisTemplate/Tables/TableNNcr.tex}
+% \end{footnotesize}
+% \caption{\label{tab:crnn} \footnotesize{Classification Report Neural Network}}
+% \end{table}
+
+In conclusion to answer Research Question~\ref{rq:model}: it was found that the Neural Network has the best performance, and that all tested models displayed a tendency to over classify the positive labels.
 
 \subsection{Ranking Results}
-Another method to evaluate the classification of the positive labels is by ranking them and then retrieving the average rank.
+\label{ssec:rr}
+
+In this section the results are assessed to answer Research Question~\ref{rq:ranking}:
+\begin{itemize}
+	\item[] \em Does a model trained for predicting of job matches translate to a good ranking-based recommender?
+\end{itemize}
+
+\noindent Another method to evaluate the classification of the positive labels is by ranking them and then retrieving the average rank.
 To achieve that the train model predicts the label probability of each user-job combination, whereafter the average rank can be calculated.
 There are 4,983 unique jobs (midpoint is 2,491), and the expectation would be that the positive labels would at least come in the top 100. 
 The results show a different picture, for Logistic Regression the average rank of the positive labels is 2,611 and for the Neural Network 2,250.
@@ -110,10 +126,27 @@ Because the user features are effectively not taken into account and each user i
 Therefore, it can argued that Logistic Regression is not suitable for ranking.
 The Neural Network is less affected by this thanks to its ability to learn non-linear relations in the data. 
 
-\subsection{Improving the Results}
+In conclusion to answer Research Question~\ref{rq:ranking}: it was found that in our case the trained models did not translate to a good ranking-based recommender.
 
-table \ref{tab:nnfeat}
-appendix \ref{ssec:fi}
+\subsection{Improving the Results}
+\label{ssec:ir}
+
+Finally in this part we look at our results to answer Research Question~\ref{rq:strategies}:
+\begin{itemize}
+	\item[] \em Does feature selection and addressing class imbalance have a significant effect on the predictive performance?
+\end{itemize}
+
+\noindent In this part the results of two practical ways to improve the classification results are presented. 
+First the results of addressing class imbalance are described, and thereafter the importance of the features is analyzed. 
+Because the outcomes for all algorithms show the same trends only the results of the Neural Network are presented.
+
+Two methods to rebalance classes were tested. 
+As shown before in the section experimental setup (table \ref{tab:tvs}) the train set is composed of 6,654 observations of which 5,250 have a positive label and 1,404 a negative label.
+By randomly deleting the observations of the overrepresented class the number of positive labels in the train set is reduced to 1,404.
+The results of undersampling for the Neural Network are shown in table \ref{tab:nnci}, for a full listing of all results is referred to appendix \ref{ssec:ruo}.
+The results of undersampling for the Neural Network do not display a performance improvement.
+These  results can be attributed to the fact that an already small train set is reduced with 58\% in size by the undersampling.
+With fewer training examples it becomes more difficult for Neural Network to learn generalizing patterns in the data.
 
 \begin{table}[h]
 \begin{footnotesize}
@@ -122,12 +155,29 @@ appendix \ref{ssec:fi}
 \caption{\footnotesize{\label{tab:nnci} Neural Network: Results Class Rebalancing}}
 \end{table}
 
+The oversampling of observations is realized by applying Synthetic Minority Over-sampling Technique (SMOTE). 
+By applying SMOTE the number of observations of the negative labels in the train set is increased to 5,250. 
+This artificial creation of extra observations does not lead to better results for the Neural Network.
+It can therefore be argued that the way in which SMOTE generates new observations is unsuitable for the available data.
+
 \begin{table}[h]
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNFeatureImportance.tex}
 \end{footnotesize}
 \caption{\label{tab:nnfi} \footnotesize{Neural Network: Results Feature Importance Analysis}}
 \end{table}
+
+For the analysis of the importance of the features three methods are tested. 
+The results for the Neural Network are pictured in table \ref{tab:nnfi}, the outcomes for all algorithms can be found in appendix \ref{ssec:fi}.
+From the results it can be deduced that there is a lot of noise present in the data, all approaches discard more than half of the features without significantly degrading the outcomes.
+When assessing which features are dropped it can be established that this are predominantly user features.
+Going a layer deeper it was found that based on heuristics 64\% (RFECV) of the retained user features can be classified as traits that hinder a person from finding a job. 
+This insight led to the question what would happen to the performance if all user features are eliminated.
+Two interesting things can be observed in the outcomes of this question which is shown in table \ref{tab:nnfeat}.
+First, when only using the users features the performance is suboptimal, and when only using the jobs features the performance increases significantly.
+Secondly, dropping all user features outperforms all tested feature importance analysis methods.
+These outcomes suggests that the user features are noise and have no predictive power.
+This is unexpected because it is assumed that the user characteristics for an important part determine the matchability with a job opening.
 
 \begin{table}[h]
 \begin{footnotesize}
@@ -136,20 +186,4 @@ appendix \ref{ssec:fi}
 \caption{\label{tab:nnfeat} \footnotesize{Neural Network: Scores per Feature Class}}
 \end{table}
 
-%logistic regression ranks the jobs for all users the same
-
-%K-modes - descent, but no better learning results when predicting cluster or when added as extra feature
-%hierarchical - good results on visual inspection, but no better learning results when predicting cluster or when added as extra feature (check this!)
-
-% \todo{Content based Models}
-% Neural network
-    % One layer setup works best (assumption of overfitting when more layers are added)
-% Logistic Regression
-    % Ranking: same rankings for every user, because per row the user is the same and only the jobs are different
-% Ranking
-    % Random outcomes
-    % validated by overfitting on subsample, predicted all 1
-
-\todo{Strategies to improve}
-% Under-oversampling worsen results
-% Feature importance slight improvement of results
+In conclusion to answer Research Question~\ref{rq:strategies} the findings are that in our case the tested methods are not effective in tackling class imbalance, and that the performance improves significantly if all user features are removed.  
