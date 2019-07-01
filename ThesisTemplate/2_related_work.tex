@@ -2,63 +2,76 @@
 \label{sec:rel}
 
 %Introduction
-This section provides an overview of the previous research done on recommender systems in general (\ref{sec:rs}), job recommender systems (\ref{sec:jrs}), clustering and the cold-start problem (\ref{sec:ccs}), content-based models (\ref{sec:cbm}), and privacy by design (\ref{sec:pbd}).
+This section provides an overview of the previous research done on Recommender Systems in general (\ref{sec:rs}), Job Recommender Systems (\ref{sec:jrs}), clustering and the cold-start problem (\ref{sec:ccs}), Content-Based models (\ref{sec:cbm}), and privacy by design (\ref{sec:pbd}).
 
 %Recommender Systems
 \subsection{Recommender Systems}
 \label{sec:rs}
-A recommender system is a system that recommends items to users based on its transactional value \cite{aggarwal2016recommender}. With regard to this research, items are defined as job vacancies, the users as the welfare beneficiaries, and the transactional value as a fitting match between a welfare beneficiary and a job opening.
+A Recommender System (RS) is a system that recommends items to users based on its transactional value \cite{aggarwal2016recommender}. With regard to this research, items are defined as job vacancies, the users as the welfare beneficiaries, and the transactional value as a fitting match between a welfare beneficiary and a job opening.
 
-Within the domain of recommender systems there are many different types of recommender systems each with their own area of application and strengths and weaknesses.
-A comprehensive taxonomy by Burk identifies five types of recommender systems: 1) Content-Based, 2) Collaborative Filtering, 3) Demographic, 4) Knowledge-Based, and 5) Hybrid Recommender Systems \cite{Burke2007HybridSystems}.
-The characteristics of these types of recommender systems will be elaborated briefly.
+Within the domain of RSs there are many different types of RSs each with their own area of application and strengths and weaknesses.
+A comprehensive taxonomy by Burk identifies five types of RSs: 1) Content-Based, 2) Collaborative Filtering, 3) Demographic, 4) Knowledge-Based, and 5) Hybrid Recommender Systems \cite{Burke2007HybridSystems}.
+The characteristics of these types of RSs will be elaborated briefly.
 With \textit{Content-Based} the system learns to recommend items that are similar to the ones the users have preferred in the past. 
 The goal is to match the attributes of the users profile with the attributes of the items  \cite{aggarwal2016recommender}. 
 \textit{Collaborative Filtering} in its most basic form generates recommendations for the users based on items that other similar users matched with in the past \cite{Schafer2007}.
 A \textit{Demographic} system recommends items based on the demographic profile of the user \cite{Bobadilla2013RecommenderSurvey}.
-At this time this is still a relatively unexplored area of recommender system research. \textit{Knowledge-Based} systems utilize domain knowledge about users to do the matching with particular item features to recommend items  \cite{aggarwal2016recommender}. 
+At this time this is still a relatively unexplored area of RS research. \textit{Knowledge-Based} systems utilize domain knowledge about users to do the matching with particular item features to recommend items  \cite{aggarwal2016recommender}. 
 Finally, \textit{Hybrid Recommender Systems} combine the earlier mentioned techniques and try to leverage the advantages of these particular systems and to mitigate their weaknesses  \cite{aggarwal2016recommender}.
 
-In its most basic form, how can a recommender system recommend? 
+In its most basic form, how can a RS recommend? 
 In order to predict an item for a user the system must predict if an item could be a worthwhile match. 
-The system must be able to quantify and predict the utility of items and decide which items to recommend based on this comparison \cite{2015RecommenderHandbook}. 
-Ricci et al. model the degree of utility of the user \textit{u} for item \textit{i} as \textit{R(u, i)} \cite{Ricci2018RecommenderTechniques}. 
-Therefore the basic task of a recommender system is to predict the value of \textit{R} over pairs of users and items and to return the ones with the best utility scores.
-\mynote[author=Harrie]{(Kleinigheid) Introduceer alleen notatie: $R(u, i)$, als je het later ook vaak gaat gebruiken of in formules gebruikt. Hier voegt het niet zo veel toe en kun je het in alleen Engels uitleggen. }
+The system must be able to quantify and predict the utility of items and to decide which items to recommend to the user based on this comparison \cite{2015RecommenderHandbook}. 
+Therefore the basic task of a RS is to predict the value over pairs of users and items and to return the ones with the best utility scores.
+
+For our research the users are the welfare beneficiaries, the items are job openings, and the utility is the determination of the most promising matches between both.
+Based on the literature RSs are thought to be a promising method for predicting job matches.
+
 
 %Job Recommender Systems
 \subsection{Job Recommender Systems}
 \label{sec:jrs}
-Traditional recommender systems can recommend the same item (such a book, music or a movie) to thousands of different users. 
+The previous section described RSs in general. 
+In this part the literature of a specific type RS will be described: the Job Recommender System (JRS).
+Traditional RSs can recommend the same item (such a book, music or a movie) to thousands of different users. 
 The job recommendation problem is radically different because most job openings seek one or only a few employees to match with \cite{kenthapadi2017personalized}.
 
-Most job recommender systems that operate today are proprietary, examples of companies who have developed a proprietary Job Recommender System (JRS) are LinkedIn and Indeed.
+Most JRSs that operate today are proprietary, examples of companies who have developed a proprietary JRS are LinkedIn and Indeed.
 According to studies conducted by Otaibi et al. and Zheng et al. the most commonly used  systems for Job recommendation are Collaborative Filtering, Content-Based, or a combination of both (Hybrid Recommender Systems) \cite{T.Al-Otaibi2012ASystems} \cite{Zheng2012JobSurvey}.
 A study by Hong et al. (2013) investigates the implementation of four online JRSs and shows that all use a content-based recommender as its basis \cite{hong2013job}.
 Kenthapadi et al. (2017) describe that LinkedIn has developed a hybrid JRS that uses content-based filtering as its basis \cite{kenthapadi2017personalized}.
 
+JRSs are a special form of RS particular geared towards recommending jobs to users, and therefore applicable for the objective of our research. 
+
 %Clustering and Cold-Start Problem
 \subsection{Clustering and Cold-Start Problem}
 \label{sec:ccs}
-According to Aggarwal et al. (2016) clustering is most often applied within recommender systems to solve the training complexity and the cold-start problem \cite{aggarwal2016recommender}.
+RSs and especially JRSs are likely to suffer from the so-called cold-start problem, which is that items are rated only once or a few times by users.
+
+According to Aggarwal et al. (2016) clustering is most often applied within RSs to solve the training complexity and the cold-start problem \cite{aggarwal2016recommender}.
 If there are a large number of users or items the clustering of them in groups reduces the complexity and required training time, because the calculations are now done on the members within a group instead of on the whole dataset \cite{aggarwal2016content}.
-The cold start problem is defined by Lika et al. (2014) as that the recommender system cannot recommend a user or item that is not yet rated \cite{lika2014facing}.
+The cold start problem is defined by Lika et al. (2014) as that the RS cannot recommend a user or item that is not yet rated \cite{lika2014facing}.
 A study by Son (2016) which compares the various techniques of dealing with the cold-start problem for users, shows that clustering is often used to mitigate the cold-start problem \cite{son2016dealing}.
 
-In 1979 Hartigan and Wong presented the K-means clustering algorithm \cite{hartigan1979algorithm}, and today it is the most used clustering algorithm in recommender systems \cite{aggarwal2016recommender}.
+In 1979 Hartigan and Wong presented the K-means clustering algorithm \cite{hartigan1979algorithm}, and today it is the most used clustering algorithm in RSs \cite{aggarwal2016recommender}.
 The k-means clustering algorithm tries to split a number (\textit{n}) of observations into clusters (\textit{k}) by assigning each observation to the cluster with the closest mean.
 By reassigning the cluster centroids on each iteration the objective is to minimize a criterion known as the within-cluster sum-of-squares (also called inertia) \cite{mackay2003example}. 
 K-means is less suitable for categorical data due to the way it calculates the distances between observations.
 A variation on the K-means for categorical data is K-modes which uses modes instead of means to form clusters and tries to optimize a cost function \cite{huang1997clustering, huang1998extensions}.
 The K-prototypes clustering algorithm which is also based on K-means can handle both numerical and categorical data at the same time \cite{huang1997clustering}.
 
-Another less regular applied clustering algorithm within recommender systems due its computational complexity is hierarchical clustering.
+Another less regular applied clustering algorithm within RS due its computational complexity is hierarchical clustering.
 Whereas with the aforementioned K-means and K-modes clustering algorithms it is necessary to specify the desired number of clusters, the advantage of hierarchical clustering is that this is not required \cite{rokach2005clustering}.
 However, the required computation time makes hierarchical clustering less suitable for medium and larger datasets. 
+
+The cold-start problem is an issue associated with JRSs and clustering seems to be an encouraging method to mitigate this problem.
 
 %Content-Based Models
 \subsection{Content-Based Models}
 \label{sec:cbm}
+There are various methods that can be used for a RS to learn to predict the utility of user and item pairs. 
+In this part the literature regarding a method often applied for JRSs is described.
+
 Pazzani and Billsus (2007) describe Content-Based Recommender Systems (CBRS) as systems that recommend an item to a user depending on the description of the item and a profile of the user’s preferences \cite{pazzani2007content}.
 The core of a CBRS is the learning of user profiles to predict user interests in items by leveraging user feedback \cite{aggarwal2016content}.
 In that sense the learning objective is not that dissimilar to that of classification or regression modeling.
@@ -67,9 +80,15 @@ Of these models Nearest Neighbor Classification is the simplest classification t
 Examples of other often applied CBRS models  are Rule-Based Classifiers: RandomForest  \cite{zhang2016three, breiman2001random}, Regression-based models: Logistic Regression \cite{aggarwal2016content, hosmer2013applied}, and for the other models: Support Vector Machines \cite{aggarwal2016content, burges1998tutorial}.
 According to Zhang et al. (2019) the current state-of-the-art within CBRSs is the increasing application of Deep Learning techniques \cite{zhang2019deep}.
 
+In the literature many different machine learning models for CBRS are described, and for our research it should be tested which ones perform best in recommending job matches.
+
+
 %Privacy by Design
 \subsection{Privacy by Design}
 \label{sec:pbd}
+A RS utilizes a user’s personal information to recommend items.
+Working with personal data also means that the RS has to comply with the relevant privacy regulations.
+
 In the EU data Protection Directive, personal data is being defined as ‘any information relating to an identified or identifiable natural person ('Data Subject'); an identifiable person is one who can be identified, directly or indirectly, in particular by reference to an identification number or to one or more factors specific to his physical, physiological, mental, economic, cultural or social identity” \cite{european_data_protection}. 
 To ensure peoples fundamental right to privacy, governments and policy-makers see themselves confronted with the task to at the same time protect this personal data, while also recognising and supporting the opportunities and benefits of data analysis.
 To aid this process, ENISA (European Union Agency for Network and Information Security) issued a report in which they point at the possibilities of aggregating data while at the same time, securing privacy. 
@@ -81,9 +100,6 @@ More sophisticated methods are based on k-anonymity and related methods. The goa
 The challenge with data masking is to align the usability of data against the lowest probability of re-identification \cite{d2015privacy}. 
 These conflicting interests need to balanced with care.
 
-
-
-\mynote[author=Harrie]{Het zou goed zijn als je de onderwerpen terug kan koppelen aan job recommendation in een paar zinnen, vooral bij privacy by design and the cold start problem.
-Het is waarschijnlijk wel duidelijk dat privacy belangrijk is bij werkzoekenden, alsnog in een of twee zinnen op het einde of begin van de alinea zorg je dat niemand het kan missen.}
+For the research project amongst other sources welfare beneficiary data is used, and therefore it is imperative to incorporate privacy by design in the envisioned RS. 
 
 

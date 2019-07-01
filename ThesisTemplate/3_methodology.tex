@@ -4,6 +4,7 @@
 %Introduction
 In this section the methods used during the research are elaborated. First the setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
 
+%What is the recommendation setting?
 \subsection{The Job Recommendation Setting}
 \label{ssec:jrs}
 The research setting governs for an important part which methods can be applied.
@@ -14,10 +15,7 @@ The labels are the job matching outcomes, is a person hired for a job or not .
 The positive labels (a person is hired) are overrepresented in dataset due to the tendency to document only the most promising job matching attempts. 
 Finally, the dataset exhibits sparsity, with just one or a few job matches per user.
 
-\mynote[author=Harrie]{Deze sectie zou ik uitbreiden, wat geven de labels aan?, waarom zijn positieve labels overrepresented? geef aan dat dat onvermijdbaar is.
-Zeg iets meer over de features: ze beschrijven de user en de job, de user word beschreven in persoonlijke info als leeftijd, opleiding, maar ook biografische info als persoonlijkheidstesten etc.
-Hier moet je niet specifiek het over jouw data te hebben, maar algemeen houden: de dingen die voor (bijna) alle job-recommendation settings gelden.}
-
+%Clustering
 \subsection{Clustering}
 \label{ssec:clus}
 The dataset contains only one or a couple of job matches per user, a method to mitigate this sparsity is to cluster the users. 
@@ -39,6 +37,7 @@ The final clustering method involves extracting the n-grams of the characters in
 This vector space of n-gram frequencies is then clustered using hierarchical clustering \cite{rokach2005clustering}. 
 The advantage of hierarchical clustering is that the number of clusters do not need to be specified. 
 
+%CB models
 \subsection{Content-Based Learning of User Profiles}
 \label{ssec:cblup}
 The labels in the dataset can be leveraged for supervised machine learning algorithms. 
@@ -73,7 +72,7 @@ While Logistic Regression and SVMs excel in learning linear patterns in the data
 If there are non-linear relations between features present in the dataset the Neural Network can learn those.
 However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
 
-\mynote[author=Harrie]{Deze subsubsection ziet er raar uit.}
+%How can we recommend?
 \textit{Recommending Jobs to Users} \\
 The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
 The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
@@ -81,6 +80,7 @@ The second method is to let the model predict the label probabilities of all pos
 The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.
 Hereafter the probabilities in each row are ranked descending, and from that the \textit{n}-top ranks (jobs) are returned. 
 
+%How to improve the results?
 \subsection{Practical Solutions to Improve Recommendation Results}
 \label{ssec:psirr}
 In this part two strategies and their associated methods to improve recommendation results are described.
