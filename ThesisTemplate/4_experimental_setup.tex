@@ -4,6 +4,7 @@
 This section describes the particularities of the conducted research regarding the data (\ref{ssec:data}), the hyperparameter tuning of the applied models (\ref{ssec:ht}), and the evaluation procedure (\ref{ssec:eval}). 
 The tooling used for this research project is Python and its relevant packages.
 
+%Data
 \subsection{Data}
 \label{ssec:data}
 Aggarwal (2016) describes that in general a recommender system uses as input user, item and label data \cite{aggarwal2016recommender}.
@@ -50,6 +51,7 @@ For all fields containing free text the punctuation and stopwords are removed, a
 
 \mynote[author=Harrie]{Eindig met een korte samenvatting van deze sectie, welke data heb je uiteindelijk, hoeveel users/items, hoeveel matches, hoeveel features etc.}
 
+%Hyperparameter Tuning
 \subsection{Hyperparameter Tuning}
 \label{ssec:ht}
 With an iterative process (or hyperparameter search) the best hyperparameters for the machine learning models are determined. 
@@ -72,6 +74,7 @@ The number of settings for a Neural Network is unbound, and while there are many
 The strategy deployed for this research is to start off with a setting with one hidden layer and first determine the best activation function and solver amongst the other settings.
 Hereafter, the optimum number of layers and nodes in a layer are explored iteratively.
 
+%Evaluation Methods
 \subsection{Evaluation Methods}
 \label{ssec:eval}
 In this part the methods to evaluate the training results of the proposed models are outlined.
