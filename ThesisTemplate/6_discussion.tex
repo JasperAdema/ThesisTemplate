@@ -18,8 +18,10 @@ In this part we discuss the findings and answer the main Research Question~\ref{
 
 %Discussion for answering the main research question
 %How representative is the data?
-\noindent The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
-The results presented in section \ref{sec:rslts} showed a challenge in recommending jobs with the available data.
+\noindent
+\textit{\textbf{Representative Data}}\\
+The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
+The results presented in section \ref{sec:rslts} showed that it is difficult to recommend jobs with the available data.
 This can in part be explained by the number of observations and the quality of them.
 The provided dataset containing 8,265 observations was collected over a time period of five years in which ?????? persons in the municipality of Amsterdam received welfare benefits. %????? exacte aantal uitzoeken en aanvullen
 Considering these figures the real number of occurred job matches is most likely to be in order of multitudes higher.
@@ -35,7 +37,7 @@ Adding all these factors together it can be argued that the data is not represen
 
 %cold-start problem and clustering
 \noindent
-\textbf{The Cold-Start Problem}\\
+\textit{\textbf{The Cold-Start Problem}}\\
 The cold start problem is an issue particular associated with Job Recommender Systems (JRS). In our case this problem is amplified by the preselection bias with 78\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
 When analyzing the cold start problem it was found that it is plausible to segment the welfare beneficiaries in two general categories.
 The first category consists of people who can easily find a job. 
@@ -48,6 +50,8 @@ The second reason is interesting because it could explain that due to the presel
 If there are two groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in predicting job matches for one group of users. 
 
 %Why do the user features have no predictive power?
+\noindent
+\textit{\textbf{User Features}}\\
 Another interesting finding presented in section~\ref{ssec:ir} is that job matches can be more accurately predicted when all user features are left out.  
 A plausible explanation is that this is caused by how the user features are documented.
 Before the data enters the JRS there are a couple of transfer/interpretation moments. 
@@ -62,9 +66,11 @@ Last and probably the most important factor is that a lot of the registered info
 On the other hand it can also be imagined that the researcher of the JRS did introduce bias and error.
 The preselection of features based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
 Moreover, during the feature engineering process also bias and error can have been entered into the data.
-The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors.
+The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors. 
 
 %Temporal dependency 
+\noindent
+\textit{\textbf{Temporal Aspects}} \\
 Finally the data is assumed to exhibit a time dependency.
 Hiring criteria change over time, and according to domain experts these should be updated at least every six months. 
 During and in the aftermath of the financial crisis job hiring criteria became increasingly strict, but when the economy recovered and the labor market became tighter the hiring criteria started to lower. 
@@ -75,7 +81,7 @@ The solution would be to model the time dependency using a sliding window or ano
 
 %Summary/Conclusion
 \noindent
-\textbf{Conclusion}\\
+\textit{\textbf{Conclusion}}\\
 The disappointing results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
 However, it appears more likely that it can be attributed to the many challenges that reside in the data.
 Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
