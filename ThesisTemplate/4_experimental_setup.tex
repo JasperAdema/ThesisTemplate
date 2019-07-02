@@ -65,7 +65,7 @@ For the hierarchical clustering of the n-grams of job title characters the ideal
 
 For the Nearest Neighbors the number of neighbors is set to two what equals to k=1, this is because the first neighbor is the own observation and the distance to that is always zero.
 The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the accuracy and MCC scores in a graph (appendix \ref{ssec:fonn}).
-The best hyperparameters for RandomForest are found with the use of Scikit-learn’s randomized search with cross validation for hyperparameters module \cite{sklearn, bergstra2012random}.
+The best hyperparameters for RandomForest are found with the use of Scikit-learn’s\footnote{\url{https://scikit-learn.org/}} randomized search with cross validation for hyperparameters module \cite{ bergstra2012random}.
 For Logistic Regression the hyperparameters are tailored towards the binary classification problem. 
 None of the default hyperparameters are altered for Linear Support Vector Classification. 
 

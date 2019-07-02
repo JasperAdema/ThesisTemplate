@@ -1,6 +1,3 @@
-%\documentclass[a4paper,pdf]{article} % gebruik acm style voor je scriptie: [format=acmsmall, screen=true, review=false]{acmart} 
-
-
 %\documentclass[sigconf]{acmart} 
 \documentclass[10pt, sigconf, format=acmsmall, screen=true, review=false]{acmart} 
 \usepackage{amsmath}
@@ -29,6 +26,9 @@
 
 % For todos, notes from other authors, etc.
 \usepackage[show]{chato-notes}
+
+\settopmatter{printacmref=false}
+\fancyfoot{}
 
 
 % linenumbering  See https://texblog.org/2012/02/08/adding-line-numbers-to-documents/
@@ -105,7 +105,6 @@ Recommender Systems, Job Recommender System, Welfare Benefits, Machine Learning,
 \section*{Acknowledgements}
 %Harrie / Gemeente A'dam en in het bijzonder Lonneke / Erik-Jan / Jovita / Camiel 
 
-\mynote[author=Jasper]{referentie 1: kan dat of zal ik die verwijderen?}
 % References
 \bibliographystyle{plain}
 \bibliography{9_references}

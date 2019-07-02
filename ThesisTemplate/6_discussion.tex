@@ -34,6 +34,8 @@ Furthermore, when a job match gets documented in more than half of the cases (54
 Adding all these factors together it can be argued that the data is not representative for the total population of welfare beneficiaries within the city of Amsterdam. 
 
 %cold-start problem and clustering
+\noindent
+\textbf{The Cold-Start Problem}\\
 The cold start problem is an issue particular associated with Job Recommender Systems (JRS). In our case this problem is amplified by the preselection bias with 78\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
 When analyzing the cold start problem it was found that it is plausible to segment the welfare beneficiaries in two general categories.
 The first category consists of people who can easily find a job. 
@@ -72,6 +74,8 @@ This makes it harder for the machine learning models to identify and generalize 
 The solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get to low.  
 
 %Summary/Conclusion
+\noindent
+\textbf{Conclusion}\\
 The disappointing results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
 However, it appears more likely that it can be attributed to the many challenges that reside in the data.
 Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
@@ -83,9 +87,7 @@ In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found th
 \label{ssec:learnings}
 
 %Intro
-\textit{“…some machine learning projects succeed and some fail. What makes the difference?  Easily the most important factor is the features used.”} (Pedro Domingos, 2012) \nocite{domingos2012few} \\
-
-\noindent In Data Science there is an emphasis on data, and consequently the quality of the available data determines more than other things the success of a Data Science research project.
+In Data Science there is an emphasis on data, and consequently the quality of the available data determines more than other things the success of a Data Science research project.
 In case of this research the provided data in the end turned out to be unsuitable to build a complex Job Recommender System (JRS). 
 
 %Learnings
