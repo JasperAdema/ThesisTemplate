@@ -4,6 +4,7 @@
 %introduction
 In this section the outcomes of the clustering (\ref{ssec:clures}), the Content-Based learning models (\ref{ssec:rcblm}), the ranking (\ref{ssec:rr}) and the practical solutions to improve results (\ref{ssec:ir}) are presented and discussed.
 
+%Clustering
 \subsection{Clustering Results}
 \label{ssec:clures}
 
@@ -29,7 +30,7 @@ The results do not show any improvement over the baseline, and therefore it can 
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{ThesisTemplate/Images/Clustering.png}
-    \caption{\label{fig:eb} \footnotesize{Elbow Plots Users and Jobs Clustering}}
+    \caption{\label{fig:eb} \footnotesize{Elbow Plots of the Clustering of Users and Jobs}}
 \end{figure}
 
 As second clustering method it is attempted to spread the Term Frequency-Inverse Document Frequency scores (TF-IDF) of the top 1000 words in the job descriptions over meaningful clusters.
@@ -49,8 +50,10 @@ To verify this assumption the cosine similarities of a job vector versus all oth
 None of the returned similarities give an exact match, so highly similar job vectors can have very different associated job titles.
 Therefore it can be reasoned that although job titles sometimes are the exact same or very similar the underlying features are different.
 
-In conclusion to answer Research Question~\ref{rq:cold}: it was found that the tested clustering approaches are not applicable in our case, but may be effective in cases where there is more data available.
+In conclusion to answer Research Question~\ref{rq:cold}: it was found that in our case the tested clustering approaches are not effective in dealing with label sparsity.
+However, the methods may be effective in cases where there is more data available.
 
+%Results Content-Based Learning Models
 \subsection{Results Content-Based Learning Models}
 \label{ssec:rcblm}
 
@@ -77,7 +80,7 @@ Therefore, it is a likely explanation that when extra layers are added the perfo
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableModelResults.tex}
 \end{footnotesize}
-\caption{\label{tab:res} \footnotesize{Training Results Models}}
+\caption{\label{tab:res} \footnotesize{Classification Scores of Trained Models}}
 \end{table}
 
 For the Neural Network the MCC score is low and therefore also the confusion matrix (table \ref{tab:cmnn}) is analyzed.
@@ -90,18 +93,12 @@ This behavior is even more evident with the other classification models.
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNcm.tex}
 \end{footnotesize}
-\caption{\label{tab:cmnn} \footnotesize{Classification Results Neural Network}}
+\caption{\label{tab:cmnn} \footnotesize{Classification Results of the Neural Network}}
 \end{table}
 
-% \begin{table}[h]
-% \begin{footnotesize}
-% \input{ThesisTemplate/Tables/TableNNcr.tex}
-% \end{footnotesize}
-% \caption{\label{tab:crnn} \footnotesize{Classification Report Neural Network}}
-% \end{table}
+In conclusion to answer Research Question~\ref{rq:model}: it was found that in our case the Neural Network has the best performance.
 
-In conclusion to answer Research Question~\ref{rq:model}: it was found that the Neural Network has the best performance, and that all tested models displayed a tendency to over classify the positive labels.
-
+%Ranking Results
 \subsection{Ranking Results}
 \label{ssec:rr}
 
@@ -128,7 +125,8 @@ The Neural Network is less affected by this thanks to its ability to learn non-l
 
 In conclusion to answer Research Question~\ref{rq:ranking}: it was found that in our case the trained models did not translate to a good ranking-based recommender.
 
-\subsection{Improving the Results}
+%Improving the Results
+\subsection{Results of the Approaches to Improve the Performance}
 \label{ssec:ir}
 
 Finally in this part we look at our results to answer Research Question~\ref{rq:strategies}:
@@ -152,7 +150,7 @@ With fewer training examples it becomes more difficult for Neural Network to lea
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNClassImbalance.tex}
 \end{footnotesize}
-\caption{\footnotesize{\label{tab:nnci} Neural Network: Results Class Rebalancing}}
+\caption{\footnotesize{\label{tab:nnci} Class Rebalancing for the Neural Network}}
 \end{table}
 
 The oversampling of observations is realized by applying Synthetic Minority Over-sampling Technique (SMOTE). 
@@ -164,7 +162,7 @@ It can therefore be argued that the way in which SMOTE generates new observation
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableNNFeatureImportance.tex}
 \end{footnotesize}
-\caption{\label{tab:nnfi} \footnotesize{Neural Network: Results Feature Importance Analysis}}
+\caption{\label{tab:nnfi} \footnotesize{Feature Importance Analysis Results for the Neural Network}}
 \end{table}
 
 For the analysis of the importance of the features three methods are tested. 
@@ -186,4 +184,6 @@ This is unexpected because it is assumed that the user characteristics for an im
 \caption{\label{tab:nnfeat} \footnotesize{Neural Network: Scores per Feature Class}}
 \end{table}
 
-In conclusion to answer Research Question~\ref{rq:strategies} the findings are that in our case the tested methods are not effective in tackling class imbalance, and that the performance improves significantly if all user features are removed.  
+In conclusion to answer Research Question~\ref{rq:strategies} the findings are that in our case the tested methods have a negative impact on performance.
+However, eliminating user features has a positive effect on performance.
+

@@ -49,26 +49,26 @@ There is a myriad of regression and classification algorithms which all can be u
 All mentioned methods can return a predicted label based on a probability estimate.
 The motivation for selecting each of these models is explained in brief.
 
-\textit{Nearest Neighbors.}
+\textbf{\textit{Nearest Neighbors.}}
 Other state-of-the-art algorithms commonly deliver a better performance than Nearest Neighbors \cite{koren2008factorization, takacs2007major}, however it is the least complex of all proposed classification algorithms and straightforward to implement while nevertheless providing good results.
 Ning et al. (2015) summarize the advantages of Nearest Neighbors as follows: a) simplicity, b) justifiability, c) efficiency, and d) stability \cite{ning2015comprehensive}.
 Because of these characteristics the outcomes of Nearest Neighbors classification will serve as a baseline to which the other proposed algorithms will be compared.
-\textit{K-Nearest Neighbors} \cite{altman1992introduction} is an extension of the Nearest Neighbors algorithm. 
+\textbf{\textit{K-Nearest Neighbors}} \cite{altman1992introduction} is an extension of the Nearest Neighbors algorithm. 
 In fact Nearest Neighbors is the equivalent of K-Nearest Neighbors (KNN) with a k=1. 
 Thus the difference between the two is that with KNN the desired number of neighbors can be specified.
 The arguments for selecting this neighborhood method are the same as for Nearest Neighbors.
 
-\textit{RandomForest} \cite{breiman2001random} is an ensemble learning method that can be used to build a rule-based classifier, when classification rules are extracted from the model.
+\textbf{\textit{RandomForest}} \cite{breiman2001random} is an ensemble learning method that can be used to build a rule-based classifier, when classification rules are extracted from the model.
 The advantage of the RandomForest classification algorithm it that is robust to the inclusion of irrelevant features.
 
-\textit{Logistic Regression} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
+\textbf{\textit{Logistic Regression}} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
 The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression is applied.
 
-According to Burges (1998) \textit{Support Vector Machines} (SVM) are an often applied method in case of binary labels \cite{burges1998tutorial}.
+According to Burges (1998) \textbf{\textit{Support Vector Machines}} (SVM) are an often applied method in case of binary labels \cite{burges1998tutorial}.
 An SVM is comparable with Logistic Regression, the main difference is that the loss is quantified as a hinge-loss rather than a logit function. 
 For this research a member of the SVM family called Linear Support Vector Classification is tested.
 
-While Logistic Regression and SVMs excel in learning linear patterns in the data, a \textit{Neural Network} \cite{bishop1995neural} outperforms these when it comes to learning arbitrarily complex non-linear models.
+While Logistic Regression and SVMs excel in learning linear patterns in the data, a \textbf{\textit{Neural Network}} \cite{bishop1995neural} outperforms these when it comes to learning arbitrarily complex non-linear models.
 If there are non-linear relations between features present in the dataset the Neural Network can learn those.
 However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
 

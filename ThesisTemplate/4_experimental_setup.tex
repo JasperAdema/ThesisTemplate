@@ -12,7 +12,8 @@ User information is needed to recommend to someone, item information allows to r
 The \textit{users} are welfare beneficiaries living in the city of Amsterdam, the \textit{items} are the job vacancies and the \textit{labels} are the outcomes of the job matching process.
 The data for this research is provided by the municipality of Amsterdam and the Dutch social security agency (UWV).
 
-\textit{Data sources.}
+\noindent
+\textbf{Sources of the Data}\\
 The user data is stored in a customer management system database called RAAK which is operated by the municipality.
 Due to the abundance of user attributes in combination with resource constraints a preselection is required. 
 Based on previous research done by the municipality and in collaboration with the domain experts the attributes to be extracted from this database is determined. 
@@ -20,36 +21,40 @@ The job vacancy data is retrieved from a database maintained by the Werkgeversse
 The UWV hosts a database named GIP in which the employer feedback regarding a job candidate is registered.
 Therefore the labels can be derived from a dataset pulled out this GIP database.
 
-\textit{Timespan.}
+\noindent
+\textbf{Choosen Timespan}\\
 According to domain experts of the municipality of Utrecht the dynamics of the labor market makes it necessary to review job candidate criteria every six months.
 The economic crisis and its aftermath for example resulted in an oversupply on the labor market causing the hiring criteria of employers to rise making it harder for welfare beneficiaries to find a job.
 In the current economic upturn and undersupply of labor, the employer hiring criteria are decreasing month after month. 
 When the labor market dynamics are taken into account the most suitable time span would be six months.
 However, taking a six month time span would result in a dataset that is too small to learn patterns from.
 Another aspect influencing the time span is the data quality.
-The procedures how user (welfare beneficiary) and job vacancy information is gathered and stored are in flux and the further back the data goes the more irregularities start to come to surface in the data.
-\mynote[author=Harrie]{Deze zin loopt niet lekker, misschien: The procedures by which user (welfare beneficiary) and job vacancy information is gathered and stored change over time.
-As a result, there are many irregularities between recent data and data from several years ago.}
+The procedures by which user (welfare beneficiary) and job vacancy information is gathered and stored change over time.
+As a result, there are many irregularities between recent data and data from several years ago.
 Therefore a time span of five years was chosen, which strikes a balance between the maximum of available data, its quality, and the labor market dynamics.
 
-\textit{Creating one dataset.}
+\noindent
+\textbf{Creating one dataset}\\
 In total 19 datafiles are provided for this research, 17 coming from the RAAK database and the other two coming from the WSP and GIP database.
 The GIP data contains the date on which the job matching occurred. 
 Because the representation of a user can change over time, the data is merged together based on the match date. 
 The resulting dataset consists of 12,482 observations.
 However, not all job matching outcomes are documented properly and when the unlabeled (or weak labeled) observations are filtered out 8,265 records remain.
 
-\textit{Data composition.} 
+\noindent
+\textbf{Feature Engineering}\\
 The datasets contains dominantly categorical data, with just a few numerical and free text columns.
-
-\textit{Transformations.}
 A number of user attributes carry sensitive personal information and these attributes are removed from the dataset or masked in accordance with the K-anonymity \cite{sweeney2002k} and the privacy by design \cite{d2015privacy} principles.
 The masking of the data involves the transformation of numerical data into binary representation by first putting it in bins and then one-hot encoding it. 
 All categorical data is also one-hot encoded for two reasons. 
 Firstly, to deal with any missing values, and secondly to make the data digestible for all proposed machine learning algorithms. 
 For all fields containing free text the punctuation and stopwords are removed, and the remaining words are stemmed, this handling is also known as natural language processing (NLP).
 
-\mynote[author=Harrie]{Eindig met een korte samenvatting van deze sectie, welke data heb je uiteindelijk, hoeveel users/items, hoeveel matches, hoeveel features etc.}
+\noindent
+\textbf{The Final Dataset}\\
+The final dataset consists of 8,265 observations, made up out of 6,216 unique users and 4,983 unique job vacancies. 
+The labels are distributed as follows: 6,490 (79\%) positive and 1,775 (21\%) negative job matching outcomes have been documented. 
+The 438 feature columns of the dataset are composed of 34 user features spread over 282 columns and 22 job features spread over 156 columns. 
 
 %Hyperparameter Tuning
 \subsection{Hyperparameter Tuning}
