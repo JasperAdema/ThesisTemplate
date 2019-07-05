@@ -7,7 +7,7 @@ The tooling used for this research project is Python and its relevant packages.
 %Data
 \subsection{Data}
 \label{ssec:data}
-Aggarwal (2016) describes that in general a recommender system uses as input user, item and label data \cite{aggarwal2016recommender}.
+Aggarwal (2016) describes that in general a Recommender System (RS) uses as input user, item and label data \cite{aggarwal2016recommender}.
 User information is needed to recommend to someone, item information allows to recommend something to someone, and the labels (ratings) give information about to what extent  something is liked or not by someone.
 The \textit{users} are welfare beneficiaries living in the city of Amsterdam, the \textit{items} are the job vacancies and the \textit{labels} are the outcomes of the job matching process.
 The data for this research is provided by the municipality of Amsterdam and the Dutch social security agency (UWV).
@@ -16,17 +16,17 @@ The data for this research is provided by the municipality of Amsterdam and the 
 \textbf{Sources of the Data}\\
 The user data is stored in a customer management system database called RAAK which is operated by the municipality.
 Due to the abundance of user attributes in combination with resource constraints a preselection is required. 
-Based on previous research done by the municipality and in collaboration with the domain experts the attributes to be extracted from this database is determined. 
+Based on previous research done by the municipality and in collaboration with the domain experts the attributes to be extracted from this database are determined. 
 The job vacancy data is retrieved from a database maintained by the Werkgeversservicepunt greater Amsterdam (WSP).
 The UWV hosts a database named GIP in which the employer feedback regarding a job candidate is registered.
-Therefore the labels can be derived from a dataset pulled out this GIP database.
+Therefore the labels can be derived from a dataset retrieved from the GIP database.
 
 \noindent
-\textbf{Choosen Timespan}\\
-According to domain experts of the municipality of Utrecht the dynamics of the labor market makes it necessary to review job candidate criteria every six months.
+\textbf{Choosing to Right Timespan}\\
+According to consulted domain experts of the municipality of Utrecht the dynamics of the labor market makes it necessary to review job candidate criteria at least every six months.
 The economic crisis and its aftermath for example resulted in an oversupply on the labor market causing the hiring criteria of employers to rise making it harder for welfare beneficiaries to find a job.
-In the current economic upturn and undersupply of labor, the employer hiring criteria are decreasing month after month. 
-When the labor market dynamics are taken into account the most suitable time span would be six months.
+In the current economic upturn and undersupply of labor, the employer hiring criteria are lowered month after month. 
+When the labor market dynamics are taken into account a suitable time span would therefore be six months.
 However, taking a six month time span would result in a dataset that is too small to learn patterns from.
 Another aspect influencing the time span is the data quality.
 The procedures by which user (welfare beneficiary) and job vacancy information is gathered and stored change over time.
@@ -36,7 +36,7 @@ Therefore a time span of five years was chosen, which strikes a balance between 
 \noindent
 \textbf{Creating one dataset}\\
 In total 19 datafiles are provided for this research, 17 coming from the RAAK database and the other two coming from the WSP and GIP database.
-The GIP data contains the date on which the job matching occurred. 
+The GIP data contains the dates on which the job matches occurred. 
 Because the representation of a user can change over time, the data is merged together based on the match date. 
 The resulting dataset consists of 12,482 observations.
 However, not all job matching outcomes are documented properly and when the unlabeled (or weak labeled) observations are filtered out 8,265 records remain.
@@ -48,7 +48,7 @@ A number of user attributes carry sensitive personal information and these attri
 The masking of the data involves the transformation of numerical data into binary representation by first putting it in bins and then one-hot encoding it. 
 All categorical data is also one-hot encoded for two reasons. 
 Firstly, to deal with any missing values, and secondly to make the data digestible for all proposed machine learning algorithms. 
-For all fields containing free text the punctuation and stopwords are removed, and the remaining words are stemmed, this handling is also known as natural language processing (NLP).
+For all fields containing free text the punctuation and stopwords are removed, and the remaining words are stemmed, this handling is also known as Natural Language Processing (NLP).
 
 \noindent
 \textbf{The Final Dataset}\\
@@ -63,13 +63,13 @@ With an iterative process (or hyperparameter search) the best hyperparameters fo
 For the implementation of the machine learning models the Python library Scikit-learn\footnote{\url{https://scikit-learn.org/}\label{note1}} was used.
 Only the most important choices will be highlighted here, a full listing of all hyperparameters that deviate from the default settings in Scikit-learn can be found in appendix \ref{ssec:ushp}.
 
-For clustering the optimal number of clusters is determined by plotting the values of the cost function against the k’s, a method that is also called an elbow plot.
+For clustering the optimal number of clusters is determined by plotting the values of the cost function against the k’s, a method that is also called an Elbow plot.
 In general the point where the curve starts to decrease and flatten out is the optimum number of k. 
 However, determining this point can be rather subjective and deciding on the number of k is often combined with domain knowledge.
 For the hierarchical clustering of the n-grams of job title characters the ideal n-gram length is determined iteratively. 
 
 For the Nearest Neighbors the number of neighbors is set to two what equals to k=1, this is because the first neighbor is the own observation and the distance to that is always zero.
-The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the accuracy and MCC scores in a graph (appendix \ref{ssec:fonn}).
+The optimum number of neighbors for K-Nearest Neighbors is determined iteratively by testing all k’s in the range of 2 till 50 and plotting the scores in a graph (appendix \ref{ssec:fonn}).
 The best hyperparameters for RandomForest are found with the use of Scikit-learn’s\textsuperscript{\ref{note1}} randomized search with cross validation for hyperparameters module \cite{ bergstra2012random}.
 For Logistic Regression the hyperparameters are tailored towards the binary classification problem. 
 None of the default hyperparameters are altered for Linear Support Vector Classification. 
@@ -91,10 +91,10 @@ In case of adding them as features it can be tested if the prediction results im
 Multiple setups can be used for this, like for example using the user features in combination with the job clusters to predict the labels.
 Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
 
-For training and validation of all classification models a split of 80/20 based on saved indices is applied. 
+For training and validation of all classification models a split of 80/20 based on saved indices is used. 
 The saved indices where created the help of group shuffle with taking into account that the same users are not allowed to be present in both the training and validation set.
 The train/validation split is shown in table \ref{tab:tvs}.
-For the evaluation of the classification models accuracy and the Matthews correlation coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
+For the evaluation of the classification models accuracy and the Matthews Correlation Coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
 The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.
 In case of imbalanced datasets the MCC is able to indicate correctly if the prediction evaluation is preceding well or not, while metrics as accuracy and F-measure are not \cite{boughorbel2017optimal}.
 
