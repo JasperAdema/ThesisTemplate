@@ -13,20 +13,21 @@ Thereafter alternative approaches that can make a JRS possible are discussed (\r
 \label{ssec:jrswb}
 %introduction
 Based on the findings we discuss in this part the current challenges with a JRS for welfare beneficiaries.
+The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
+The results presented in section \ref{sec:rslts} showed that it is difficult to recommend jobs with the available data.
+This can in part be explained by the number of observations and the quality of them.
 
 %How representative is the data?
 \noindent
 \textbf{Representativity Data}\\
-The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
-The results presented in section \ref{sec:rslts} showed that it is difficult to recommend jobs with the available data.
-This can in part be explained by the number of observations and the quality of them.
-The provided dataset containing 8,265 observations was collected over a time period of five years in which ?????? persons in the municipality of Amsterdam received welfare benefits. %????? exacte aantal uitzoeken en aanvullen
+The provided dataset contained 8,265 observations that were collected over a time period of five years in which on average 41,361 households monthly received welfare benefits in the municipality of Amsterdam.
+In total 75,640 unique households received welfare benefits in this period.
 Considering these figures the real number of occurred job matches is most likely to be in order of multitudes higher.
 Therefore it can be questioned how representative the data is, because it is thought that it only represents a small subset of the true number of job matches that took place in that period.  
 The small number of documented job matches can be attributed to a combination of factors.
 First, not all welfare beneficiaries are obliged to apply for jobs.
 Second, not all welfare beneficiaries have applied for jobs listed by the WSP.
-Third and the most important factor is the lack of registration discipline by the customer managers.
+Third and the most important factor is the that registration discipline by the customer managers can be improved.
 According to domain experts there is a tendency to only register the most promising job matches.
 This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
 The reasoning behind this is that it is assumed that people apply for multiple jobs when they receive welfare benefits for a long period. 
@@ -36,7 +37,7 @@ Adding all these factors together it can be argued that the data is not represen
 %cold-start problem and clustering
 \noindent
 \textbf{The Cold-Start Problem}\\
-The cold start problem is an issue particular associated with Job Recommender Systems (JRS). In our case this problem is amplified by the preselection bias with 76\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
+The cold start problem is an issue particular associated with JRS. In our case this problem is amplified by the preselection bias with 76\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
 Within the municipality of Amsterdam welfare beneficiaries are placed in specific teams based on their opportunities in the labor market.
 It is assumed that this segmentation pattern can also be found in the data.
 Therefore it is hypothesized that it is possible to segment the welfare beneficiaries in two general categories.
@@ -45,11 +46,11 @@ It is expected that this group receives welfare benefits for a short time period
 The second category contains people for whom it is hard to find a job. 
 This group is expected to receive welfare benefits over a long period of time and therefore will apply for a lot of jobs with predominantly negative results.
 
-However, attempts to cluster the users in two or more clusters did not deliver promising results.
-This could be explained by four reasons: 1) there are no distinct user groups, 2) there are far more user groups than tested (400+), 3) the user features are not informative, or 4) the data is biased towards the welfare beneficiaries with the best opportunities on the labor market.
+Attempts to cluster the users in two or more clusters did not deliver promising results.
+This could be explained by one of the following four reasons: 1) there are no distinct user groups, 2) there are far more user groups than tested (400+), 3) the user features are not informative, or 4) the data is biased towards the welfare beneficiaries with the best opportunities on the labor market.
 The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are predominantly represented in the data.  
 This is interesting because it could explain that due to the preselection bias only people from that team have made it into the dataset, and since this group commonly matches positively with job openings this causes the class imbalance.
-If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in predicting job matches for one group of users. 
+If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in recommending job matches for one group of users. 
 
 %Why do the user features have no predictive power?
 \noindent
@@ -62,12 +63,12 @@ The first is the verbal transfer from the welfare beneficiary to the customer ma
 The second takes place when the customer manager enters the information into the system.
 The third is the extraction of the data from the system for the researcher of the JRS.
 And finally the researcher applies feature engineering and other transformations before inputting the data into a machine learning model.
-With every transfer errors and irregularities can arise, especially since at the transfer moments often assumptions need to be made that can possibly introduce bias.
+With every transfer bias and noise can arise, especially since at the transfer moments often assumptions need to be made that can possibly introduce bias.
 It is thought that the first two transfer moments are most determining for the quality of the data, but they also introduce most of the bias and noise. The most probable cause is that there are various registration approaches between the different customer manager teams and also between the individual customers managers within the same team. 
 Furthermore, over the years there have been changes appended in the documentation procedures, causing that fields in the system that had to be filled in a certain period were not filled  in another period.
 Last and probably the most important factor is that a lot of the registered information is by nature highly subjective with many possible interpretations resulting in the main source of bias in the data. 
-On the other hand it can also be imagined that the researcher of the JRS did introduce bias and noise.
-The preselection of features based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
+On the other hand, it can also be imagined that the researcher of the JRS did introduce bias and noise.
+The preselection of attributes based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
 Moreover, during the feature engineering process also bias and noise can have been entered into the data.
 The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors. 
 
@@ -99,17 +100,21 @@ In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found th
 
 %Intro
 In Data Science there is an emphasis on data, and consequently the quality of the available data determines more than other things the success of a Data Science research project.
-In case of this research the current available data turned out to be unsuitable to build a complex Job Recommender System (JRS). 
+In case of this research the current available data turned out to be not yet ready to build a complex JRS. 
 In this part it is described what can be done to make a JRS possible in the future.
 
-%\noindent
-%\textbf{Quantity and Quality of Data}\\
-It was found is that the availability of enough data with good quality prior to researching the feasibility of a JRS is a prerequisite .
+%Data Quantity
+\noindent
+\textbf{Data Quantity}\\
+It was found is that the availability of enough data prior to researching the feasibility of a JRS is a prerequisite .
 What is enough data?
 There is no absolute answer on that question. 
 However, what is known is that other JRS systems have millions of observations at their disposal \cite{kenthapadi2017personalized, T.Al-Otaibi2012ASystems, Zheng2012JobSurvey, hong2013job}.
 In our case the number of documented job matching outcomes were presumed to be too low. 
 This can be increased by a better registration discipline.
+
+\noindent
+\textbf{Data Quality}\\
 What is good quality data?
 In general good quality data is perceived to meet at least the following requirements: completeness, consistency, accuracy, time stamped, and complying with the industry standards. 
 In our case the quality of the data lacked these characteristics: there are too many user features and too many options and fields to document user information, which are moreover also inconsistently used. 
