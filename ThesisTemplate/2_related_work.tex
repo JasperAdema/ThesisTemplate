@@ -19,14 +19,8 @@ A \textit{Demographic} system recommends items based on the demographic profile 
 At this time this is still a relatively unexplored area of RS research. \textit{Knowledge-Based} systems utilize domain knowledge about users to do the matching with particular item features to recommend items  \cite{aggarwal2016recommender}. 
 Finally, \textit{Hybrid Recommender Systems} combine the earlier mentioned techniques and try to leverage the advantages of these particular systems and to mitigate their weaknesses  \cite{aggarwal2016recommender}.
 
-In its most basic form, how can a RS recommend? 
-In order to predict an item for a user the system must predict if an item could be a worthwhile match. 
-The system must be able to quantify and predict the utility of items and to decide which items to recommend to the user based on this comparison \cite{2015RecommenderHandbook}. 
-Therefore the basic task of a RS is to predict the value over pairs of users and items and to return the ones with the best utility scores.
-
-For our research the users are the welfare beneficiaries, the items are job openings, and the utility is the determination of the most promising matches between both.
+In its most basic form RS predicts the value over pairs of users and items and to return the ones with the best utility scores.
 Based on the literature RSs are thought to be a promising method for predicting job matches.
-
 
 %Job Recommender Systems
 \subsection{Job Recommender Systems}
@@ -37,24 +31,23 @@ Traditional RSs can recommend the same item (such a book, music or a movie) to t
 The job recommendation problem is radically different because most job openings seek one or only a few employees to match with \cite{kenthapadi2017personalized}.
 
 Most JRSs that operate today are proprietary, examples of companies who have developed a proprietary JRS are LinkedIn and Indeed.
-According to studies conducted by Otaibi et al. and Zheng et al. the most commonly used  systems for Job recommendation are Collaborative Filtering, Content-Based, or a combination of both (Hybrid Recommender Systems) \cite{T.Al-Otaibi2012ASystems} \cite{Zheng2012JobSurvey}.
+According to studies conducted by Otaibi et al. and Zheng et al. the most commonly used  systems for Job recommendation are Collaborative Filtering, Content-Based, or a combination of both (Hybrid Recommender Systems) \cite{T.Al-Otaibi2012ASystems, Zheng2012JobSurvey}.
 A study by Hong et al. (2013) investigates the implementation of four online JRSs and shows that all use a content-based recommender as its basis \cite{hong2013job}.
 Kenthapadi et al. (2017) describe that LinkedIn has developed a hybrid JRS that uses content-based filtering as its basis \cite{kenthapadi2017personalized}.
 
 JRSs are a special form of RS particular geared towards recommending jobs to users, and therefore applicable for the objective of our research. 
 
 %Clustering and Cold-Start Problem
-\subsection{Clustering and Cold-Start Problem}
+\subsection{Clustering and the Cold-Start Problem}
 \label{sec:ccs}
 RSs and especially JRSs are likely to suffer from the so-called cold-start problem, which is that items are rated only once or a few times by users.
 
-According to Aggarwal et al. (2016) clustering is most often applied within RSs to solve the training complexity and the cold-start problem \cite{aggarwal2016recommender}.
-If there are a large number of users or items the clustering of them in groups reduces the complexity and required training time, because the calculations are now done on the members within a group instead of on the whole dataset \cite{aggarwal2016content}.
+According to Aggarwal et al. (2016) clustering is most often applied within RSs to solve the cold-start problem \cite{aggarwal2016recommender}.
 The cold start problem is defined by Lika et al. (2014) as that the RS cannot recommend a user or item that is not yet rated \cite{lika2014facing}.
 A study by Son (2016) which compares the various techniques of dealing with the cold-start problem for users, shows that clustering is often used to mitigate the cold-start problem \cite{son2016dealing}.
 
 In 1979 Hartigan and Wong presented the K-means clustering algorithm \cite{hartigan1979algorithm}, and today it is the most used clustering algorithm in RSs \cite{aggarwal2016recommender}.
-The k-means clustering algorithm tries to split a number (\textit{n}) of observations into clusters (\textit{k}) by assigning each observation to the cluster with the closest mean.
+The K-means clustering algorithm tries to split a number (\textit{n}) of observations into clusters (\textit{k}) by assigning each observation to the cluster with the closest mean.
 By reassigning the cluster centroids on each iteration the objective is to minimize a criterion known as the within-cluster sum-of-squares (also called inertia) \cite{mackay2003example}. 
 K-means is less suitable for categorical data due to the way it calculates the distances between observations.
 A variation on the K-means for categorical data is K-modes which uses modes instead of means to form clusters and tries to optimize a cost function \cite{huang1997clustering, huang1998extensions}.
@@ -64,7 +57,7 @@ Another less regular applied clustering algorithm within RS due its computationa
 Whereas with the aforementioned K-means and K-modes clustering algorithms it is necessary to specify the desired number of clusters, the advantage of hierarchical clustering is that this is not required \cite{rokach2005clustering}.
 However, the required computation time makes hierarchical clustering less suitable for medium and larger datasets. 
 
-The cold-start problem is an issue associated with JRSs and clustering seems to be an encouraging method to mitigate this problem.
+The cold-start problem is an issue associated with JRSs and clustering seems to be a promising method to tackle this problem.
 
 %Content-Based Models
 \subsection{Content-Based Models}
@@ -76,11 +69,11 @@ Pazzani and Billsus (2007) describe Content-Based Recommender Systems (CBRS) as 
 The core of a CBRS is the learning of user profiles to predict user interests in items by leveraging user feedback \cite{aggarwal2016content}.
 In that sense the learning objective is not that dissimilar to that of classification or regression modeling.
 Models applied to learn user profiles are commonly categorized into five types: 1) Nearest Neighbor Classification, 2) Bayes Classifiers, 3) Rule-Based Classifiers, 4) Regression-based models, and 5) other models \cite{aggarwal2016content, pazzani2007content}.
-Of these models Nearest Neighbor Classification is the simplest classification technique and thanks to its ease of implementation an often used practice in both content-based and collaborative filtering recommenders \cite{balabanovic1997fab}.
+Of these models Nearest Neighbor Classification is the simplest classification technique and thanks to its ease of implementation an often used practice in CBRSs \cite{balabanovic1997fab}.
 Examples of other often applied CBRS models  are Rule-Based Classifiers: RandomForest  \cite{zhang2016three, breiman2001random}, Regression-based models: Logistic Regression \cite{aggarwal2016content, hosmer2013applied}, and for the other models: Support Vector Machines \cite{aggarwal2016content, burges1998tutorial}.
 According to Zhang et al. (2019) the current state-of-the-art within CBRSs is the increasing application of Deep Learning techniques \cite{zhang2019deep}.
 
-In the literature many different machine learning models for CBRS are described, and for our research it should be tested which ones perform best in recommending job matches.
+In the literature many different machine learning models for CBRS are described, and for our research it should be tested which models perform best in recommending job matches.
 
 
 %Privacy by Design
@@ -96,10 +89,10 @@ They actively encourage that big data analytics industry and Data Protection Aut
 Based on previous research, ENISA offers a wide range of suggestions for the implementation of privacy by design \cite{d2015privacy}.
 
 The simplest way to ensure privacy is to gather the minimum of data, thus only the data needed to operate the system. 
-More sophisticated methods are based on k-anonymity and related methods. The goal of K-anonymity is to mask privacy sensitive data such that it cannot be traced back to an individual user \cite{sweeney2002k}. 
+More sophisticated methods are based on K-anonymity and related methods. The goal of K-anonymity is to mask privacy sensitive data such that it cannot be traced back to an individual user \cite{sweeney2002k}. 
 The challenge with data masking is to align the usability of data against the lowest probability of re-identification \cite{d2015privacy}. 
 These conflicting interests need to balanced with care.
 
-For the research project amongst other sources welfare beneficiary data is used, and therefore it is imperative to incorporate privacy by design in the envisioned RS. 
+For the research project amongst other sources the user's personal data is used, and therefore it is imperative to incorporate privacy by design in the envisioned RS. 
 
 

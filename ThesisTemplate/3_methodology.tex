@@ -2,14 +2,14 @@
 \label{sec:meth}
 
 %Introduction
-In this section the methods used during the research are elaborated. First the setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
+In this section the methods are tested during the research are elaborated. First the job recommendation setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by the content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
 
 %What is the recommendation setting?
 \subsection{The Job Recommendation Setting}
 \label{ssec:jrs}
 The research setting governs for an important part which methods can be applied.
 The dataset is composed of users features, job features and labels, and is a mixture of numerical, categorical, and unstructured (free text) data.
-The users features are for example personal information such as age, education, housing, marital status), but also biographical information as personal traits and limitations. 
+The users features are for example personal information such as age, education, housing, marital status, but also biographical information as personal traits and limitations. 
 Examples of job features are the job title, job description, job sector and hiring criteria. 
 The labels are the job matching outcomes, is a person hired for a job or not . 
 The positive labels (a person is hired) are overrepresented in dataset due to the tendency to document only the most promising job matching attempts. 
@@ -23,22 +23,25 @@ If a cluster of similar users is greater than one there are automatically multip
 Similarly the jobs can be clustered, with the difference that now multiple users are connected to a cluster of jobs. 
 Three approaches to clustering are explored: 1) the clustering of user/job features, 2) the clustering of job descriptions, and 3) the clustering of job titles. 
 
-\textit{Clustering of user/job features.}
+\noindent
+\textbf{The Clustering of User and Job Features} \\
 The dataset contains a mixture of data types and most clustering algorithms can handle only one data type and therefore two methods to cluster the user/job features are tested.
 The first method is to use the K-prototypes algorithm \cite{huang1997clustering} for clustering which can handle both numerical and categorical data. 
 The second method is to bin all numerical data and to treat it as categorical data and apply the K-modes clustering algorithm \cite{huang1997clustering, huang1998extensions} which can only deal with categorical data. 
 
-\textit{Clustering of job descriptions.}
-The job descriptions are unstructured data (free text) and are first processed with a natural language processing technique called term frequency–inverse document frequency (TF-IDF) \cite{ramos2003using}. 
+\noindent
+\textbf{The Clustering of Job Descriptions} \\
+The job descriptions are unstructured data (free text) and are first processed with a natural language processing technique called Term Frequency–Inverse Document Frequency (TF-IDF) \cite{ramos2003using}. 
 This technique returns a vector space of numerical data (the TF-IDF scores) on which the K-means clustering algorithm \cite{hartigan1979algorithm} can be applied. 
 
-\textit{Clustering of job titles.}
+\noindent
+\textbf{The Clustering of Job Titles} \\
 The final clustering method involves extracting the n-grams of the characters in the job title and putting them into a vector space.
 This vector space of n-gram frequencies is then clustered using hierarchical clustering \cite{rokach2005clustering}. 
 The advantage of hierarchical clustering is that the number of clusters do not need to be specified. 
 
 %CB models
-\subsection{Content-Based Learning of User Profiles}
+\subsection{Content-Based Learning of User Profiles} 
 \label{ssec:cblup}
 The labels in the dataset can be leveraged for supervised machine learning algorithms. 
 A content-based model can be constructed to predict the user matchability with jobs. 
@@ -73,7 +76,8 @@ If there are non-linear relations between features present in the dataset the Ne
 However, the drawbacks are that a Neural Network is sensitive to noise in the data and that it is prone to overfitting when the dataset is small. 
 
 %How can we recommend?
-\textit{Recommending Jobs to Users} \\
+\noindent
+\textbf{Recommending Jobs to Users} \\
 The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
 The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
@@ -83,13 +87,13 @@ Hereafter the probabilities in each row are ranked descending, and from that the
 %How to improve the results?
 \subsection{Practical Solutions to Improve Recommendation Results}
 \label{ssec:psirr}
-In this part two strategies and their associated methods to improve recommendation results are described.
+In this part two strategies to deal with the data’s main challenges and  improve recommendation results are described.
 
 The first approach emphasizes on reducing the effects of the unequal distribution of positive and negative labels, this is also known as \textit{class imbalance}. 
 The methods to mitigate class imbalance that are tried out are undersampling and oversampling. 
 In case of undersampling observations of the overrepresented class will be randomly deleted until the classes are balanced. 
 With oversampling artificial observations are created for the underrepresented class until the classes are balanced. 
-For the oversampling a variation of the synthetic minority over-sampling technique (SMOTE) \cite{chawla2002smote} suitable for both numerical and categorical data is applied. 
+For the oversampling a variation of the Synthetic Minority Over-Sampling Technique (SMOTE) \cite{chawla2002smote} suitable for both numerical and categorical data is applied. 
 
 Focus of the second strategy is noise reduction by removing the features that contribute the least to the prediction of the labels.
 Using only the important features reduces overfitting, improves accuracy and reduces training time. 
