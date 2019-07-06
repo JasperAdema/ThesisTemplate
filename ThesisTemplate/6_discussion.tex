@@ -106,39 +106,47 @@ In this part it is described what can be done to make a JRS possible in the futu
 %Data Quantity
 \noindent
 \textbf{Data Quantity}\\
-It was found is that the availability of enough data prior to researching the feasibility of a JRS is a prerequisite .
+Regarding the representativity of the data, the cold-start problem and the temporal aspects it was found that the availability of enough data prior to researching the feasibility of a JRS is a prerequisite.
 What is enough data?
 There is no absolute answer on that question. 
 However, what is known is that other JRS systems have millions of observations at their disposal \cite{kenthapadi2017personalized, T.Al-Otaibi2012ASystems, Zheng2012JobSurvey, hong2013job}.
 In our case the number of documented job matching outcomes were presumed to be too low. 
-This can be increased by a better registration discipline.
+This can be increased by a structured and improved registration discipline.
 
+%Conclusion/benefits
+More data does not automatically improves the representativity of the data, it is also important that all segmented groups of users are as far as possible represented equally in the data.
+The availability of more data can tackle the cold-start problem directly or make the use of clustering algorithms more effective. 
+Finally, a high quantity of data enables the modelling of the temporal aspects that are thought to be present in the data.
+
+%Data Quality
 \noindent
 \textbf{Data Quality}\\
+The fact that user features are not informative for the tested models is attributed to the data quality. 
+Therefore the second prerequisite for a JRS is better data quality.
 What is good quality data?
 In general good quality data is perceived to meet at least the following requirements: completeness, consistency, accuracy, time stamped, and complying with the industry standards. 
-In our case the quality of the data lacked these characteristics: there are too many user features and too many options and fields to document user information, which are moreover also inconsistently used. 
+In our case the quality of the data did not adhere to these characteristics: there are too many user features and too many options and fields to document user information, which are moreover also inconsistently used. 
 
-%\noindent
-%\textbf{What can be done to improve the data quantity and quality?}\\
-It was found that the quality of the data was negatively influenced by the fact that the procedures concerning the data registration have been altered in certain periods of time. 
-To improve the quantity and quality of the data also better registration is key.
-The data quality can likely benefit from a simplified user profile and structured recording procedures. 
+One the causes found is that the quality of the data is negatively influenced by the fact that the procedures concerning the data registration have been altered in certain periods of time. 
+To improve the quality of the data consistent registration is key.
+This can be reached by the alignment of the data governance across the different teams and customer managers.
+
+The data quality is also affected by the bias and noise that is introduced at the various transfer moments during the registration.
+Excluding all bias is impossible, but this can be limited by the aligned data governance in the form of highly structured recording procedures and simplified user profiles.
+Simplified user profiles imply the reduction the number of user attributes and the free text fields. 
 An additional advantage of implementing this is that this will also lower the administrative burden for the customer managers.
+The premise is that a better data quality leads to data that is informative.
 
-Furthermore, the documentation and preprocessing of the data for the research has various transfer moments where bias can come into the data. 
-Excluding all bias is impossible, but can be limited by the alignment of procedures and with proper data governance.
-
-Overall the improvement of the quantity and quality of the data can be reached with appropriate data governance. 
+%Final part
+% \noindent
+% \textbf{Nice Title}\\
+Currently the city of Amsterdam is taking steps to improve the quantity and quality of their data. 
+Taking notion of this the artifacts that were found in the data convey the message not to focus too much on the present but also consider the future.
 This requires to think not only about the question “where do we need the data for now” but also “how do we organize our data in such a way that it also usable for future methods?”
 
 When the prerequisites for the data are met the implementation of JRS becomes feasible.
-This will take time, maybe years, but it is probably a worthwhile  investment keeping in mind that proper documented data can be used for far more purposes than job recommendation alone.
+This will take time, maybe years, but it is probably a worthwhile  investment keeping in mind that proper documented data can be used for far more purposes than job recommendation only.
 When there is enough quantity and quality of the data it is advised to redo this research. 
 
-%Conclusion
-When data the prerequisites are met the implementation of JRS becomes feasible.
-This will take time, maybe years, but is probably worth investment keeping in mind that proper documented data can be used for far more purposes than job recommendation alone.
-When there is enough quantity and quality of the data it is advised to redo this research. 
 
 
