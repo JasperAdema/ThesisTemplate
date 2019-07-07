@@ -23,34 +23,24 @@
 \usepackage{caption}
 \usepackage{subcaption}
 
-
 % For todos, notes from other authors, etc.
 \usepackage[show]{chato-notes}
-
+%Turn off footing
 \settopmatter{printacmref=false}
 \fancyfoot{}
+%Turn off page numbering
+\pagestyle{empty}
 
-
-% linenumbering  See https://texblog.org/2012/02/08/adding-line-numbers-to-documents/
-% \usepackage{lineno}
-% \linenumbers
 \usepackage{multirow}
 
 \newcommand{\shorttitle}{Job Recommender System for Welfare Beneficiaries} % Put your short title here
 
 \begin{document}
 
-
-
-
 %\input{titlepage}
 \input{TitlePages/Thesis-Title-Page-DS}  % or use another template
 
 \pagebreak
-
-%\todototoc
-%\listoftodos
-%\tableofcontents
 
 \pagebreak
 %Change the font size to a smaller type
@@ -108,9 +98,5 @@ His expert knowledge and willingness to help really contributed to completing th
 
 \input{10_appendix}
 
-
-%\section{Slides}
-% Example
-%\includepdf[nup=2x3 , pages=-]{sargent-lecture_slides.pdf}
  
 \end{document}
