@@ -25,7 +25,7 @@ However, the Elbow plots do not show a determinative point where they flatten ou
 Thus to validate the clustering results the cluster sizes 25 till 300 with an interval of 25 were tested on 12 scenarios for both Logistic Regression and Neural Network.
 In total 288 tests were conducted (12 different cluster size $\times$ 12 scenarios $\times$ 2 algorithms). 
 The table of the best results can be found in appendix \ref{ssec:cluscen}.
-The results do not show any improvement over the baseline, and therefore it can be concluded that in our case clustering is not effective for the recommender system.
+The results do not show any improvement over the baseline, and therefore it can be concluded that in our case K-modes clustering of user or job features is not effective for the recommender system.
 
 \begin{figure}[H]
     \centering
@@ -96,7 +96,7 @@ This behavior is even more evident with the other classification models.
 \caption{\label{tab:cmnn} \footnotesize{Classification Results of the Neural Network}}
 \end{table}
 
-In conclusion to answer Research Question~\ref{rq:model}: it was found that in our case the Neural Network has the best performance.
+In conclusion to answer Research Question~\ref{rq:model}: it was found that there are significant differences between the models and that in our case the Neural Network has the best performance.
 
 %Ranking Results
 \subsection{Ranking Results}
@@ -136,12 +136,12 @@ Finally in this part we look at our results to answer Research Question~\ref{rq:
 
 \noindent In this part the results of two practical ways to improve the classification results are presented. 
 First the results of addressing class imbalance are described, and thereafter the importance of the features is analyzed. 
-Because the outcomes for all algorithms show the same trends only the results of the Neural Network are presented.
+Because the outcomes for all models show the same trends only the results of the Neural Network are presented.
 
 Two methods to rebalance classes were tested. 
 As shown before in the section experimental setup (table \ref{tab:tvs}) the train set is composed of 6,654 observations of which 5,250 have a positive label and 1,404 a negative label.
 By randomly deleting the observations of the overrepresented class the number of positive labels in the train set is reduced to 1,404.
-The results of undersampling for the Neural Network are shown in table \ref{tab:nnci}, for a full listing of the results for all models is referred to appendix \ref{ssec:ruo}.
+The results of undersampling and oversampling for the Neural Network are shown in table \ref{tab:nnci}, for a full listing of the results for all models is referred to appendix \ref{ssec:ruo}.
 The results of undersampling for the Neural Network do not display a performance improvement.
 These  results can be attributed to the fact that an already small train set is reduced with 58\% in size by the undersampling.
 With fewer training examples it becomes more difficult for Neural Network to learn generalizing patterns in the data.

@@ -60,27 +60,6 @@
 % \tiny
 
 
-% %Abstract
-% \begin{abstract}
-% % [CHANGE] 
-% In this paper we describe a feasibility study for a Job Recommender System. 
-
-% Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract Abstract 
-% \end{abstract}
-
-
-% \section*{Thesis requirements}
-% \begin{itemize}
-% \item Your thesis is written in ACM style with two columns  (\texttt{documentclass[sigconf]{acmart}}).
-% \item   The	size	 of	a	18	EC master	thesis	is	set	at	10	pages	according	to	the	standards	used	for	ACM	and	IEEE	 conferences	 including	 the	 bibliography and	 acknowledgements,	 but excluding	 the	 cover	 page and	appendices.
-% \item Use one of the conference proceedings available from \url{https://www.acm.org/publications/proceedings-template}
-% \item Most proceedings authors (including ICPS authors) will use the "sigconf" proceedings template.
-% \item Use the template at \url{https://github.com/maartenmarx/ThesisTemplate/blob/master/ThesisTemplate/TitlePages/Thesis-Title-Page-DS.tex} for your titlepage.
-% \end{itemize}
-
-
-% \pagebreak
-
 %Main body of the document
 %Set two column format for document
 \twocolumn
@@ -89,10 +68,11 @@
 \section*{Abstract}
 In this paper a feasibility study of a Content-Based Job Recommender System (JRS) for welfare beneficiaries is described.
 It is found that the Neural Network is the best model for learning to predict a job match. 
-However, this model does not translate into a good top-n rank recommender. 
-Methods for dealing with label sparsity and practical approaches to improve the performance proved to be ineffective. 
-The research highlights the importance of a good quantity and quality of the data for the success of a JRS. 
-Given the used data currently a JRS is not feasible, however if measures are taken to improve the data it can be in the future. 
+However, this model does not translate into a good top-\textit{n} rank recommender. 
+Methods for dealing with label sparsity and practical approaches to better the performance proved to be ineffective. 
+The mediocre results are likely caused by the fact that the data is biased and noisy, as well as that there is not enough data available.
+Therefore the outcomes of this research highlight the importance of the quality and quantity of the data for the success of a JRS.
+Given the used data a JRS is currently not feasible, however if measures are taken to improve the data it can be in the future.
 
 \section*{Keywords}
 Recommender Systems, Job Recommender System, Welfare Benefits, Machine Learning, Clustering, Deep Learning
@@ -109,12 +89,13 @@ Recommender Systems, Job Recommender System, Welfare Benefits, Machine Learning,
 
 \section*{Acknowledgements}
 I would like to thank the municipality of Amsterdam for offering me the opportunity to do this research project. 
-The municipality give me the trust and freedom to carry out this project, it was a pleasure to work in such a friendly and encouraging environment.
-I would to thank Camiel de Wit, Erik-Jan Hombergen and Jovita Bos for providing whatever data I needed, and for always willing to help and answer my questions. 
+The municipality me the trust and the freedom to carry out this project.
+It was a pleasure to work in such a friendly and encouraging environment.
+I would like to thank Camiel de Wit, Erik-Jan Hombergen and Jovita Bos for providing whatever data I needed, and for always willing to help and to answer my questions. 
 Also I would like to thank Toetske Renier for getting me on board in the project team and helping me to break down any barriers. 
 I would like to specially thank Lonneke van Oirschot for her guidance as my supervisor within the municipality of Amsterdam, without her effort and expertise this project would not have been possible. 
 Last but not least I would like to thank Harrie Oosterhuis for his role as my supervisor. 
-His friendliness and expert knowledge really contributed for completing this thesis project.
+His expert knowledge and willingness to help really contributed to completing this thesis project.
 
 % References
 \bibliographystyle{plain}

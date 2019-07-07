@@ -13,7 +13,7 @@ Thereafter alternative approaches that can make a JRS possible are discussed (\r
 \label{ssec:jrswb}
 %introduction
 Based on the findings we discuss in this part the current challenges with a JRS for welfare beneficiaries.
-The objective of this research was to study the feasibility of a Job Recommender System especially designed for welfare beneficiaries. 
+The objective of this research was to study the feasibility of a JRS especially designed for welfare beneficiaries. 
 The results presented in section \ref{sec:rslts} showed that it is difficult to recommend jobs with the available data.
 This can in part be explained by the number of observations and the quality of them.
 
@@ -27,11 +27,12 @@ Therefore it can be questioned how representative the data is, because it is tho
 The small number of documented job matches can be attributed to a combination of factors.
 First, not all welfare beneficiaries are obliged to apply for jobs.
 Second, not all welfare beneficiaries have applied for jobs listed by the WSP.
-Third and the most important factor is the that registration discipline by the customer managers can be improved.
+Third and the most important factor is that the registration by the customer managers can be improved.
 According to domain experts there is a tendency to only register the most promising job matches.
 This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
 The reasoning behind this is that it is assumed that people apply for multiple jobs when they receive welfare benefits for a long period. 
 Another issue with the registration is that when a job match gets documented in more than half of the cases (54\%) there is eventually no feedback received from the employer on what the outcome was.
+
 Adding all these factors together it can be argued that the data is not representative for the total population of welfare beneficiaries within the city of Amsterdam. 
 
 %cold-start problem and clustering
@@ -50,6 +51,7 @@ Attempts to cluster the users in two or more clusters did not deliver promising 
 This could be explained by one of the following four reasons: 1) there are no distinct user groups, 2) there are far more user groups than tested (400+), 3) the user features are not informative, or 4) the data is biased towards the welfare beneficiaries with the best opportunities on the labor market.
 The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are predominantly represented in the data.  
 This is interesting because it could explain that due to the preselection bias only people from that team have made it into the dataset, and since this group commonly matches positively with job openings this causes the class imbalance.
+
 If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in recommending job matches for one group of users. 
 
 %Why do the user features have no predictive power?
@@ -58,7 +60,7 @@ If there are two or more groups of welfare beneficiaries the JRS should take tha
 Another interesting finding presented in section~\ref{ssec:ir} is that job matches can be more accurately predicted when all user features are left out.  
 Two plausible causes why this occurs are: 1) the user features do not make a difference for a job matching, or 2) the user features are uninformative.
 A likely explanation for the second reason is that this is caused by how the user features are documented.
-Before the data enters the JRS there are a couple of transfer/interpretation moments. 
+Before the data enters the JRS there are a couple of transfer and interpretation moments. 
 The first is the verbal transfer from the welfare beneficiary to the customer manager.
 The second takes place when the customer manager enters the information into the system.
 The third is the extraction of the data from the system for the researcher of the JRS.
@@ -70,6 +72,7 @@ Last and probably the most important factor is that a lot of the registered info
 On the other hand, it can also be imagined that the researcher of the JRS did introduce bias and noise.
 The preselection of attributes based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
 Moreover, during the feature engineering process also bias and noise can have been entered into the data.
+
 The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors. 
 
 %Temporal dependency 
@@ -82,6 +85,7 @@ During and in the aftermath of the financial crisis job hiring criteria became i
 The thought is that this cycle affects welfare beneficiaries more than other job seekers because they are often at the lower end of the labor market.
 This time-bound labor market dynamics can explain why the same types of jobs can have very different hiring criteria depending on the time they were posted.
 This makes it harder for the machine learning models to identify and generalize patterns.
+
 The solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get too low.  
 
 %Summary/Conclusion
@@ -92,7 +96,7 @@ However, it appears more likely that it can be attributed to the bias and noise 
 Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
 
 %Answer to the Main Research Question
-In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found that for our study based on the available data its is unlikely that the outcomes of a content-based recommender system can match job openings with welfare beneficiaries in a comparable way as human customer managers. 
+In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found that for our study based on the available data it is unlikely that the outcomes of a content-based recommender system can match job openings with welfare beneficiaries in a comparable way as human customer managers. 
 
 %Alternative Approach
 \subsection{Alternative Approach}
@@ -135,6 +139,7 @@ The data quality is also affected by the bias and noise that is introduced at th
 Excluding all bias is impossible, but this can be limited by the aligned data governance in the form of highly structured recording procedures and simplified user profiles.
 Simplified user profiles imply the reduction the number of user attributes and the free text fields. 
 An additional advantage of implementing this is that this will also lower the administrative burden for the customer managers.
+The documentation of only the necessary user attributes can also be seen as a contribution to the adherence of the privacy by design principles. 
 The premise is that a better data quality leads to data that is informative.
 
 %Final part

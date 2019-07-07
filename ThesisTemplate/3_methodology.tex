@@ -21,17 +21,17 @@ Finally, the dataset exhibits sparsity, with just one or a few job matches per u
 The dataset contains only one or a couple of job matches per user, a method to mitigate this sparsity is to cluster the users. 
 If a cluster of similar users is greater than one there are automatically multiple job matches linked to it. 
 Similarly the jobs can be clustered, with the difference that now multiple users are connected to a cluster of jobs. 
-Three approaches to clustering are explored: 1) the clustering of user/job features, 2) the clustering of job descriptions, and 3) the clustering of job titles. 
+Three approaches to clustering are explored: 1) the clustering of user and job features, 2) the clustering of job descriptions, and 3) the clustering of job titles. 
 
 \noindent
 \textbf{The Clustering of User and Job Features} \\
-The dataset contains a mixture of data types and most clustering algorithms can handle only one data type and therefore two methods to cluster the user/job features are tested.
+The dataset contains a mixture of data types and most clustering algorithms can handle only one data type and therefore two methods to cluster the user and job features are tested.
 The first method is to use the K-prototypes algorithm \cite{huang1997clustering} for clustering which can handle both numerical and categorical data. 
 The second method is to bin all numerical data and to treat it as categorical data and apply the K-modes clustering algorithm \cite{huang1997clustering, huang1998extensions} which can only deal with categorical data. 
 
 \noindent
 \textbf{The Clustering of Job Descriptions} \\
-The job descriptions are unstructured data (free text) and are first processed with a natural language processing technique called Term Frequency–Inverse Document Frequency (TF-IDF) \cite{ramos2003using}. 
+The job descriptions are unstructured data (free text) and are first processed with a Natural Language Processing (NLP) technique called Term Frequency–Inverse Document Frequency (TF-IDF) \cite{ramos2003using}. 
 This technique returns a vector space of numerical data (the TF-IDF scores) on which the K-means clustering algorithm \cite{hartigan1979algorithm} can be applied. 
 
 \noindent
