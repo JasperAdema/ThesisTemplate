@@ -2,7 +2,7 @@
 \label{sec:meth}
 
 %Introduction
-In this section the methods are tested during the research are elaborated. First the job recommendation setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by the content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
+In this section the methods that are tested during the research are elaborated. First the job recommendation setting is outlined (\ref{ssec:jrs}). Then the clustering methods are presented (\ref{ssec:clus}). This is followed by the content-based learning methods (\ref{ssec:cblup}). In the last part practical solutions to improve the recommendation results are covered (\ref{ssec:psirr}). 
 
 %What is the recommendation setting?
 \subsection{The Job Recommendation Setting}
@@ -62,13 +62,13 @@ Thus the difference between the two is that with KNN the desired number of neigh
 The arguments for selecting this neighborhood method are the same as for Nearest Neighbors.
 
 \textbf{\textit{RandomForest}} \cite{breiman2001random} is an ensemble learning method that can be used to build a rule-based classifier, when classification rules are extracted from the model.
-The advantage of the RandomForest classification algorithm it that is robust to the inclusion of irrelevant features.
+The advantage of the RandomForest classification algorithm is that it robust to the inclusion of irrelevant features.
 
 \textbf{\textit{Logistic Regression}} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
 The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression is applied.
 
 According to Burges (1998) \textbf{\textit{Support Vector Machines}} (SVM) are an often applied method in case of binary labels \cite{burges1998tutorial}.
-An SVM is comparable with Logistic Regression, the main difference is that the loss is quantified as a hinge-loss rather than a logit function. 
+A SVM is comparable with Logistic Regression, the main difference is that the loss is quantified as a hinge-loss rather than a logit function. 
 For this research a member of the SVM family called Linear Support Vector Classification is tested.
 
 While Logistic Regression and SVMs excel in learning linear patterns in the data, a \textbf{\textit{Neural Network}} \cite{bishop1995neural} outperforms these when it comes to learning arbitrarily complex non-linear models.
@@ -79,7 +79,7 @@ However, the drawbacks are that a Neural Network is sensitive to noise in the da
 \noindent
 \textbf{Recommending Jobs to Users} \\
 The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
-The first method is feeding a trained model a concatenated user and a job feature vector and predict the label.
+The first method is feeding a trained model with a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
 The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.
 Hereafter the probabilities in each row are ranked descending, and from that the \textit{n}-top ranks (jobs) are returned. 
@@ -95,7 +95,7 @@ In case of undersampling observations of the overrepresented class will be rando
 With oversampling artificial observations are created for the underrepresented class until the classes are balanced. 
 For the oversampling a variation of the Synthetic Minority Over-Sampling Technique (SMOTE) \cite{chawla2002smote} suitable for both numerical and categorical data is applied. 
 
-Focus of the second strategy is noise reduction by removing the features that contribute the least to the prediction of the labels.
+Focus of the second strategy is on noise reduction by removing the features that contribute the least to the prediction of the labels.
 Using only the important features reduces overfitting, improves accuracy and reduces training time. 
 The three methods to determine feature importance that are tested are: 1) Chi-square test for feature selection, 2) Backwards Feature Elimination (BFE), and 3) Recursive Feature Elimination with Cross Validation (RFECV) \cite{guyon2002gene}. 
 The Chi-square test is mostly applied for categorical data only, while the other methods can deal with mixed data types.

@@ -2,7 +2,7 @@
 \label{sec:rslts}
 
 %introduction
-In this section the outcomes of the clustering (\ref{ssec:clures}), the Content-Based learning models (\ref{ssec:rcblm}), the ranking (\ref{ssec:rr}) and the practical solutions to improve results (\ref{ssec:ir}) are presented and discussed.
+In this section the outcomes of the clustering (\ref{ssec:clures}), the Content-Based learning models (\ref{ssec:rcblm}), the ranking (\ref{ssec:rr}) and the practical solutions to improve results (\ref{ssec:ir}) are presented and elaborated.
 
 %Clustering
 \subsection{Clustering Results}
@@ -118,7 +118,7 @@ To validate the ranking implementation a subset of 10 users and 100 jobs are pic
 This procedure returns an average rank of one, what is expected when a proper implementation is overfitted.
 Random results of Logistic Regression occur because the model returns precisely the same rankings for every user.
 This is caused by the linearity of the model, for each row in the matrix the user features are the same while the jobs features are different for each entry.
-A linear model only learns the dissimilarities, hence only the job features as all user features are the same for each row entry. 
+A linear model only learns the dissimilarities, hence only the job features since all user features are the same for each row entry. 
 Because the user features are effectively not taken into account and each user is compared with the same jobs the model predicts the same ranks for each row.
 Therefore, it can argued that Logistic Regression is not suitable for ranking.
 The Neural Network is less affected by this thanks to its ability to learn non-linear relations in the data. 
@@ -139,7 +139,7 @@ First the results of addressing class imbalance are described, and thereafter th
 Because the outcomes for all models show the same trends only the results of the Neural Network are presented.
 
 Two methods to rebalance classes were tested. 
-As shown before in the section experimental setup (table \ref{tab:tvs}) the train set is composed of 6,654 observations of which 5,250 have a positive label and 1,404 a negative label.
+As shown before in section~\ref{sec:setup} Experimental Setup the train set is composed of 6,654 observations of which 5,250 have a positive label and 1,404 a negative label (table \ref{tab:tvs}).
 By randomly deleting the observations of the overrepresented class the number of positive labels in the train set is reduced to 1,404.
 The results of undersampling and oversampling for the Neural Network are shown in table \ref{tab:nnci}, for a full listing of the results for all models is referred to appendix \ref{ssec:ruo}.
 The results of undersampling for the Neural Network do not display a performance improvement.
@@ -166,7 +166,7 @@ It can therefore be argued that the way in which SMOTE generates new observation
 \end{table}
 
 For the analysis of the importance of the features three methods are tested. 
-The results for the Neural Network are pictured in table \ref{tab:nnfi}, the outcomes for all models can be found in appendix \ref{ssec:fi}.
+The results for the Neural Network are shown in table \ref{tab:nnfi}, the outcomes for all models can be found in appendix \ref{ssec:fi}.
 From the results it can be deduced that there is a lot of noise present in the data, all approaches discard more than half of the features without significantly degrading the outcomes.
 When assessing which features are dropped it can be established that this are predominantly user features.
 Analyzing the user features that the RFECV method has retained it was found that based on heuristics 64\% of them can be classified as traits that hinder a person from getting a job.
@@ -174,7 +174,7 @@ This insight led to the question what would happen to the performance if all use
 Two interesting things can be observed in the outcomes of this question which is shown in table \ref{tab:nnfeat}.
 First, when only using the users features the performance is suboptimal, and when only the jobs features are used the performance increases significantly.
 Secondly, dropping all user features outperforms all tested feature importance analysis methods.
-These outcomes suggests that the user features are uninformative and carry no predictive power.
+These outcomes suggests that the user features are not informative and carry no predictive power.
 This is unexpected because it is assumed that the user characteristics for an important part determine the matchability with a job opening.
 
 \begin{table}[h]

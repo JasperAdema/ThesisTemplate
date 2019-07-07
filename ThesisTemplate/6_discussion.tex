@@ -27,7 +27,7 @@ Therefore it can be questioned how representative the data is, because it is tho
 The small number of documented job matches can be attributed to a combination of factors.
 First, not all welfare beneficiaries are obliged to apply for jobs.
 Second, not all welfare beneficiaries have applied for jobs listed by the WSP.
-Third and the most important factor is that the registration by the customer managers can be improved.
+Third and most important factor is that the registration by the customer managers can be improved.
 According to domain experts there is a tendency to only register the most promising job matches.
 This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
 The reasoning behind this is that it is assumed that people apply for multiple jobs when they receive welfare benefits for a long period. 
@@ -58,8 +58,8 @@ If there are two or more groups of welfare beneficiaries the JRS should take tha
 \noindent
 \textbf{User Features}\\
 Another interesting finding presented in section~\ref{ssec:ir} is that job matches can be more accurately predicted when all user features are left out.  
-Two plausible causes why this occurs are: 1) the user features do not make a difference for a job matching, or 2) the user features are uninformative.
-A likely explanation for the second reason is that this is caused by how the user features are documented.
+Two plausible causes why this occurs are: 1) the user features do not make a difference for a job matching, or 2) the user features are not informative.
+A likely explanation for the second reason is that this is caused by the way how the user features are documented.
 Before the data enters the JRS there are a couple of transfer and interpretation moments. 
 The first is the verbal transfer from the welfare beneficiary to the customer manager.
 The second takes place when the customer manager enters the information into the system.
@@ -70,7 +70,7 @@ It is thought that the first two transfer moments are most determining for the q
 Furthermore, over the years there have been changes appended in the documentation procedures, causing that fields in the system that had to be filled in a certain period were not filled  in another period.
 Last and probably the most important factor is that a lot of the registered information is by nature highly subjective with many possible interpretations resulting in the main source of bias in the data. 
 On the other hand, it can also be imagined that the researcher of the JRS did introduce bias and noise.
-The preselection of attributes based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
+For example by the preselection of attributes based on heuristics prior to the retrieval from the system/database is a moment that bias can have been imported into the data.
 Moreover, during the feature engineering process also bias and noise can have been entered into the data.
 
 The finding that in our case the user features have no predictive power can presumably be attributed to a combination of the aforementioned factors. 
@@ -91,8 +91,8 @@ The solution would be to model the time dependency using a sliding window or ano
 %Summary/Conclusion
 \noindent
 \textbf{Conclusion}\\
-The disappointing results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
-However, it appears more likely that it can be attributed to the bias and noise that reside in the data.
+The mediocre results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
+However, it appears to be more likely that it can be attributed to the bias and noise that reside in the data.
 Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
 
 %Answer to the Main Research Question
@@ -118,7 +118,7 @@ In our case the number of documented job matching outcomes were presumed to be t
 This can be increased by a structured and improved registration discipline.
 
 %Conclusion/benefits
-More data does not automatically improves the representativity of the data, it is also important that all segmented groups of users are as far as possible represented equally in the data.
+More data does not automatically improve the representativity of the data, it is also important that all segmented groups of users are as far as possible represented equally in the data.
 The availability of more data can tackle the cold-start problem directly or make the use of clustering algorithms more effective. 
 Finally, a high quantity of data enables the modelling of the temporal aspects that are thought to be present in the data.
 

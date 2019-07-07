@@ -92,9 +92,9 @@ Multiple setups can be used for this, like for example using the user features i
 Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
 
 For training and validation of all classification models a split of 80/20 based on saved indices is used. 
-The saved indices where created the help of group shuffle with taking into account that the same users are not allowed to be present in both the training and validation set.
+The saved indices were created with the help of a group shuffle\textsuperscript{\ref{note1}} with taking into account that the same users are not allowed to be present in both the training and validation set.
 The train/validation split is shown in table \ref{tab:tvs}.
-For the evaluation of the classification models accuracy and the Matthews Correlation Coefficient (MCC) \cite{matthews1975comparison} are used as metrics.
+For the evaluation of the classification models the Matthews Correlation Coefficient (MCC) \cite{matthews1975comparison} and accuracy are used as metrics.
 The MCC is a metric to measure the quality of binary classifications, and according to Chicco (2017) this metric is useful because it is the only metric that takes into account the ratio of confusion matrix size \cite{chicco2017ten}.
 In case of imbalanced datasets the MCC is able to indicate correctly if the prediction evaluation is preceding well or not, while metrics as accuracy and F-measure are not \cite{boughorbel2017optimal}.
 
