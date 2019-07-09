@@ -74,7 +74,7 @@ When the MCC scores are analyzed the Neural Network performs 10\% better than it
 The higher performance of MCC suggests better balanced predictions of both the positive and negative labels.
 The best scores for the Neural Network were achieved with a setup of one hidden layer.
 When more hidden layers are added the performance decays gradually.
-In general a Neural Network can learn more complex patterns when the number of hidden layers increase, however this also raises the risk of overfitting of the model on the train data.
+In general a Neural Network can learn more complex patterns when the number of hidden layers increase, however this also raises the risk of overfitting the model on the train data.
 % \mynote[author=Harrie]{Deze zin loopt niet lekker.}
 Therefore, it is a likely explanation that when extra layers are added the performance is worsened due to overfitting.
 
@@ -116,7 +116,7 @@ The results show a different picture, for Logistic Regression the average rank o
 The Neural Network performs best, but the results are not considerably better than the random selection and definitely not close to an average rank below 100.
 % \mynote[author=Harrie]{Heb je significant testing gedaan? gebruik anders een ander woord: bijv. considerably}
 
-The outcomes of the rankings do not appear to be better than the random baseline. 
+The outcomes of the rankings do not appear to be better than the random baseline.
 % \mynote[author=Harrie]{Je bedoelt de resultaten zien er niet veel beter uit dan de random baseline, dat is niet hetzelde als er willekeurig uitzien.}
 % To validate the ranking implementation a subset of 10 users and 100 jobs are picked from the dataset and the model is purposefully overfitted using the whole subset to train and validate.
 % This procedure returns an average rank of one, what is expected when a proper implementation is overfitted.
