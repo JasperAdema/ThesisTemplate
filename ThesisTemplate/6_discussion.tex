@@ -6,15 +6,15 @@ welfare beneficiaries (\ref{ssec:jrswb}) in order to answer the main Research Qu
 \begin{itemize}
 	\item[] \em Can a Content-Based Recommender System based on matching job openings to welfare beneficiaries provide recommendations of a quality comparable to human customer managers?
 \end{itemize}
-Thereafter alternative approaches that can make a JRS possible are discussed (\ref{ssec:learnings}). 
+Thereafter the learnings are discussed (\ref{ssec:learnings}). 
 
 %Current Challenges with a Job Recommender System for Welfare Beneficiaries
 \subsection{Current Challenges with a Job Recommender System for Welfare Beneficiaries}
 \label{ssec:jrswb}
 %introduction
-Based on the findings we discuss in this part the current challenges with a JRS for welfare beneficiaries.
+Based on the findings in this part we discuss the current challenges with a JRS for welfare beneficiaries.
 The objective of this research was to study the feasibility of a JRS especially designed for welfare beneficiaries. 
-The results presented in section \ref{sec:rslts} showed that it is difficult to recommend jobs with the available data.
+The results presented in section \ref{sec:rslts} showed that in the case of the municipality of Amsterdam it is difficult to recommend jobs with the available data.
 This can in part be explained by the number of observations and the quality of them.
 
 %How representative is the data?
@@ -27,32 +27,46 @@ Therefore it can be questioned how representative the data is, because it is tho
 The small number of documented job matches can be attributed to a combination of factors.
 First, not all welfare beneficiaries are obliged to apply for jobs.
 Second, not all welfare beneficiaries have applied for jobs listed by the WSP.
-Third and most important factor is that the registration by the customer managers can be improved.
-According to domain experts there is a tendency to only register the most promising job matches.
-This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
-The reasoning behind this is that it is assumed that people apply for multiple jobs when they receive welfare benefits for a long period. 
-Another issue with the registration is that when a job match gets documented in more than half of the cases (54\%) there is eventually no feedback received from the employer on what the outcome was.
+Third and most important factor is that the registration of job matching outcomes can be improved.
+The above mentioned figures show that only a fraction of the actual job matching attempts get documented. 
+Next to that for half of the documented cases (54\%) no feedback on the job matching outcomes was received from the employer.
 
 Adding all these factors together it can be argued that the data is not representative for the total population of welfare beneficiaries within the city of Amsterdam. 
 
-%cold-start problem and clustering
+%Preselection Bias
 \noindent
-\textbf{The Cold-Start Problem}\\
-The cold start problem is an issue particular associated with JRS. In our case this problem is amplified by the preselection bias with 76\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once). 
-Within the municipality of Amsterdam welfare beneficiaries are placed in specific teams based on their opportunities in the labor market.
-It is assumed that this segmentation pattern can also be found in the data.
-Therefore it is hypothesized that it is possible to segment the welfare beneficiaries in two general categories.
+\textbf{Preselection Bias} \\
+It can also be argued that the mediocre results of the models in predicting job matches can be attributed to a preselection bias that resides in the data. 
+
+The first form of preselection bias that is thought to be present in the data is that the job matching outcomes of one category of users are predominantly being registered.
+To test this it is hypothesized that it is possible to segment the users in two general categories.
+This is based on the fact that within the municipality of Amsterdam the welfare beneficiaries (users) are placed in specific teams based on their opportunities on the labor market. 
 The first category consists of people who can easily find a job. 
 It is expected that this group receives welfare benefits for a short time period and that they apply only once or just a couple of times for a job with mostly positive outcomes. 
 The second category contains people for whom it is hard to find a job. 
 This group is expected to receive welfare benefits over a long period of time and therefore will apply for a lot of jobs with predominantly negative results.
+It is therefore assumed that this segmentation pattern can also be found in the data.
 
 Attempts to cluster the users in two or more clusters did not deliver promising results.
-This could be explained by one of the following four reasons: 1) there are no distinct user groups, 2) there are far more user groups than tested (400+), 3) the user features are not informative, or 4) the data is biased towards the welfare beneficiaries with the best opportunities on the labor market.
-The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are predominantly represented in the data.  
-This is interesting because it could explain that due to the preselection bias only people from that team have made it into the dataset, and since this group commonly matches positively with job openings this causes the class imbalance.
+This could be explained by one of the following four reasons: 1) there are no distinct user groups, 2) there are far more user groups than tested (400+), 3) the user features are not informative, or 4) the data is biased towards the users with the best opportunities on the labor market.
+The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are overrepresented in the data.  
+This is interesting because it could explain that due to the preselection bias mainly people from that team have made it into the dataset, and since this group commonly matches positively (and almost 1-to-1) with job openings this causes the class imbalance.
+It can therefore be argued that clustering results confirm that a preselection bias is present in the data. 
+If that is true the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in providing job matches for only a group of users.
 
-If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in recommending job matches for one group of users.
+The second form of preselection bias is that, according to domain experts, there is a tendency among customer managers to only register the most promising job matches.
+This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
+More negative labels would be expected because it is assumed that people apply for multiple jobs when they receive welfare benefits for a long period. 
+
+It is plausible that both forms of preselection bias are present in the data.
+Meaning that only the most promising job matches of the users with the best opportunities on the labor market made it into the data.
+
+%cold-start problem and clustering
+\noindent
+\textbf{The Cold-Start Problem}\\
+The cold-start problem is an issue particular associated with JRS. In our case this problem is amplified by the preselection bias with 76\% of the observations being 1-to-1 relations (a user applies only once for a job, and for a job is applied only once).
+Attempts to cluster the users and jobs into meaningful groups and tackle the cold-start problem did not return positive results.
+It can be argued that first the preselection bias needs to be reduced before the cold-start problem can be addressed. 
 
 % \mynote[author=Harrie]{Je begint deze sectie over het cold-start probleem, maar eindigt hem over preselection bias. Het cold-start probleem word niet meer besproken na de eerste zinnen, en het bias probleem lijkt meer bij de vorige sectie te passen.}
 
@@ -94,14 +108,14 @@ The thought is that this cycle affects welfare beneficiaries more than other job
 This time-bound labor market dynamics can explain why the same types of jobs can have very different hiring criteria depending on the time they were posted.
 This makes it harder for the machine learning models to identify and generalize patterns.
 
-A possible solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get too low.
+A possible solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because the number of observations would get too low.
 
 %Summary/Conclusion
 \noindent
 \textbf{Answering the Main Research Question}\\
-The mediocre results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
-However, it appears to be more likely that it can be attributed to the bias and noise that reside in the data.
-Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
+The mediocre results of the JRS can possibly be contributed to the methods that were chosen or the features that were selected. 
+However, it appears to be more likely that it can be attributed to the bias and noise that is present in the data.
+Therefore it can be argued that in our case it is currently not feasible to implement a JRS with the available data in combination with the applied methods. 
 
 %Answer to the Main Research Question
 In conclusion to answer the main Research Question~\ref{rq:mrq}: it was found that for our study based on the available data it is unlikely that the outcomes of a content-based recommender system can match job openings with welfare beneficiaries in a comparable way as human customer managers. 
@@ -123,12 +137,20 @@ What is enough data?
 There is no absolute answer on that question. 
 However, what is known is that other JRS systems have millions of observations at their disposal \cite{kenthapadi2017personalized, T.Al-Otaibi2012ASystems, Zheng2012JobSurvey, hong2013job}.
 In our case the number of documented job matching outcomes were presumed to be too low. 
-This can be increased by a structured and improved registration discipline.
+This can be increased by a structured, improved registration discipline, and utilizing data from other sources.
+
+For example the fact that in more than half of the cases of the documented job matches no feedback on the outcomes was received.
+This can be combated by leveraging implicit feedback from other sources.
+So can feedback on the outcomes be extracted from financial information because it is probable that the ending of welfare payouts is a signal that a user was successfully matched with a job. 
+However, such conclusions should be drawn with care.
+For example it can be imagined that the time between a job match and the termination of welfare benefits is an important factor in determining the likelihood if the result was positive or negative. 
+However, despite its drawbacks implicit feedback can help to gauge more job matching outcomes and help to reduce class imbalance.
 
 %Conclusion/benefits
 More data does not automatically improve the representativity of the data, it is also important that all segmented groups of users are as far as possible represented equally in the data.
 The availability of more data can tackle the cold-start problem directly or make the use of clustering algorithms more effective. 
-Finally, a high quantity of data enables the modelling of the temporal aspects that are thought to be present in the data.
+Moreover, a high quantity of data enables the modelling of the temporal aspects that are thought to be present in the data.
+Finally, enriching the dataset with other data sources can raise the number of observations as well reduce class imbalance.
 
 %Data Quality
 \noindent
@@ -137,28 +159,38 @@ The fact that user features are not informative for the tested models is attribu
 Therefore the second prerequisite for a JRS is better data quality.
 What is good quality data?
 In general good quality data is perceived to meet at least the following requirements: completeness, consistency, accuracy, time stamped, and complying with the industry standards. 
-In our case the quality of the data did not adhere to these characteristics: there are too many user features and too many options and fields to document user information, which are moreover also inconsistently used. 
+In our case the quality of the data did not adhere to these characteristics: 1) there are many user features, many fields, and options within the fields to document user information, 2) the preceding are moreover inconsistently used, and 3) the data is biased towards the best results of the users with the best job opportunities. 
+In this part measures are discussed that can improve data quality.
 
-One the causes found is that the quality of the data is negatively influenced by the fact that the procedures concerning the data registration have been altered in certain periods of time. 
+First, the data quality is also affected by the bias and noise that is introduced at the various transfer moments during the registration.
+Excluding this bias fully is impossible, but this can be limited by the aligned data governance in the form of highly structured recording procedures and simplified user profiles.
+Simplified user profiles imply the reduction of the number of user attributes and the free text fields. 
+An additional advantage of implementing this is that this will also lower the administrative burden for the customer managers.
+The documentation of only the necessary user attributes can also be seen as a contribution to the adherence of the privacy by design principles. 
+
+Secondly, it is found that the quality of the data is negatively influenced by the fact that the procedures concerning the data registration have been altered in certain periods of time. 
 To improve the quality of the data consistent registration is key.
 This can be reached by the alignment of the data governance across the different teams and customer managers.
 
-The data quality is also affected by the bias and noise that is introduced at the various transfer moments during the registration.
-Excluding all bias is impossible, but this can be limited by the aligned data governance in the form of highly structured recording procedures and simplified user profiles.
-Simplified user profiles imply the reduction the number of user attributes and the free text fields. 
-An additional advantage of implementing this is that this will also lower the administrative burden for the customer managers.
-The documentation of only the necessary user attributes can also be seen as a contribution to the adherence of the privacy by design principles. 
-The premise is that a better data quality leads to data that is informative.
+Finally, a source of bias which causes class imbalance is that only the most promising job matches of the users with the best job opportunities are registered. 
+There are currently no incentives nor instructions for customer managers to document negative job matching outcomes. 
+There should be incentives for customer managers for registering all attempted job matches.
+However, this is a management issue rather than a Data Science one.
+The minimization of this preselection bias increases the number of observations and should also mitigate the class imbalance problem.
+However, the class imbalance problem will probably never be entirely solved.
+With the reduction of the preselection bias the class imbalance is expected to shift to an overrepresentation of negative outcomes.
+
+The premise is that all above mentioned measures lead to better data quality and therefore to data that is informative.
 
 %Final part
 % \noindent
 % \textbf{Nice Title}\\
 Currently the city of Amsterdam is taking steps to improve the quantity and quality of their data. 
 Taking notion of this the artifacts that were found in the data convey the message not to focus too much on the present but also consider the future.
-This requires to think not only about the question “where do we need the data for now” but also “how do we organize our data in such a way that it also usable for future methods?”
+This requires to think about the questions: “where do we need the data for now” and “how do we organize our data in such a way that it also usable for future methods?”.
 
-When the prerequisites for the data are met the implementation of JRS becomes feasible.
-This will take time, maybe years, but it is probably a worthwhile  investment keeping in mind that proper documented data can be used for far more purposes than job recommendation only.
+When the prerequisites for the data are met, the implementation of JRS becomes feasible.
+This will take time, maybe years, but it is probably a worthwhile investment keeping in mind that proper documented data can be used for far more purposes than job recommendation only.
 When there is enough quantity and quality of the data it is advised to redo this research. 
 
 % \mynote[author=Harrie]{Niet alle problemen besproken in de vorige sectie worden hier aangepakt, bijvoorbeeld, ik verwachte een oplossing voor de negative/positive label ratio oftewel een deel van de preselection bias. Kijk of je concrete oplossingen kan bedenken en voeg die toe.}
