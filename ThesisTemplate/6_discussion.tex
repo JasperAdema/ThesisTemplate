@@ -4,7 +4,7 @@
 In this section we first discuss the current challenges for a Job Recommender System (JRS) for 
 welfare beneficiaries (\ref{ssec:jrswb}) in order to answer the main Research Question~\ref{rq:mrq}: 
 \begin{itemize}
-	\item[] \em Can a content-based recommender system based on matching job openings to welfare beneficiaries be comparable to human customer managers?
+	\item[] \em Can a Content-Based Recommender System based on matching job openings to welfare beneficiaries provide recommendations of a quality comparable to human customer managers?
 \end{itemize}
 Thereafter alternative approaches that can make a JRS possible are discussed (\ref{ssec:learnings}). 
 
@@ -52,13 +52,21 @@ This could be explained by one of the following four reasons: 1) there are no di
 The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are predominantly represented in the data.  
 This is interesting because it could explain that due to the preselection bias only people from that team have made it into the dataset, and since this group commonly matches positively with job openings this causes the class imbalance.
 
-If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in recommending job matches for one group of users. 
+If there are two or more groups of welfare beneficiaries the JRS should take that into consideration when learning to predict job matching outcomes, otherwise the JRS is optimized in recommending job matches for one group of users.
+
+\mynote[author=Harrie]{Je begint deze sectie over het cold-start probleem, maar eindigt hem over preselection bias. Het cold-start probleem word niet meer besproken na de eerste zinnen, en het bias probleem lijkt meer bij de vorige sectie te passen.}
 
 %Why do the user features have no predictive power?
 \noindent
 \textbf{User Features}\\
 Another interesting finding presented in section~\ref{ssec:ir} is that job matches can be more accurately predicted when all user features are left out.  
-Two plausible causes why this occurs are: 1) the user features do not make a difference for a job matching, or 2) the user features are not informative.
+Two plausible causes for why this occurs are: 1) the user features do not make a difference for job matching, or 2) the user features are not informative.
+% \mynote[author=Harrie]{De eerste reden word niet meer genoemd, er mist een uitleg voor waarom de tweede reden het meest aannemelijk is.}
+
+According to the consulted domain experts the user characteristics such as education, age and motivation are essential for matching users to job openings. 
+This claim is further supported by JRS literature \cite{kenthapadi2017personalized, T.Al-Otaibi2012ASystems, Zheng2012JobSurvey, hong2013job}.
+It can therefore be argued that it is improbable that the user features do not matter for a job match. 
+
 A likely explanation for the second reason is that this is caused by the way how the user features are documented.
 Before the data enters the JRS there are a couple of transfer and interpretation moments. 
 The first is the verbal transfer from the welfare beneficiary to the customer manager.
@@ -86,11 +94,11 @@ The thought is that this cycle affects welfare beneficiaries more than other job
 This time-bound labor market dynamics can explain why the same types of jobs can have very different hiring criteria depending on the time they were posted.
 This makes it harder for the machine learning models to identify and generalize patterns.
 
-The solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get too low.  
+A possible solution would be to model the time dependency using a sliding window or another technique, however for this research this could not be applied because then the number of observations would get too low.
 
 %Summary/Conclusion
 \noindent
-\textbf{Conclusion}\\
+\textbf{Answering the Main Research Question}\\
 The mediocre results of the JRS can possibly also be contributed to the methods that were chosen or the features that were selected. 
 However, it appears to be more likely that it can be attributed to the bias and noise that reside in the data.
 Therefore it can be argued that in our case it is currently not feasible to build a JRS with the available data in combination with the applied methods. 
@@ -153,5 +161,5 @@ When the prerequisites for the data are met the implementation of JRS becomes fe
 This will take time, maybe years, but it is probably a worthwhile  investment keeping in mind that proper documented data can be used for far more purposes than job recommendation only.
 When there is enough quantity and quality of the data it is advised to redo this research. 
 
-
+\mynote[author=Harrie]{Niet alle problemen besproken in de vorige sectie worden hier aangepakt, bijvoorbeeld, ik verwachte een oplossing voor de negative/positive label ratio oftewel een deel van de preselection bias. Kijk of je concrete oplossingen kan bedenken en voeg die toe.}
 

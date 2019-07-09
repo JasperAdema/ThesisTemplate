@@ -14,6 +14,7 @@ Examples of job features are the job title, job description, job sector and hiri
 The labels are the job matching outcomes, is a person hired for a job or not . 
 The positive labels (a person is hired) are overrepresented in dataset due to the tendency to document only the most promising job matching attempts. 
 Finally, the dataset exhibits sparsity, with just one or a few job matches per user.
+\mynote[author=Harrie]{Zeg hier ook bij dat het een typische dataset is voor JRE, of typisch vanuit gemeentes/overheden o.i.d. Zodat je het duidelijk is dat je method buiten de gemeente Amsterdam ook toepasbaar is.}
 
 %Clustering
 \subsection{Clustering}
@@ -78,11 +79,13 @@ However, the drawbacks are that a Neural Network is sensitive to noise in the da
 %How can we recommend?
 \noindent
 \textbf{Recommending Jobs to Users} \\
-The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the \textit{n}-top useful jobs for a user.
+The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the top-\textit{n} useful jobs for a user.
 The first method is feeding a trained model with a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
 The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.
-Hereafter the probabilities in each row are ranked descending, and from that the \textit{n}-top ranks (jobs) are returned. 
+Hereafter the probabilities in each row are ranked descending, and from that the top-\textit{n} ranks (jobs) are returned. 
+
+% \mynote[author=Harrie]{n-top -> top-n, en niet zomaar de top-n maar de top-n matchende jobs voor een gebruiker (volgens het model).}
 
 %How to improve the results?
 \subsection{Practical Solutions to Improve Recommendation Results}

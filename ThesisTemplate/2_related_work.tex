@@ -27,7 +27,7 @@ Based on the literature RSs are thought to be a promising method for predicting 
 \label{sec:jrs}
 The previous section described RSs in general. 
 In this part the literature of a specific type RS will be described: the Job Recommender System (JRS).
-Traditional RSs can recommend the same item (such a book, music or a movie) to thousands of different users. 
+Traditional RSs can provide the same item (such a book, music or a movie) to thousands of different users.
 The job recommendation problem is radically different because most job openings seek one or only a few employees to match with \cite{kenthapadi2017personalized}.
 
 Most JRSs that operate today are proprietary, examples of companies who have developed a proprietary JRS are LinkedIn and Indeed.
@@ -47,7 +47,7 @@ The cold start problem is defined by Lika et al. (2014) as that the RS cannot re
 A study by Son (2016) which compares the various techniques of dealing with the cold-start problem for users, shows that clustering is often used to mitigate the cold-start problem \cite{son2016dealing}.
 
 In 1979 Hartigan and Wong presented the K-means clustering algorithm \cite{hartigan1979algorithm}, and today it is the most used clustering algorithm in RSs \cite{aggarwal2016recommender}.
-The K-means clustering algorithm tries to split a number (\textit{n}) of observations into clusters (\textit{k}) by assigning each observation to the cluster with the closest mean.
+The K-means clustering algorithm tries to split a number of observations into clusters (\textit{K}) by assigning each observation to the cluster with the closest mean.
 By reassigning the cluster centroids on each iteration the objective is to minimize a criterion known as the within-cluster sum-of-squares (also called inertia) \cite{mackay2003example}. 
 K-means is less suitable for categorical data due to the way it calculates the distances between observations.
 A variation on the K-means for categorical data is K-modes which uses modes instead of means to form clusters and tries to optimize a cost function \cite{huang1997clustering, huang1998extensions}.

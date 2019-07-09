@@ -20,7 +20,7 @@ When this algorithm is applied the clustering time after time breaks down around
 Various cluster initiation schemes and even manual initiation have been tried, but the problem persists.
 
 Due to the fact that the K-prototypes could not be used for this research and because of the fact that only a few columns were numerical it was decided to treat all numerical data as categorical data and to apply the K-modes algorithm.
-For the users the optimal cluster size seems to be around 150 and for jobs around 100 (figure \ref{fig:eb})
+For the users the optimal cluster size seems to be around 150 and for jobs around 100 (figure \ref{fig:eb}).
 However, the Elbow plots do not show a determinative point where they flatten out.
 Thus to validate the clustering results the cluster sizes 25 till 300 with an interval of 25 were tested on 12 scenarios for both Logistic Regression and Neural Network.
 In total 288 tests were conducted (12 different cluster size $\times$ 12 scenarios $\times$ 2 algorithms). 
@@ -45,13 +45,13 @@ Applying Hierarchical Clustering results in that the job titles are distributed 
 Through a visual inspection comparing the assigned clusters with the associated job titles this clustering seems to deliver promising results, however when assessing the accuracy and MCC scores the performance is worse than the K-modes clustering.
 The hierarchical clustering results can be found in appendix \ref{ssec:hieclu}.
 
-The job data contains a number of recurring job titles that are exactly the same, and based on the hierarchical clustering results it can be assumed that even though the job title is the same the underlying features deviate. 
-To verify this assumption the cosine similarities of a job vector versus all other job vectors for all observations were calculated.
-None of the returned similarities give an exact match, so highly similar job vectors can have very different associated job titles and visa versa.
-Therefore it can be reasoned that although job titles sometimes are the exact same or very similar the underlying features are different.
+% The job data contains a number of recurring job titles that are exactly the same, and based on the hierarchical clustering results it can be assumed that even though the job title is the same the underlying features deviate. 
+% To verify this assumption the cosine similarities of a job vector versus all other job vectors for all observations were calculated.
+% None of the returned similarities give an exact match, so highly similar job vectors can have very different associated job titles and visa versa.
+% Therefore it can be reasoned that although job titles sometimes are the exact same or very similar the underlying features are different.
+% \mynote[author=Harrie]{Laten we even naar deze redenering kijken.}
 
 In conclusion to answer Research Question~\ref{rq:cold}: it was found that in our case the tested clustering approaches are not effective in dealing with label sparsity.
-However, the methods may be effective in cases where there is more data available.
 
 %Results Content-Based Learning Models
 \subsection{Results Content-Based Learning Models}
@@ -64,7 +64,8 @@ In this part we look at our results to answer Research Question~\ref{rq:model}:
 
 \noindent When assessing the accuracy results it must be taken into account that the dataset exhibits a class imbalance of 79\% being positive labels and 21\% being negative labels.
 The consequence of this imbalance is that if the classifier predicts all labels to be positive it achieves 0.79 accuracy.
-This fallaciously suggests that the classification results are decent.
+% This fallaciously suggests that the classification results are decent.
+% \mynote[author=Harrie]{Dit is raar, je hebt de resultaten nog niet geintroduceerd, maar zegt toch dat ze onterecht decent lijken.}
 Here is where the utility of the Matthews Correlation Coefficient (MCC) comes into play, as the MCC in such case will be 0.00 because no labels are classified as negative.
 
 The classification results of the models are shown in table \ref{tab:res}.
@@ -73,7 +74,8 @@ When the MCC scores are analyzed the Neural Network performs 10\% better than it
 The higher performance of MCC suggests better balanced predictions of both the positive and negative labels.
 The best scores for the Neural Network were achieved with a setup of one hidden layer.
 When more hidden layers are added the performance decays gradually.
-The more hidden layers the more complex patterns the Neural Network can learn, on the other hand this also increases the chance of overspecialization (overfitting) on the train data.
+In general a Neural Network can learn more complex patterns when the number of hidden layers increase, however this also raises the risk of overfitting of the model on the train data.
+% \mynote[author=Harrie]{Deze zin loopt niet lekker.}
 Therefore, it is a likely explanation that when extra layers are added the performance is worsened due to overfitting.
 
 \begin{table}[h]
@@ -111,17 +113,22 @@ In this section the results are assessed to answer Research Question~\ref{rq:ran
 To achieve that a trained model predicts the label probability of each user-job combination, whereafter the average rank can be calculated.
 There are 4,983 unique jobs (midpoint is 2,491), and the expectation would be that the positive labels would at least come in the top 100. 
 The results show a different picture, for Logistic Regression the average rank of the positive labels is 2,611 and for the Neural Network 2,250.
-The Neural Network performs best, but the results are not significantly better than the random selection and definitely not close to an average rank below 100.
+The Neural Network performs best, but the results are not considerably better than the random selection and definitely not close to an average rank below 100.
+% \mynote[author=Harrie]{Heb je significant testing gedaan? gebruik anders een ander woord: bijv. considerably}
 
-Because the rankings look to be randomly picked, the correct implementation of the ranking method is questioned. 
-To validate the ranking implementation a subset of 10 users and 100 jobs are picked from the dataset and the model is purposefully overfitted using the whole subset to train and validate.
-This procedure returns an average rank of one, what is expected when a proper implementation is overfitted.
+The outcomes of the rankings do not appear to be better than the random baseline. 
+% \mynote[author=Harrie]{Je bedoelt de resultaten zien er niet veel beter uit dan de random baseline, dat is niet hetzelde als er willekeurig uitzien.}
+% To validate the ranking implementation a subset of 10 users and 100 jobs are picked from the dataset and the model is purposefully overfitted using the whole subset to train and validate.
+% This procedure returns an average rank of one, what is expected when a proper implementation is overfitted.
+% \mynote[author=Harrie]{Het overfitting verhaal zou ik weglaten.}
 Random results of Logistic Regression occur because the model returns precisely the same rankings for every user.
 This is caused by the linearity of the model, for each row in the matrix the user features are the same while the jobs features are different for each entry.
 A linear model only learns the dissimilarities, hence only the job features since all user features are the same for each row entry. 
 Because the user features are effectively not taken into account and each user is compared with the same jobs the model predicts the same ranks for each row.
-Therefore, it can argued that Logistic Regression is not suitable for ranking.
-The Neural Network is less affected by this thanks to its ability to learn non-linear relations in the data. 
+Therefore, it can argued that Logistic Regression with a linear model is not suitable for ranking.
+% \mynote[author=Harrie]{Logistic Regression met een linear model, je NN doet ook LR namelijk.}
+The Neural Network is not affected by this thanks to its ability to learn non-linear relations in the data. 
+% \mynote[author=Harrie]{zeg maar not affected}
 
 In conclusion to answer Research Question~\ref{rq:ranking}: it was found that in our case the trained models did not translate to a good ranking-based recommender.
 
