@@ -42,7 +42,8 @@ Therefore, for this research it was decided to look at other approaches for clus
 
 The third clustering approach is to cluster the n-grams of the job title characters.
 Applying Hierarchical Clustering results in that the job titles are distributed over 286 clusters. 
-Through a visual inspection comparing the assigned clusters with the associated job titles this clustering seems to deliver promising results, however when assessing the accuracy and MCC scores the performance is worse than the K-modes clustering.
+Through a visual inspection comparing the assigned clusters with the associated job titles this clustering seems to deliver promising results.
+However, when assessing the accuracy and MCC scores the performance is worse than the K-modes clustering.
 The hierarchical clustering results can be found in appendix \ref{ssec:hieclu}.
 
 % The job data contains a number of recurring job titles that are exactly the same, and based on the hierarchical clustering results it can be assumed that even though the job title is the same the underlying features deviate. 
@@ -64,8 +65,6 @@ In this part we look at our results to answer Research Question~\ref{rq:model}:
 
 \noindent When assessing the accuracy results it must be taken into account that the dataset exhibits a class imbalance of 79\% being positive labels and 21\% being negative labels.
 The consequence of this imbalance is that if the classifier predicts all labels to be positive it achieves 0.79 accuracy.
-% This fallaciously suggests that the classification results are decent.
-% \mynote[author=Harrie]{Dit is raar, je hebt de resultaten nog niet geintroduceerd, maar zegt toch dat ze onterecht decent lijken.}
 Here is where the utility of the Matthews Correlation Coefficient (MCC) comes into play, as the MCC in such case will be 0.00 because no labels are classified as negative.
 
 The classification results of the models are shown in table \ref{tab:res}.
@@ -75,8 +74,7 @@ The higher performance of MCC suggests better balanced predictions of both the p
 The best scores for the Neural Network were achieved with a setup of one hidden layer.
 When more hidden layers are added the performance decays gradually.
 In general a Neural Network can learn more complex patterns when the number of hidden layers increase, however this also raises the risk of overfitting the model on the train data.
-% \mynote[author=Harrie]{Deze zin loopt niet lekker.}
-Therefore, it is a likely explanation that when extra layers are added the performance is worsened due to overfitting.
+Therefore it is a likely explanation that when extra layers are added the performance is worsened due to overfitting.
 
 \begin{table}[h]
 \begin{footnotesize}
@@ -85,10 +83,11 @@ Therefore, it is a likely explanation that when extra layers are added the perfo
 \caption{\label{tab:res} \footnotesize{Classification Scores of Trained Models}}
 \end{table}
 
-For the Neural Network the MCC score is low and therefore also the confusion matrix (table \ref{tab:cmnn}) is analyzed.
+For the Neural Network the MCC score is low and therefore also the classification results (table \ref{tab:cmnn}) is analyzed.
 Overall it can be seen that the model is good in classifying the positive labels and less well when it comes to classifying the negative labels.
 Less than half (49\%) of the true negative labels are classified correctly, while 91\% of true positive labels are correct.
-Based on the metrics it is plausible that due to the class imbalance the Neural Network displays a tendency to classify all observations as positive labels, and therefore it is hard to determine how well the positive labels are learned.
+Based on the metrics it is plausible that, due to the class imbalance, the Neural Network displays a tendency to classify all observations as positive labels.
+Therefore it is hard to determine how well the positive labels are learned.
 This behavior is even more evident with the other classification models.
 
 \begin{table}[h]
@@ -117,11 +116,11 @@ The results for the ranking of both Logistic Regression and the Neural Network a
 \begin{footnotesize}
 \input{ThesisTemplate/Tables/TableRankingResults.tex}
 \end{footnotesize}
-\caption{\footnotesize{\label{tab:Ranking} AP of the Ranking of the Positive Labels for Logistic Regression and the Neural Network}}
+\caption{\footnotesize{\label{tab:Ranking} Average Percision (AP) of the Ranking of the Positive Labels for Logistic Regression and the Neural Network}}
 \end{table}
 
 There are 4,983 unique jobs, and the expectation is that the positive labels would at least come in the top 100. 
-The results show a different picture, for Logistic Regression 1.3\% of all the positive labels were ranked within the top 100 thus 98.7\% are not.
+The results show a different picture, for Logistic Regression 1.3\% of all the positive labels were ranked within the top 100, thus 98.7\% are not.
 The Neural Network does it slightly better with 1.6\%.
 The Neural Network performs best, but the results seem rather arbitrarily and definitely not close to an AP of one.
 
@@ -179,7 +178,7 @@ For the analysis of the importance of the features three methods are tested.
 The results for the Neural Network are shown in table \ref{tab:nnfi}, the outcomes for all models can be found in appendix \ref{ssec:fi}.
 From the results it can be deduced that there is a lot of noise present in the data, all approaches discard more than half of the features without significantly degrading the outcomes.
 When assessing which features are dropped it can be established that this are predominantly user features.
-Analyzing the user features that the RFECV method has retained it was found that based on heuristics 64\% of them can be classified as traits that hinder a person from getting a job.
+Analyzing the user features that the RFECV method has retained it was found that, based on heuristics, 64\% of them can be classified as traits that hinder a person from getting a job.
 This insight led to the question what would happen to the performance if all user features are eliminated.
 Two interesting things can be observed in the outcomes of this question which is shown in table \ref{tab:nnfeat}.
 First, when only using the users features the performance is suboptimal, and when only the jobs features are used the performance increases significantly.

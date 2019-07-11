@@ -9,12 +9,12 @@ In this section the methods that are tested during the research are elaborated. 
 \label{ssec:jrs}
 The research setting governs for an important part which methods can be applied.
 The dataset is composed of users features, job features and labels, and is a mixture of numerical, categorical, and unstructured (free text) data.
-The users features are for example personal information such as age, education, housing, marital status, but also biographical information as personal traits and limitations. 
+The user features are for example personal information such as age, education, housing, marital status, but also biographical information as personal traits and limitations. 
 Examples of job features are the job title, job description, job sector and hiring criteria. 
 The labels are the job matching outcomes, is a person hired for a job or not . 
 The positive labels (a person is hired) are overrepresented in dataset due to the tendency to document only the most promising job matching attempts. 
 Finally, the dataset exhibits sparsity, with just one or a few job matches per user.
-The dataset described above is common for JRS problems.
+A dataset as described above is common for JRS problems.
 % \mynote[author=Harrie]{Zeg hier ook bij dat het een typische dataset is voor JRE, of typisch vanuit gemeentes/overheden o.i.d. Zodat je het duidelijk is dat je method buiten de gemeente Amsterdam ook toepasbaar is.}
 
 %Clustering
@@ -47,7 +47,7 @@ The advantage of hierarchical clustering is that the number of clusters do not n
 \label{ssec:cblup}
 The labels in the dataset can be leveraged for supervised machine learning algorithms. 
 A content-based model can be constructed to predict the user matchability with jobs. 
-For the learning of the profiles the user and jobs features are concatenated into a single vector per available label. 
+For the learning of the profiles the user and job features are concatenated into a single vector per available label. 
 The learning of these profiles is closely related to the regression and classification problem, and therefore the same methods can be applied. 
 
 There is a myriad of regression and classification algorithms which all can be used for recommendation, and to narrow these down the following six basic models were selected for this research: 1) Nearest Neighbors, 2) K-Nearest Neighbors Classification, 3) RandomForest Classification, 4) Logistic Regression, 5) Linear Support Vector Classification, and 6) Multi-Layer Perceptron Classifier (better known as a Neural Network).
@@ -59,7 +59,7 @@ Other state-of-the-art algorithms commonly deliver a better performance than Nea
 Ning et al. (2015) summarize the advantages of Nearest Neighbors as follows: a) simplicity, b) justifiability, c) efficiency, and d) stability \cite{ning2015comprehensive}.
 Because of these characteristics the outcomes of Nearest Neighbors classification will serve as a baseline to which the other proposed algorithms will be compared.
 \textbf{\textit{K-Nearest Neighbors}} \cite{altman1992introduction} is an extension of the Nearest Neighbors algorithm. 
-In fact Nearest Neighbors is the equivalent of K-Nearest Neighbors (KNN) with a k=1. 
+In fact Nearest Neighbors is the equivalent of K-Nearest Neighbors (KNN) with a K=1. 
 Thus the difference between the two is that with KNN the desired number of neighbors can be specified.
 The arguments for selecting this neighborhood method are the same as for Nearest Neighbors.
 
@@ -67,7 +67,7 @@ The arguments for selecting this neighborhood method are the same as for Nearest
 The advantage of the RandomForest classification algorithm is that it robust to the inclusion of irrelevant features.
 
 \textbf{\textit{Logistic Regression}} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
-The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression is applied.
+The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression can be applied.
 
 According to Burges (1998) \textbf{\textit{Support Vector Machines}} (SVM) are an often applied method in case of binary labels \cite{burges1998tutorial}.
 A SVM is comparable with Logistic Regression, the main difference is that the loss is quantified as a hinge-loss rather than a logit function. 
@@ -80,7 +80,7 @@ However, the drawbacks are that a Neural Network is sensitive to noise in the da
 %How can we recommend?
 \noindent
 \textbf{Recommending Jobs to Users} \\
-The outcomes of the previous mentioned models can be two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the top-\textit{n} useful jobs for a user.
+The outcomes of the previous mentioned models can be used for two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the top-\textit{n} useful jobs for a user.
 The first method is feeding a trained model with a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
 The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.

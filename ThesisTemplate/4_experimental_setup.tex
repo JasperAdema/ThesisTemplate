@@ -15,7 +15,7 @@ The \textit{users} are welfare beneficiaries living in the city of Amsterdam, th
 The user data is stored in a customer management system database called RAAK which is operated by the municipality.
 Due to the abundance of user attributes in combination with resource constraints a preselection is required. 
 Based on previous research done by the municipality and in collaboration with the domain experts the attributes to be extracted from this database are determined. 
-The job vacancy data is retrieved from a database maintained by the Werkgeversservicepunt greater Amsterdam (WSP).
+The job vacancy data is retrieved from a database maintained by the WerkgeversServicePunt greater Amsterdam (WSP).
 The UWV hosts a database named GIP in which the employer feedback regarding a job candidate is registered.
 Therefore the labels can be derived from a dataset retrieved from the GIP database.
 
@@ -83,12 +83,14 @@ Hereafter, the optimum number of layers and nodes in a layer are explored iterat
 In this part the methods to evaluate the training results of the proposed models are outlined.
 The evaluation methods can be divided into three types: 1) the evaluation of the clustering, 2) the evaluation of the classification models, and 3) the evaluation of the rankings.
 
+%Clustering
 Clustering is an unsupervised algorithm and therefore validation against withheld examples is not possible.
 However, the clustering results can be evaluated by adding them as features or labels to the dataset.
 In case of adding them as features it can be tested if the prediction results improve when the clusters are added.
 Multiple setups can be used for this, like for example using the user features in combination with the job clusters to predict the labels.
 Another method is to try to predict the clusters on the basis of the features, for example using the user features to predict the job clusters. 
 
+%Classification
 For training and validation of all classification models a split of 80/20 based on saved indices is used. 
 The saved indices were created with the help of a group shuffle\textsuperscript{\ref{note1}} with taking into account that the same users are not allowed to be present in both the training and validation set.
 The train/validation split is shown in table \ref{tab:tvs}.
@@ -103,12 +105,13 @@ In case of imbalanced datasets the MCC is able to indicate correctly if the pred
 \caption{\label{tab:tvs} \footnotesize{Train/Validation Split}}
 \end{table}
 
+%Ranking
 The evaluation of the rankings can be done in various ways, although for this research a two step method is used. 
 The first step is to calculate the Average Precision (AP) of the labeled observations in the user $\times$ jobs matrix.
 The calculation of the AP is challenging because the user $\times$ jobs matrix is sparse, with 76\% of the cases there is only one positive label per user for all jobs (1 positive label per user versus 4,982 negative + unknown labels).
 To gauge the ranking quality with the AP the definition of a correct ranking of a positive label needs to be adjusted to take this sparsity into account. 
 The AP is calculated by first ranking all predictions per user in descending order.
-Per user (row) the ranking of the positive labels are extracted based on the coordinates of the user id and job id of that label.
+Per user (row) the ranking of the positive labels are extracted based on the coordinates of the user id and job id of the labels.
 If the rank is smaller or equal than a certain threshold it is regarded as correct, if the rank is above that threshold it is regarded as incorrect. 
 For example, if the threshold is set to 200 this means that a positive label should be ranked within the top 200 jobs. 
 Thus in this example if the rank of a positive label is 45 it is seen as correct, while if the rank is 346 it is regarded as incorrect.
