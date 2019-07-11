@@ -53,6 +53,7 @@ For all fields containing free text the punctuation and stopwords are removed, a
 The final dataset consists of 8,265 observations, made up out of 6,216 unique users and 4,983 unique job vacancies. 
 The labels are distributed as follows: 6,490 (79\%) positive and 1,775 (21\%) negative job matching outcomes have been documented. 
 The 438 feature columns of the dataset are composed of 34 user features spread over 282 columns and 22 job features spread over 156 columns. 
+Lastly, 76\% of the observations are 1-to-1 relations (a user applies only once for a job, and for a job is applied only once).
 
 %Hyperparameter Tuning
 \subsection{Hyperparameter Tuning}
@@ -103,6 +104,15 @@ In case of imbalanced datasets the MCC is able to indicate correctly if the pred
 \end{table}
 
 The evaluation of the rankings can be done in various ways, although for this research a two step method is used. 
-The first step is to calculate the average rank of the labeled observations in the user $\times$ jobs matrix.
-If the calculated average rank deviates from the mean total rank (or the midpoint of all ranks) towards the lower end it can be assumed that the predictions are better than random selection. 
-Because the true correctness of a ranking is hard to capture in metrics the second step proposes a user study, in which the sets of \textit{n}-top rankings are evaluated by domain experts. 
+The first step is to calculate the Average Precision (AP) of the labeled observations in the user $\times$ jobs matrix.
+The calculation of the AP is challenging because the user $\times$ jobs matrix is sparse, with 76\% of the cases there is only one positive label per user for all jobs (1 positive label per user versus 4,982 negative + unknown labels).
+To gauge the ranking quality with the AP the definition of a correct ranking of a positive label needs to be adjusted to take this sparsity into account. 
+The AP is calculated by first ranking all predictions per user in descending order.
+Per user (row) the ranking of the positive labels are extracted based on the coordinates of the user id and job id of that label.
+If the rank is smaller or equal than a certain threshold it is regarded as correct, if the rank is above that threshold it is regarded as incorrect. 
+For example, if the threshold is set to 200 this means that a positive label should be ranked within the top 200 jobs. 
+Thus in this example if the rank of a positive label is 45 it is seen as correct, while if the rank is 346 it is regarded as incorrect.
+Finally, based on this definition of correctness the AP is calculated over all rows in the matrix.
+The closer to one the better the AP score is.
+
+Because the true correctness of a ranking is hard to capture in metrics the second step proposes a user study, in which the sets of top-\textit{n} rankings are evaluated by domain experts. 

@@ -27,7 +27,7 @@ In total 288 tests were conducted (12 different cluster size $\times$ 12 scenari
 The table of the best results can be found in appendix \ref{ssec:cluscen}.
 The results do not show any improvement over the baseline, and therefore it can be concluded that in our case K-modes clustering of user or job features is not effective for the recommender system.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[width=\linewidth]{ThesisTemplate/Images/Clustering.png}
     \caption{\label{fig:eb} \footnotesize{Elbow Plots of the Clustering of Users and Jobs}}
@@ -109,26 +109,29 @@ In this section the results are assessed to answer Research Question~\ref{rq:ran
 	\item[] \em Does a model trained for predicting of job matches translate to a good ranking-based recommender?
 \end{itemize}
 
-\noindent Another method to evaluate the classification of the positive labels is by ranking them and then retrieving the average rank.
-To achieve that a trained model predicts the label probability of each user-job combination, whereafter the average rank can be calculated.
-There are 4,983 unique jobs (midpoint is 2,491), and the expectation would be that the positive labels would at least come in the top 100. 
-The results show a different picture, for Logistic Regression the average rank of the positive labels is 2,611 and for the Neural Network 2,250.
-The Neural Network performs best, but the results are not considerably better than the random selection and definitely not close to an average rank below 100.
-% \mynote[author=Harrie]{Heb je significant testing gedaan? gebruik anders een ander woord: bijv. considerably}
+\noindent Another method to evaluate the classification of the positive labels is by ranking them and then calculate the Average Precision (AP).
+To achieve that a trained model predicts the label probability of each user-job combination, whereafter the AP at a certain threshold can be calculated.
+The results for the ranking of both Logistic Regression and the Neural Network at three different thresholds are shown in tabel~\ref{tab:Ranking}.
 
-The outcomes of the rankings do not appear to be better than the random baseline.
-% \mynote[author=Harrie]{Je bedoelt de resultaten zien er niet veel beter uit dan de random baseline, dat is niet hetzelde als er willekeurig uitzien.}
-% To validate the ranking implementation a subset of 10 users and 100 jobs are picked from the dataset and the model is purposefully overfitted using the whole subset to train and validate.
-% This procedure returns an average rank of one, what is expected when a proper implementation is overfitted.
-% \mynote[author=Harrie]{Het overfitting verhaal zou ik weglaten.}
-Random results of Logistic Regression occur because the model returns precisely the same rankings for every user.
+\begin{table}[H]
+\begin{footnotesize}
+\input{ThesisTemplate/Tables/TableRankingResults.tex}
+\end{footnotesize}
+\caption{\footnotesize{\label{tab:Ranking} AP of the Ranking of the Positive Labels for Logistic Regression and the Neural Network}}
+\end{table}
+
+There are 4,983 unique jobs, and the expectation is that the positive labels would at least come in the top 100. 
+The results show a different picture, for Logistic Regression 1.3\% of all the positive labels were ranked within the top 100 thus 98.7\% are not.
+The Neural Network does it slightly better with 1.6\%.
+The Neural Network performs best, but the results seem rather arbitrarily and definitely not close to an AP of one.
+
+The outcomes of the rankings do not appear promising. 
+The arbitrary results of Logistic Regression occur because the model returns precisely the same rankings for every user.
 This is caused by the linearity of the model, for each row in the matrix the user features are the same while the jobs features are different for each entry.
 A linear model only learns the dissimilarities, hence only the job features since all user features are the same for each row entry. 
 Because the user features are effectively not taken into account and each user is compared with the same jobs the model predicts the same ranks for each row.
 Therefore, it can argued that Logistic Regression with a linear model is not suitable for ranking.
-% \mynote[author=Harrie]{Logistic Regression met een linear model, je NN doet ook LR namelijk.}
 The Neural Network is not affected by this thanks to its ability to learn non-linear relations in the data. 
-% \mynote[author=Harrie]{zeg maar not affected}
 
 In conclusion to answer Research Question~\ref{rq:ranking}: it was found that in our case the trained models did not translate to a good ranking-based recommender.
 
