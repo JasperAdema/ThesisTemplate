@@ -68,7 +68,7 @@ The consequence of this imbalance is that if the classifier predicts all labels 
 Here is where the utility of the Matthews Correlation Coefficient (MCC) comes into play, as the MCC in such case will be 0.00 because no labels are classified as negative.
 
 The classification results of the models are shown in table \ref{tab:res}.
-Judging only on the accuracy alone it does not seem to make a great difference which model is applied.
+Judging on the accuracy alone it does not seem to make a great difference which model is applied.
 When the MCC scores are analyzed the Neural Network performs 10\% better than its closest rival and 52\% better than the Nearest Neighbors baseline.
 The higher performance of MCC suggests better balanced predictions of both the positive and negative labels.
 The best scores for the Neural Network were achieved with a setup of one hidden layer.
@@ -83,9 +83,9 @@ Therefore it is a likely explanation that when extra layers are added the perfor
 \caption{\label{tab:res} \footnotesize{Classification Scores of Trained Models}}
 \end{table}
 
-For the Neural Network the MCC score is low and therefore also the classification results (table \ref{tab:cmnn}) is analyzed.
-Overall it can be seen that the model is good in classifying the positive labels and less well when it comes to classifying the negative labels.
-Less than half (49\%) of the true negative labels are classified correctly, while 91\% of true positive labels are correct.
+For the Neural Network the MCC score is low and therefore also the classification results (table \ref{tab:cmnn}) are analyzed.
+Overall it can be seen that the model is good in classifying the positive labels and less well when it comes to classify the negative labels.
+Less than half (49\%) of the true negative labels are classified correctly, while 91\% of true positive labels are classified correct.
 Based on the metrics it is plausible that, due to the class imbalance, the Neural Network displays a tendency to classify all observations as positive labels.
 Therefore it is hard to determine how well the positive labels are learned.
 This behavior is even more evident with the other classification models.
@@ -129,7 +129,7 @@ The arbitrary results of Logistic Regression occur because the model returns pre
 This is caused by the linearity of the model, for each row in the matrix the user features are the same while the jobs features are different for each entry.
 A linear model only learns the dissimilarities, hence only the job features since all user features are the same for each row entry. 
 Because the user features are effectively not taken into account and each user is compared with the same jobs the model predicts the same ranks for each row.
-Therefore, it can argued that Logistic Regression with a linear model is not suitable for ranking.
+Therefore, it can be argued that Logistic Regression with a linear model is not suitable for ranking.
 The Neural Network is not affected by this thanks to its ability to learn non-linear relations in the data. 
 
 In conclusion to answer Research Question~\ref{rq:ranking}: it was found that in our case the trained models did not translate to a good ranking-based recommender.
@@ -175,13 +175,13 @@ It can therefore be argued that the way in which SMOTE generates new observation
 \end{table}
 
 For the analysis of the importance of the features three methods are tested. 
-The results for the Neural Network are shown in table \ref{tab:nnfi}, the outcomes for all models can be found in appendix \ref{ssec:fi}.
+The results for the Neural Network are shown in table \ref{tab:nnfi}, the outcomes of these methods for all models can be found in appendix \ref{ssec:fi}.
 From the results it can be deduced that there is a lot of noise present in the data, all approaches discard more than half of the features without significantly degrading the outcomes.
 When assessing which features are dropped it can be established that this are predominantly user features.
 Analyzing the user features that the RFECV method has retained it was found that, based on heuristics, 64\% of them can be classified as traits that hinder a person from getting a job.
 This insight led to the question what would happen to the performance if all user features are eliminated.
 Two interesting things can be observed in the outcomes of this question which is shown in table \ref{tab:nnfeat}.
-First, when only using the users features the performance is suboptimal, and when only the jobs features are used the performance increases significantly.
+Firstly, when only using the users features the performance is suboptimal, and when only the jobs features are used the performance increases significantly.
 Secondly, dropping all user features outperforms all tested feature importance analysis methods.
 These outcomes suggests that the user features are not informative and carry no predictive power.
 This is unexpected because it is assumed that the user characteristics for an important part determine the matchability with a job opening.

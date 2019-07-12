@@ -64,7 +64,7 @@ Thus the difference between the two is that with KNN the desired number of neigh
 The arguments for selecting this neighborhood method are the same as for Nearest Neighbors.
 
 \textbf{\textit{RandomForest}} \cite{breiman2001random} is an ensemble learning method that can be used to build a rule-based classifier, when classification rules are extracted from the model.
-The advantage of the RandomForest classification algorithm is that it robust to the inclusion of irrelevant features.
+The advantage of the RandomForest classification algorithm is that it is robust to the inclusion of irrelevant features.
 
 \textbf{\textit{Logistic Regression}} \cite{hosmer2013applied} assumes that the labels (job matching outcomes) can be modeled as a linear function of the features.
 The prediction problem can be regarded as binary (0:negative label, 1:positive label), and therefore Binary Logistic Regression can be applied.
@@ -80,7 +80,7 @@ However, the drawbacks are that a Neural Network is sensitive to noise in the da
 %How can we recommend?
 \noindent
 \textbf{Recommending Jobs to Users} \\
-The outcomes of the previous mentioned models can be used for two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the top-\textit{n} useful jobs for a user.
+The outcomes of the before mentioned models can be used for two types of recommendation: 1) the prediction of the utility of a certain job to a user, or 2) a list of the top-\textit{n} useful jobs for a user.
 The first method is feeding a trained model with a concatenated user and a job feature vector and predict the label.
 The second method is to let the model predict the label probabilities of all possible users and jobs combinations. 
 The outcomes are transformed to a users $\times$ jobs matrix in which each row represents a unique user.

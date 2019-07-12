@@ -40,7 +40,7 @@ It is therefore assumed that this segmentation pattern can also be found in the 
 Attempts to cluster the users in two or more clusters did not deliver promising results.
 The domain experts that were consulted for this research indicated that welfare beneficiaries who are placed in the customer manager team with the best job opportunities are overrepresented in the data.  
 This is interesting because it could explain that due to the preselection bias mainly people from that team have made it into the dataset, and since this group commonly matches positively (and almost 1-to-1) with job openings this causes the class imbalance.
-It can therefore be argued that clustering results confirm that a preselection bias is present in the data. 
+It can therefore be argued that the clustering results confirm that a preselection bias is present in the data. 
 
 The second form of preselection bias is that, according to domain experts, there is a tendency among customer managers to only register the most promising job matches.
 This could also explain the observed overrepresentation of positive labels since a class imbalance towards the negative labels would rather be expected.
@@ -97,7 +97,7 @@ A possible solution would be to model the time dependency using a sliding window
 %Summary/Conclusion
 \noindent
 \textbf{Answering the Main Research Question}\\
-The mediocre results of the JRS can possibly be contributed to the methods that were chosen or the features that were selected. 
+The mediocre results of the JRS might possibly be traced back to the methods that were chosen or the features that were selected. 
 However, it appears to be more likely that it can be attributed to the bias and noise that is present in the data.
 Therefore it can be argued that in our case it is currently not feasible to implement a JRS with the available data in combination with the applied methods. 
 
@@ -124,7 +124,7 @@ In our case the number of documented job matching outcomes were presumed to be t
 This can be increased by a structured, improved registration discipline, and utilizing data from other sources.
 
 For example the fact that in more than half of the cases of the documented job matches no feedback on the outcomes was received can be combated by leveraging implicit feedback from other sources.
-Feedback on the outcomes be extracted from financial information because it is probable that the ending of welfare payouts is a signal that a user was successfully matched with a job. 
+Feedback on the outcomes can be extracted from financial information because it is probable that the ending of welfare payouts is a signal that a user was successfully matched with a job. 
 However, such conclusions should be drawn with care.
 For example it can be imagined that the time between a job match and the termination of welfare benefits is an important factor in determining the likelihood if the result was positive or negative. 
 However, despite its drawbacks implicit feedback can help to gauge more job matching outcomes and help to reduce class imbalance.
@@ -138,7 +138,7 @@ Finally, enriching the dataset with other data sources can raise the number of o
 %Data Quality
 \noindent
 \textbf{Data Quality}\\
-The fact that user features are not informative for the tested models is attributed to the data quality. 
+The fact that the user features are not informative for the tested models is attributed to the data quality. 
 Therefore the second prerequisite for a JRS is better data quality.
 What is good quality data?
 In general good quality data is perceived to meet at least the following requirements: completeness, consistency, accuracy, time stamped, and complying with the industry standards. 
@@ -146,7 +146,7 @@ In our case the quality of the data did not adhere to these characteristics.
 In this part three measures are discussed that can improve data quality.
 
 First, the data quality is affected by the bias and noise that is introduced at the various transfer moments during the registration.
-Excluding this bias fully is impossible, but this can be limited by the aligned data governance in the form of highly structured recording procedures and simplified user profiles.
+Excluding this bias fully is impossible, but this can be limited by aligned data governance in the form of highly structured recording procedures and simplified user profiles.
 Simplified user profiles imply the reduction of the number of user attributes and the free text fields. 
 An additional advantage of implementing this is that this will also lower the administrative burden for the customer managers.
 As well it can also be seen as a contribution to the adherence of the privacy by design principles. 
